@@ -1,9 +1,9 @@
 // components/FolderTree.tsx
 import React, { useEffect, useState } from 'react'
-import { useGetRootFoldersQuery, useGetChildFoldersQuery } from './foldersApiSlice'
-import Child from "./Child"
+import { useGetRootFoldersQuery, useGetChildFoldersQuery } from './folderTreeApiSlice'
+import TreeChild from "./TreeChild"
 
-const Folders: React.FC = () => {
+const FolderTree: React.FC = () => {
     const { data, isLoading, error } = useGetRootFoldersQuery();
 
     if (!isLoading) {
@@ -11,7 +11,7 @@ const Folders: React.FC = () => {
             <ul>
                 {data.children && data.children.map(function (c) {
                     return (
-                        <Child key={c.id + "_parent"} child={{
+                        <TreeChild key={c.id + "_parent"} child={{
                             id: c.id,
                             name: c.name,
                             children: c.children
@@ -23,4 +23,4 @@ const Folders: React.FC = () => {
     }
 };
 
-export default Folders;
+export default FolderTree;
