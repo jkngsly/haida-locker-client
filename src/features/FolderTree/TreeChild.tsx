@@ -26,7 +26,7 @@ const TreeChild: React.FC<ChildInterface> = (props) => {
 
     useEffect(() => {
 
-    }, [active])
+    }, [active]) // TODO: subscribe to state instead
 
     return (
         <li key={child.id}><a onClick={handleCLick}>{child.name}</a>
