@@ -1,5 +1,6 @@
 import "./App.css"
 import FolderTree from "./features/FolderTree/FolderTree"
+import FolderView from "./features/FolderView/FolderView"
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
         <FolderTree />
         <a>Link</a>
       </nav>
+      <FolderView />
     </div>
   )
 }

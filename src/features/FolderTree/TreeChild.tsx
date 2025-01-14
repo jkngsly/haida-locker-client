@@ -1,8 +1,7 @@
 // components/FolderTree.tsx
 import React, { useEffect, useState } from 'react';
 import { setId } from './folderTreeSlice';
-import { AppDispatch } from '../../app/store';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from "../../app/hooks"
 
 interface ChildInterface {
     id: string
@@ -15,7 +14,7 @@ interface Props {
 }
 
 const TreeChild: React.FC<ChildInterface> = (props) => {
-    const dispatch = useDispatch<AppDispatch>();
+    const dispatch = useAppDispatch()
 
     const [active, setActive] = React.useState<boolean>(false)
     const child = props.child;

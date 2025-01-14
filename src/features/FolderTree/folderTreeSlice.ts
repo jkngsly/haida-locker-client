@@ -2,12 +2,12 @@ import type { PayloadAction } from "@reduxjs/toolkit"
 import { createAppSlice } from "../../app/createAppSlice"
 
 export interface FoldersSliceState {
-  id: string | undefined
+  id: string
   //status: "idle" | "loading" | "failed"
 }
 
 const initialState: FoldersSliceState = {
-    id: undefined,
+    id: "root",
 }
 
 export const folderTreeSlice = createAppSlice({

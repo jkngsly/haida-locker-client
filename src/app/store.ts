@@ -3,32 +3,34 @@ import { combineSlices, configureStore } from "@reduxjs/toolkit"
 import { setupListeners } from "@reduxjs/toolkit/query"
 import { folderTreeApiSlice } from "../features/FolderTree/folderTreeApiSlice"
 import { folderTreeSlice } from "../features/FolderTree/folderTreeSlice"
+import { folderViewApiSlice } from "../features/FolderView/FolderViewApiSlice"
+import { FileThumbnailApiSlice } from "../features/FileThumbnail/FileThumbnailApiSlice"
 
-// `combineSlices` automatically combines the reducers using
-// their `reducerPath`s, therefore we no longer need to call `combineReducers`.
-const rootReducer = combineSlices(folderTreeApiSlice, folderTreeSlice)
-// Infer the `RootState` type from the root reducer
+const rootReducer = combineSlices(
+  folderTreeApiSlice, 
+  folderTreeSlice,
+  folderViewApiSlice,
+  FileThumbnailApiSlice
+)
 export type RootState = ReturnType<typeof rootReducer>
 
-// The store setup is wrapped in `makeStore` to allow reuse
-// when setting up tests that need the same store config
 export const makeStore = (preloadedState?: Partial<RootState>) => {
   const store = configureStore({
     reducer: rootReducer,
-    // Adding the api middleware enables caching, invalidation, polling,
-    // and other useful features of `rtk-query`.
     middleware: getDefaultMiddleware => {
-      return getDefaultMiddleware().concat(folderTreeApiSlice.middleware)
+      return getDefaultMiddleware()
+        .concat(folderTreeApiSlice.middleware)
+        .concat(folderViewApiSlice.middleware)
+        .concat(FileThumbnailApiSlice.middleware)
     },
     preloadedState,
   })
-  // configure listeners using the provided defaults
-  // optional, but required for `refetchOnFocus`/`refetchOnReconnect` behaviors
   setupListeners(store.dispatch)
   return store
 }
 
 export const store = makeStore()
+//setupListeners(store.dispatch)
 
 // Infer the type of `store`
 export type AppStore = typeof store

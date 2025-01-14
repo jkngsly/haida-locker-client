@@ -1,6 +1,6 @@
 // components/FolderTree.tsx
 import React, { useEffect, useState } from 'react'
-import { useGetRootFoldersQuery, useGetChildFoldersQuery } from './folderTreeApiSlice'
+import { useGetRootFoldersQuery } from './folderTreeApiSlice'
 import TreeChild from "./TreeChild"
 
 const FolderTree: React.FC = () => {
