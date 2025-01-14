@@ -12,8 +12,12 @@ const FileThumbnail: React.FC<Props> = (props) => {
     const { data, isLoading, error } = useGetFileQuery(props.id)
     
     if (!isLoading) {
+        const url = "http://localhost:4000/files/download?id=" + data.id;
         return (
-            <div>{ data.name }</div>
+            <div>
+
+<a href={url} target="tab">{ data.name }</a><br></br>
+            </div>
         )
     }
 };
