@@ -1,7 +1,7 @@
 // components/FolderTree.tsx
 import React, { useEffect, useState } from 'react'
-import { setId } from './folderTreeSlice'
-import { useAppDispatch } from "../../app/hooks"
+import { selectId, setId, setPath } from './folderTreeSlice'
+import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import TreeChildInterface from './interfaces/TreeChildInterface'
 import HeroIcon from '../../components/HeroIcon'
 
@@ -11,6 +11,7 @@ interface Props {
 
 const FolderTreeChild: React.FC<Props> = (props) => {
     const dispatch = useAppDispatch()
+    const folderId = useAppSelector(selectId)
 
     const [active, setActive] = React.useState<boolean>(false)
     const child = props.child
@@ -18,6 +19,10 @@ const FolderTreeChild: React.FC<Props> = (props) => {
     const handleCLick = () => {
         setActive(active ? false : true)
         dispatch(setId(child.id))
+        dispatch(setPath(child.path))
+    }
+    const handleActiveClass = () => { 
+        return folderId == child.id ? "active" : ""
     }
 
     useEffect(() => {
@@ -27,7 +32,7 @@ const FolderTreeChild: React.FC<Props> = (props) => {
     return (
         <li key={child.id}>
             
-            <a onClick={handleCLick}><HeroIcon name="FolderIcon" />{child.name}</a>
+            <a className={handleActiveClass()} title={child.name} onClick={handleCLick}><HeroIcon name="FolderIcon" />{child.name}</a>
             {child.children && child.children.length > 0 && (
                 <ul>
                     {active && child.children.map((c) => {
@@ -35,6 +40,7 @@ const FolderTreeChild: React.FC<Props> = (props) => {
                             <FolderTreeChild key={c.id + "_parent"} child={{
                                 id: c.id,
                                 name: c.name,
+                                path: c.path,
                                 children: c.children
                             }} />
                         )

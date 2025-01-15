@@ -3,11 +3,12 @@ import { createAppSlice } from "../../app/createAppSlice"
 
 export interface FoldersSliceState {
   id: string
-  //status: "idle" | "loading" | "failed"
+  path: string
 }
 
 const initialState: FoldersSliceState = {
     id: "root",
+    path: "Home"
 }
 
 export const folderTreeSlice = createAppSlice({
@@ -19,16 +20,22 @@ export const folderTreeSlice = createAppSlice({
         state.id = action.payload
       },
     ),
+    setPath: create.reducer(
+      (state, action: PayloadAction<string>) => {
+        state.path = action.payload
+      },
+    ),
   }),
 
   selectors: {
     selectId: folders => folders.id,
+    selectPath: folders => folders.path
   },
 })
 
-export const { setId } =
+export const { setId, setPath } =
 folderTreeSlice.actions
 
-export const { selectId } = folderTreeSlice.selectors
+export const { selectId, selectPath } = folderTreeSlice.selectors
 
 

@@ -33,7 +33,7 @@ $pink: rgb(255 10 35 / 76%);
     /* Default font color */
     text-white;
 
-    a { 
+    > a { 
         /* Hover font color for links */
         @apply hover:text-sky-200;
 
@@ -71,6 +71,10 @@ $pink: rgb(255 10 35 / 76%);
 
         a { 
             @apply cursor-pointer hover:text-orange-400 select-none;
+
+            &.active {
+                @apply text-orange-400;
+            }
         }
 
         > ul { 
@@ -99,7 +103,27 @@ $pink: rgb(255 10 35 / 76%);
     }
 
     .file-grid { 
-        @apply grid grid-cols-6 auto-rows-max overflow-y-scroll h-screen;
+        @apply grid grid-cols-6 auto-rows-max overflow-y-scroll;
+    }
+
+    .folder-empty { 
+        @apply h-80 w-full flex justify-center items-center; 
+
+        a {
+            svg { 
+                @apply size-80 opacity-10;
+
+                transition: .25s;
+            }
+
+            &:hover { 
+                color: $pink;
+                svg { 
+                    @apply cursor-pointer opacity-100;
+
+                }
+            }
+        }
     }
 
     .file { 
