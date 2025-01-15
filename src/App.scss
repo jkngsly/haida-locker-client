@@ -2,10 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
 $pink: rgb(255 10 35 / 76%);
 
 #root { 
     display: flex;
+    font-family: "Rubik", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+
+#logo { 
+    @apply w-full flex justify-end pr-4 mb-2 items-center h-20 text-5xl;
+    font-family: "Oswald", serif;
+    font-optical-sizing: auto;
+    font-weight: 900;
+    font-style: normal;
+    background: url(assets/logo.png) no-repeat left;
+    background-size: 70px;
+    background-position-x: 5%;
+
+    span { 
+        @apply text-orange-400;
+    }
 }
 
 #page { 
@@ -33,7 +54,7 @@ $pink: rgb(255 10 35 / 76%);
     /* Default font color */
     text-white;
 
-    > a { 
+    nav > div > a { 
         /* Hover font color for links */
         @apply hover:text-sky-200;
 
@@ -48,10 +69,10 @@ $pink: rgb(255 10 35 / 76%);
     }
 
     #user {
-        @apply w-full flex border-b 
+        @apply w-full flex border-b border-t
         
         /* Element Color */
-        border-b-slate-600;
+        border-slate-600;
     }
 }
 

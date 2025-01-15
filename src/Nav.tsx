@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { NavLink } from 'react-router-dom'
 import FolderTree from "./features/FolderTree/FolderTree"
+import Logo from "./assets/logo.png"
 
 function Nav() {
     const [count, setCount] = React.useState(0)
@@ -26,6 +27,9 @@ function Nav() {
 
     return (
         <div id="navigation">
+            <div id="logo">
+Haida<span>Drive</span>
+            </div>
             <div id="user">
                 <div className="p-5">
                     <span className="flex flex-row justify-center align-middle">
