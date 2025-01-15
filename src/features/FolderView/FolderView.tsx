@@ -2,13 +2,13 @@
 import React, { useEffect, useState } from 'react'
 import { selectId } from '../FolderTree/folderTreeSlice'
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
-import { useGetFilesQuery } from './FolderViewApiSlice';
+import { useGetFilesQuery } from './FolderViewApiSlice'
 import FileThumbnail from '../FileThumbnail/FileThumbnail'
 
 const FolderView: React.FC = () => {
-    //const { data, isLoading, error } = useGetFilesQuery();
+    //const { data, isLoading, error } = useGetFilesQuery()
     const folderId = useAppSelector(selectId)
-    const { data, isLoading, error } = useGetFilesQuery({ folderId: folderId || "root" });
+    const { data, isLoading, error } = useGetFilesQuery({ folderId: folderId || "root" })
     
     if(!isLoading && data) { 
         return (
@@ -20,6 +20,6 @@ const FolderView: React.FC = () => {
         )
     }
     
-};
+}
 
-export default FolderView;
+export default FolderView

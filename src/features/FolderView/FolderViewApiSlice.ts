@@ -11,8 +11,8 @@ export const folderViewApiSlice = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: 'http://localhost:4000',
         prepareHeaders(headers) {
-            //headers.set('x-api-key', DOGS_API_KEY);
-            return headers;
+            //headers.set('x-api-key', DOGS_API_KEY)
+            return headers
         },
     }),
     reducerPath: "folderViewApi",

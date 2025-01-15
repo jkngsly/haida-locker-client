@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { selectId } from '../FolderTree/folderTreeSlice'
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
-import { useGetFileQuery } from './FileThumbnailApiSlice';
+import { useGetFileQuery } from './FileThumbnailApiSlice'
 
 interface Props {
     id: string
@@ -19,6 +19,6 @@ const FileThumbnail: React.FC<Props> = (props) => {
             </div>
         )
     }
-};
+}
 
-export default FileThumbnail;
+export default FileThumbnail
