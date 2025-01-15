@@ -4,6 +4,7 @@ import { useAppDispatch } from "../../app/hooks"
 import { setId } from './folderTreeSlice'
 import { useGetRootFoldersQuery } from './folderTreeApiSlice'
 import FolderTreeChild from "./FolderTreeChild"
+import HeroIcon from '../../components/HeroIcon'
 
 const FolderTree: React.FC = () => {
     const dispatch = useAppDispatch()
@@ -16,8 +17,8 @@ const FolderTree: React.FC = () => {
 
     if (!isLoading && data) {
         return (
-            <ul>
-                <li><a onClick={handleHomeCLick}>Home</a></li>
+            <ul id="folder-tree">
+                <li><a onClick={handleHomeCLick}><HeroIcon name="FolderIcon" />Home</a></li>
                 {data.children && data.children.map(function (c) {
                     return (
                         <FolderTreeChild key={c.id + "_parent"} child={{

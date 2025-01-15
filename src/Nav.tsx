@@ -54,9 +54,7 @@ function Nav() {
                             </NavLink>
 
                             {link.to == "/drive" && (
-                                <ul>
-                                    <FolderTree />
-                                </ul>
+                                <FolderTree />
                             )}
                         </div>
                     )
