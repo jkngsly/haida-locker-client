@@ -19,7 +19,7 @@ export const FileThumbnailApiSlice = createApi({
     tagTypes: ["fileThumbnailApi"],
     endpoints: build => ({
         getFile: build.query<FileApiResponse, string>({
-            query: (id) => 'files/file?id=' + id,
+            query: (id) => 'file/' + id,
             providesTags: ['fileThumbnailApi'], // This tag will cache the root folder list
         }),
     }),

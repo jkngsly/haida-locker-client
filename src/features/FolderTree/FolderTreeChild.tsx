@@ -2,18 +2,13 @@
 import React, { useEffect, useState } from 'react';
 import { setId } from './folderTreeSlice';
 import { useAppDispatch } from "../../app/hooks"
-
-interface ChildInterface {
-    id: string
-    name: string
-    children: ChildInterface[]
-}
+import TreeChildInterface from './interfaces/TreeChildInterface';
 
 interface Props {
-    child: ChildInterface
+    child: TreeChildInterface
 }
 
-const TreeChild: React.FC<ChildInterface> = (props) => {
+const FolderTreeChild: React.FC<Props> = (props) => {
     const dispatch = useAppDispatch()
 
     const [active, setActive] = React.useState<boolean>(false)
@@ -34,7 +29,7 @@ const TreeChild: React.FC<ChildInterface> = (props) => {
                 <ul>
                     {active && child.children.map((c) => {
                         return (
-                            <TreeChild key={c.id + "_parent"} child={{
+                            <FolderTreeChild key={c.id + "_parent"} child={{
                                 id: c.id,
                                 name: c.name,
                                 children: c.children
@@ -48,4 +43,4 @@ const TreeChild: React.FC<ChildInterface> = (props) => {
     );
 };
 
-export default TreeChild;
+export default FolderTreeChild;

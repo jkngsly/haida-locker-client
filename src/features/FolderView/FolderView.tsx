@@ -10,13 +10,11 @@ const FolderView: React.FC = () => {
     const folderId = useAppSelector(selectId)
     const { data, isLoading, error } = useGetFilesQuery({ folderId: folderId || "root" });
     
-    if(!isLoading) { 
+    if(!isLoading && data) { 
         return (
             <div>
-            {data.files.length && data.files.map((file, index) => (
-                
-                <FileThumbnail key={file.id} id={file.id}/>
-                
+            {data.length && data.map((file, index) => (
+                <FileThumbnail key={file.id} id={file.id}/> 
             ))}
             </div>
         )

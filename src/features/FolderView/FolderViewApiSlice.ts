@@ -18,23 +18,8 @@ export const folderViewApiSlice = createApi({
     reducerPath: "folderViewApi",
     tagTypes: ["folderViewApi"],
     endpoints: build => ({
-        getFiles: build.query<FolderApiResponse, { folderId: string }>({
-            query: ({ folderId }) => {
-                let queryString = `files`;
-                
-                console.log(folderId);
-                // Build query string conditionally for optional parameters
-                const params: string[] = [];
-                if (folderId != "root") params.push(`folderId=${folderId}`);
-                
-                // If there are parameters, append them to the URL
-                if (params.length > 0) {
-                    queryString += `?${params.join('&')}`;
-                }
-                
-                console.log(queryString);
-                return queryString; // Return the full query URL
-            },
+        getFiles: build.query<FolderApiResponse[], { folderId: string }>({
+            query: ({ folderId }) => 'folders/' + folderId + '/files',
             providesTags: (result, error, { folderId }) => [
                 { type: 'folderViewApi', id: folderId }, // Unique tag for each parentId
             ],

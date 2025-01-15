@@ -18,14 +18,7 @@ export const folderTreeApiSlice = createApi({
         query: () => 'folders',
         providesTags: ['folderTreeApi'], // This tag will cache the root folder list
       }),
-      
-      getChildFolders: build.query<FolderApiResponse, { parentId: string }>({
-        query: ({ parentId }) => `folders?id=${parentId}`,
-        providesTags: (result, error, { parentId }) => [
-          { type: 'folderTreeApi', id: parentId }, // Unique tag for each parentId
-        ],
-      }),
   }),
 })
 
-export const { useGetChildFoldersQuery, useGetRootFoldersQuery } = folderTreeApiSlice
+export const { useGetRootFoldersQuery } = folderTreeApiSlice

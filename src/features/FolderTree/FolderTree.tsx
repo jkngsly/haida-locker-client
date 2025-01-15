@@ -1,9 +1,9 @@
 // components/FolderTree.tsx
 import React, { useEffect, useState } from 'react'
-import { useGetRootFoldersQuery } from './folderTreeApiSlice'
-import TreeChild from "./TreeChild"
-import { setId } from './folderTreeSlice';
 import { useAppDispatch } from "../../app/hooks"
+import { setId } from './folderTreeSlice';
+import { useGetRootFoldersQuery } from './folderTreeApiSlice'
+import TreeChild from "./FolderTreeChild"
 
 const FolderTree: React.FC = () => {
     const dispatch = useAppDispatch()
@@ -14,7 +14,7 @@ const FolderTree: React.FC = () => {
         dispatch(setId("root"))
     }
 
-    if (!isLoading) {
+    if (!isLoading && data) {
         return (
             <ul>
                 <li><a onClick={handleCLick}>Home</a></li>
