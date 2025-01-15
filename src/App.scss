@@ -97,6 +97,64 @@ $pink: rgb(255 10 35 / 76%);
     >div::-webkit-scrollbar {
         display: none;
     }
+
+    .file-grid { 
+        @apply grid grid-cols-6 auto-rows-max overflow-y-scroll h-screen;
+    }
+
+    .file { 
+        @apply rounded-md mx-4 my-4 h-44 overflow-hidden flex flex-col p-2 relative flex flex-col items-center align-middle;
+        
+        
+        background-color: rgb(31 41 55);
+        border: 1px solid rgb(31 41 55);
+    
+        &:hover {
+            background-color: rgb(255 10 35 / 76%);
+            border-color: rgb(255 10 35 / 76%);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+    }
+
+    .file-header { 
+        @apply w-full overflow-hidden text-left h-1/6 align-middle text-xs font-semibold text-slate-800 relative text-white;
+
+        span {
+            @apply overflow-hidden inline-block max-h-4;
+        }
+
+        svg {
+            @apply float-right size-5 absolute right-0;
+            stroke: #fff;
+        }
+    }
+
+    .file-thumbnail {
+        @apply w-full bg-slate-50 h-5/6 text-slate-700;
+
+        &:not(.file-media) { @apply flex flex-col flex-wrap align-middle content-center justify-center;
+            
+            svg {
+                @apply size-10
+            }
+        }
+
+        &.file-media { 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative; 
+            overflow: hidden; 
+
+            video { 
+                height: 100%;
+                width: 100%;
+                top: 0;
+                -o-object-fit: cover;
+                object-fit: cover;
+            }
+        }
+    }
 }
 
 .btn {

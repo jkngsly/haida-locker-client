@@ -20,6 +20,8 @@ const FolderView: React.FC = () => {
                         <HeroIcon name="ArrowLongUpIcon" />
                     </div>
                 </div>
+                <div className="file-grid">
+
                 {data.length > 0 && data.map((file, index) => (
                     <FileThumbnail key={index} id={file.id}/> 
                 ))}
@@ -28,6 +30,7 @@ const FolderView: React.FC = () => {
                         No files uploaded
                     </div>
                 )}
+                </div>
             </div>
         )
     }
