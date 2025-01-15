@@ -1,18 +1,21 @@
-import "./App.css"
-import FolderTree from "./features/FolderTree/FolderTree"
-import FolderView from "./features/FolderView/FolderView"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
+import "./App.scss"
+import Nav from "./Nav"
+import Drive from "./pages/Drive"
 
 const App = () => {
   return (
-    <div>
-      <nav>
-        <a>Dashboard</a>
-        <a>Vault</a>
-        <FolderTree />
-        <a>Link</a>
-      </nav>
-      <FolderView />
-    </div>
+    <>
+      <BrowserRouter>
+        <Nav />
+        <div className="w-10/12">
+          <Routes>
+            <Route path="/" element={<Drive />} />
+            <Route path="/drive" element={<Drive />} />
+          </Routes>
+        </div>
+      </BrowserRouter>
+    </>
   )
 }
 

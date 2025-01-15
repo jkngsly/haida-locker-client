@@ -1,6 +1,7 @@
-/*import * as React from 'react'
+import * as React from 'react'
 import { NavLink } from 'react-router-dom'
-import Folders from 'features/folders/Folders'
+import FolderTree from "./features/FolderTree/FolderTree"
+
 function Nav() {
     const [count, setCount] = React.useState(0)
 
@@ -11,20 +12,20 @@ function Nav() {
             text: "Dashboard",
         },
         {
-            to: "/vault",
+            to: "/drive",
             svgDraw: "M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z",
-            text: "Vault",
+            text: "Drive",
             folders: true
         },
         {
             to: "/test",
             svgDraw: "M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25",
-            text: "Confluence"
+            text: "Settings"
         },
         {
             to: "/test2",
             svgDraw: "M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z",
-            text: "Model"
+            text: "Who the fuck knows"
         },
     ];
 
@@ -43,16 +44,21 @@ function Nav() {
             </div>
             <nav className="p-5 flex flex-col w-full">
                 {links.map((link, index) => {
-                    return(
-                        <>
-                            <NavLink key={index} to={link.to} className={({ isActive }) => isActive ? 'active' : ''}>
+                    return (
+                        <div  key={index}>
+                            <NavLink to={link.to}> {/* className={({ isActive: boolean }) => isActive ? 'active' : ''}> */}
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 mr-5">
                                     <path strokeLinecap="round" strokeLinejoin="round" d={link.svgDraw} />
                                 </svg>
                                 {link.text}
                             </NavLink>
-                            {link.folders && <Folders /> }
-                        </>
+
+                            {link.to == "/drive" && (
+                                <ul>
+                                    <FolderTree />
+                                </ul>
+                            )};
+                        </div>
                     )
                 })}
             </nav>
@@ -61,4 +67,4 @@ function Nav() {
 }
 
 
-export default Nav*/
+export default Nav
