@@ -30,8 +30,8 @@ function Nav() {
     ];
 
     return (
-        <div className="w-2/12 min-h-screen flex flex-col border-r dark:bg-gray-800 dark:border-r-gray-700 border-r-gray-700 bg-gray-800">
-            <div className="w-full flex border-b border-b-slate-600 text-white">
+        <div id="navigation">
+            <div id="user">
                 <div className="p-5">
                     <span className="flex flex-row justify-center align-middle">
                         <div className="rounded-full pfp w-12 h-12 border-2 border-slate-100"></div>
@@ -46,7 +46,7 @@ function Nav() {
                 {links.map((link, index) => {
                     return (
                         <div  key={index}>
-                            <NavLink to={link.to}> {/* className={({ isActive: boolean }) => isActive ? 'active' : ''}> */}
+                            <NavLink to={link.to}>
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6 mr-5">
                                     <path strokeLinecap="round" strokeLinejoin="round" d={link.svgDraw} />
                                 </svg>
@@ -57,7 +57,7 @@ function Nav() {
                                 <ul>
                                     <FolderTree />
                                 </ul>
-                            )};
+                            )}
                         </div>
                     )
                 })}

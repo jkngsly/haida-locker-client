@@ -8,7 +8,7 @@ const App = () => {
     <>
       <BrowserRouter>
         <Nav />
-        <div className="w-10/12">
+        <div id="page">
           <Routes>
             <Route path="/" element={<Drive />} />
             <Route path="/drive" element={<Drive />} />

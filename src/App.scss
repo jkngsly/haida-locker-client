@@ -1,3 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#page { 
+    /* Layout */
+    @apply w-10/12;
+}
+
+#navigation { 
+    /* Layout */
+    @apply w-2/12 min-h-screen flex flex-col border-r 
+    
+    /* Element Color */
+    bg-gray-800 border-r-gray-700
+
+    /* Default font color */
+    text-white;
+
+    a { 
+        /* Hover font color for links */
+        @apply hover:text-sky-200;
+
+        /* Active font color for links */
+        &.active {
+            @apply text-rose-400;
+        }
+    }
+
+    nav > div > a { 
+        @apply py-2 mb-3 flex hover:cursor-pointer
+    }
+
+    #user {
+        @apply w-full flex border-b 
+        
+        /* Element Color */
+        border-b-slate-600;
+    }
+}
+
+.pfp { 
+    background:  url('public/images/pfp-temporary.png') center no-repeat ;
+    background-size: cover;
+  }
+
