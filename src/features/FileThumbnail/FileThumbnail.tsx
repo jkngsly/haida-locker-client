@@ -12,25 +12,25 @@ interface Props {
 
 function useClickOutside(handler: Function) {
     const ref = useRef(null);
-  
-    useEffect(() => {
-      const handleClickOutside = (event: MouseEvent) => {
 
-        {/* @ts-ignore (ノಠ益ಠ)ノ彡┻━┻ */}
-        if (ref.current && !ref.current.contains(event.target)) {
-          handler();
-        }
-      };
-  
-      document.addEventListener('mousedown', handleClickOutside);
-  
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-      };
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+
+            {/* @ts-ignore (ノಠ益ಠ)ノ彡┻━┻ */ }
+            if (ref.current && !ref.current.contains(event.target)) {
+                handler();
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
     }, [handler]);
-  
+
     return ref;
-  }
+}
 
 const FileThumbnail: React.FC<Props> = (props) => {
     const ref = useRef(null);
@@ -42,7 +42,7 @@ const FileThumbnail: React.FC<Props> = (props) => {
     const handleDropdownClick = () => {
         setShowMenu(showMenu ? false : true)
     }
-    
+
     if (!isLoading && data) {
         const file: FileApiResponse = { ...data }
         const url = "http://localhost:4000/file/" + file.id + "/download"
@@ -65,10 +65,9 @@ const FileThumbnail: React.FC<Props> = (props) => {
             <div className="file">
                 {showMenu && (
                     <div className="file-menu-dropdown" ref={dropdownRef}>
-                        <a>Download</a>
-                        <a>View</a>
-                        <a>Share</a>
-                        <a>Delete</a>
+                        <a><HeroIcon name="CloudArrowDownIcon" />Download</a>
+                        <a><HeroIcon name="ArrowUpOnSquareIcon" />Share</a>
+                        <a className="pink"><HeroIcon name="TrashIcon" />Delete</a>
                     </div>
                 )}
                 <div className="file-header">
