@@ -29,9 +29,9 @@ function Nav() {
         <div id="navigation">
             <div>
                 <div id="logo">
-                    Haida<span>Drive</span>
+                    <img src={Logo} />Haida<span>Drive</span>
                 </div>
-                <div id="user" className="pl-5 pt-5 pb-5">
+                <div id="user" className="pl-5 pt-5 pb-5 flex">
                     <span className="flex flex-row justify-center align-middle">
                         <div className="rounded-full pfp w-12 h-12 border-2 border-slate-100"></div>
                         <div className="ml-3 flex flex-col">
