@@ -5,6 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 
 $pink: rgb(255 10 35 / 76%);
+::selection { background: $pink; color: #fff; }
 
 #root { 
     display: flex;
@@ -15,7 +16,8 @@ $pink: rgb(255 10 35 / 76%);
 }
 
 #logo { 
-    @apply w-full flex justify-end pr-4 mb-2 items-center h-20 text-5xl;
+    @apply w-full flex justify-end pr-4 h-24 items-center text-5xl;
+    
     font-family: "Oswald", serif;
     font-optical-sizing: auto;
     font-weight: 900;
@@ -26,6 +28,8 @@ $pink: rgb(255 10 35 / 76%);
 
     span { 
         @apply text-orange-400;
+        text-shadow: 0px 3px 7px rgba(207, 104, 7, 1);
+
     }
 }
 
@@ -46,55 +50,119 @@ $pink: rgb(255 10 35 / 76%);
 
 #navigation { 
     /* Layout */
-    @apply w-2/12 min-h-screen flex flex-col border-r 
+    @apply w-2/12 min-h-screen flex flex-col relative 
     
-    /* Element Color */
-    bg-gray-800 border-r-gray-700
-
     /* Default font color */
-    text-white;
+    text-white overflow-y-hidden;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    box-shadow: inset -20px 0px 20px 0px #000;
+
+    background-size: 5px;
+   // background-color: rgb(31 41 55);
+   background: linear-gradient(20deg, rgb(2 9 24) 0%, rgb(35 46 61) 70%, rgb(0, 0, 0) 100%);
+    > * { 
+        position: relative;
+        z-index:1;
+    }
+    &::before {
+        content: ""; 
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.6) url(assets/stripe.png);
+        background-size: 4px;
+        opacity: 0.7;
+        position:absolute;
+        z-index: 0;
+    }
+
+    > div { 
+        @apply relative overflow-y-hidden max-h-screen;
+        position: relative;
+        z-index:2;
+    }
+
+    #user {
+        @apply w-full flex;
+        background: linear-gradient(rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
+        border-bottom: 1px solid rgba(0, 6, 31, 0.616);
+        border-top: 3px solid #ff9100;
+        border-right: none;
+    }
+
+    nav { 
+        border-top: 1px solid rgb(117, 117, 117);
+    }
+
+    nav a { 
+        @apply pl-6;
+    }
 
     nav > div > a { 
         /* Hover font color for links */
         @apply hover:text-sky-200;
 
+        transition: 0.15s;
+
         /* Active font color for links */
         &.active {
-            @apply text-rose-400;
+           color: rgb(255, 96, 112);
+           text-shadow: 0px 3px 7px rgba(255, 0, 0, 0.87);
+
         }
     }
 
     nav > div > a { 
-        @apply py-2 mb-3 flex hover:cursor-pointer
+        @apply my-3 flex hover:cursor-pointer
     }
 
-    #user {
-        @apply w-full flex border-b border-t
-        
-        /* Element Color */
-        border-slate-600;
-    }
 }
 
+
 #folder-tree { 
-    @apply border-t border-b border-t-gray-700 border-b-gray-700 w-full mb-4 pb-2;
+    @apply w-full mt-0 float-left max-h-40 overflow-y-scroll;
+
+        background: linear-gradient(rgba(24, 7, 7, 0.7) 0%, rgba(0,0,0,0.3) 75%, rgb(37, 37, 37) 100%);
+        border-bottom: 1px solid rgba(0, 6, 31, 0.616);
+        border-top: 1px solid rgb(112, 110, 111);
+        border-bottom: 1px solid rgb(112, 110, 111);
+    
+        border-right: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    > li:first-child { 
+        @apply mt-3;
+    }
+
+    > li:last-child { 
+        @apply mb-3;
+    }
 
     li { 
-        @apply m-3 flex flex-col w-full;
-
-        li { 
-            @apply mb-0;
-        }
-
+        @apply pl-3 mt-4 flex flex-col w-full;
+        
         svg { 
             @apply size-4 mr-4 float-left;
         }
 
         a { 
             @apply cursor-pointer hover:text-orange-400 select-none;
+            transition: 0.15s;
+
+            &:hover { 
+                @apply text-sky-200;
+            }
 
             &.active {
                 @apply text-orange-400;
+                
+                text-shadow: 0px 3px 7px rgba(255, 206, 114, 0.712);
             }
         }
 
@@ -103,6 +171,7 @@ $pink: rgb(255 10 35 / 76%);
         }
     }
 }
+
 
 .pfp { 
     background:  url('assets/pfp-temporary.png') center no-repeat ;
@@ -118,10 +187,6 @@ $pink: rgb(255 10 35 / 76%);
     background-size: 5px;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     max-height: 90vh;
-
-    >div::-webkit-scrollbar {
-        display: none;
-    }
 
     .file-grid { 
         @apply grid grid-cols-6 auto-rows-max overflow-y-scroll;
@@ -148,7 +213,7 @@ $pink: rgb(255 10 35 / 76%);
     }
 
     .file { 
-        @apply rounded-md mx-4 my-4 h-44 overflow-hidden flex flex-col p-2 relative flex flex-col items-center align-middle;
+        @apply relative rounded-md mx-4 my-4 h-44 flex flex-col p-2 relative flex flex-col items-center align-middle;
         
         
         background-color: rgb(31 41 55);
@@ -171,6 +236,37 @@ $pink: rgb(255 10 35 / 76%);
         svg {
             @apply float-right size-5 absolute right-0;
             stroke: #fff;
+        }
+    }
+
+    @keyframes showMenu {
+        from { 
+            opacity:0;
+            top: 0;
+        }
+
+        to{
+
+        }
+    }
+
+    .file-menu-dropdown { 
+        @apply absolute flex flex-col rounded-md p-2 text-sm;
+
+        z-index: 2;
+        background: rgba(31,41,55,0.9);
+        color: #fff;
+        width: 50%;
+        height: auto;
+        top: 25px;
+        right:0;
+
+        a { 
+            @apply mt-2 mb-2;
+            &:hover { 
+                @apply text-orange-400 cursor-pointer;
+                text-shadow: 0px 3px 7px orange;
+            }
         }
     }
 

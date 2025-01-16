@@ -3,6 +3,7 @@ import * as HIcons from '@heroicons/react/24/outline'
 
 interface Props {
   name: string,
+  onClick?: () => void, 
 }
 
 const HeroIcon: FC<Props> = (props) => {
@@ -14,7 +15,7 @@ const HeroIcon: FC<Props> = (props) => {
 
   return (
     <>
-      <Icon aria-hidden="true" />
+      <Icon aria-hidden="true" onClick={props.onClick} />
     </>
   )
 }

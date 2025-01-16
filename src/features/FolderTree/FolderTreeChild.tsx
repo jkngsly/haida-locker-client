@@ -13,29 +13,33 @@ const FolderTreeChild: React.FC<Props> = (props) => {
     const dispatch = useAppDispatch()
     const folderId = useAppSelector(selectId)
 
-    const [active, setActive] = React.useState<boolean>(false)
+    const [active, setActive] = React.useState<boolean>(false) 
+    const [expanded, setExpanded] = React.useState<boolean>(false)
     const child = props.child
 
     const handleCLick = () => {
-        setActive(active ? false : true)
+        
+        if(expanded && active) { 
+            setExpanded(false)
+        } else if(child.children.length) { 
+            setExpanded(true)
+        }
+
         dispatch(setId(child.id))
         dispatch(setPath(child.path))
     }
-    const handleActiveClass = () => { 
-        return folderId == child.id ? "active" : ""
-    }
-
+    
     useEffect(() => {
-
-    }, [active]) // TODO: subscribe to state instead
+        setActive(folderId == child.id)
+    }, [folderId]) // TODO: subscribe to state instead
 
     return (
         <li key={child.id}>
-            
-            <a className={handleActiveClass()} title={child.name} onClick={handleCLick}><HeroIcon name="FolderIcon" />{child.name}</a>
+            <a className={active ? "active" : ""} title={child.name} onClick={handleCLick}>
+            <HeroIcon name={ expanded ? "FolderOpenIcon" : "FolderIcon"} />{child.name}</a>
             {child.children && child.children.length > 0 && (
                 <ul>
-                    {active && child.children.map((c) => {
+                    {expanded && child.children.map((c) => {
                         return (
                             <FolderTreeChild key={c.id + "_parent"} child={{
                                 id: c.id,

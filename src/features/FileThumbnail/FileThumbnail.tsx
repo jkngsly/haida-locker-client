@@ -1,5 +1,5 @@
 // components/FolderTree.tsx
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { selectId } from '../FolderTree/folderTreeSlice'
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { useGetFileQuery } from './FileThumbnailApiSlice'
@@ -10,12 +10,41 @@ interface Props {
     id: string
 }
 
-const FileThumbnail: React.FC<Props> = (props) => {
-    const { data, isLoading, error } = useGetFileQuery(props.id)
+function useClickOutside(handler: Function) {
+    const ref = useRef(null);
+  
+    useEffect(() => {
+      const handleClickOutside = (event: MouseEvent) => {
 
+        {/* @ts-ignore (ノಠ益ಠ)ノ彡┻━┻ */}
+        if (ref.current && !ref.current.contains(event.target)) {
+          handler();
+        }
+      };
+  
+      document.addEventListener('mousedown', handleClickOutside);
+  
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, [handler]);
+  
+    return ref;
+  }
+
+const FileThumbnail: React.FC<Props> = (props) => {
+    const ref = useRef(null);
+
+    const { data, isLoading, error } = useGetFileQuery(props.id)
+    const [showMenu, setShowMenu] = React.useState<boolean>(false)
+    const dropdownRef = useClickOutside(() => setShowMenu(false));
+
+    const handleDropdownClick = () => {
+        setShowMenu(showMenu ? false : true)
+    }
     
     if (!isLoading && data) {
-        const file: FileApiResponse = {...data}
+        const file: FileApiResponse = { ...data }
         const url = "http://localhost:4000/file/" + file.id + "/download"
         const video = file.mime_type.indexOf("video") != -1
         const image = file.mime_type.indexOf("image") != -1
@@ -27,20 +56,28 @@ const FileThumbnail: React.FC<Props> = (props) => {
             } : {}
         }
 
-        const getThumbnailClassName = () => { 
-            const fileMedia = icon ? "" : "file-media" 
+        const getThumbnailClassName = () => {
+            const fileMedia = icon ? "" : "file-media"
             return "file-thumbnail " + fileMedia
         }
 
         return (
             <div className="file">
+                {showMenu && (
+                    <div className="file-menu-dropdown" ref={dropdownRef}>
+                        <a>Download</a>
+                        <a>View</a>
+                        <a>Share</a>
+                        <a>Delete</a>
+                    </div>
+                )}
                 <div className="file-header">
-                  <HeroIcon name="EllipsisHorizontalIcon" />
-                 <span>{data.name.substring(0, 20) + (data.name.length > 20 ? "..." : "")}</span>
+                    <HeroIcon name="EllipsisHorizontalIcon" onClick={handleDropdownClick} />
+                    <span>{data.name.substring(0, 20) + (data.name.length > 20 ? "..." : "")}</span>
                 </div>
                 <div className={getThumbnailClassName()} style={getImageBackground()}>
-                    { icon && <HeroIcon name="DocumentIcon" /> }
-                    { video && 
+                    {icon && <HeroIcon name="DocumentIcon" />}
+                    {video &&
                         // @ts-ignore
                         <video id="background-video" autoPlay loop muted>
                             <source src={url} type="video/mp4" /> {/* TODO: correct mime format */}

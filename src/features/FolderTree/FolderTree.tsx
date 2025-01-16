@@ -5,6 +5,7 @@ import { setId, selectId, setPath } from './folderTreeSlice'
 import { useGetRootFoldersQuery } from './folderTreeApiSlice'
 import FolderTreeChild from "./FolderTreeChild"
 import HeroIcon from '../../components/HeroIcon'
+import { Scrollbars } from 'react-custom-scrollbars-2';
 
 const FolderTree: React.FC = () => {
     const dispatch = useAppDispatch()
@@ -16,26 +17,31 @@ const FolderTree: React.FC = () => {
         dispatch(setPath("Home"))
     }
 
-    const handleActiveClass = () => { 
+    const handleActiveClass = () => {
         return folderId == "root" ? "active" : ""
     }
 
     if (!isLoading && data) {
 
         return (
+            <div>
+
             <ul id="folder-tree">
-                <li><a className={handleActiveClass()} onClick={handleHomeCLick}><HeroIcon name="FolderIcon" />Home</a></li>
-                {data.children && data.children.map(function (c) {
-                    return (
-                        <FolderTreeChild key={c.id + "_parent"} child={{
-                            id: c.id,
-                            name: c.name,
-                            path: c.path,
-                            children: c.children
-                        }} />
-                    )
-                })}
-            </ul>
+            <Scrollbars style={{ width: "98%", height: 300 }}>
+
+                    <li><a className={handleActiveClass()} onClick={handleHomeCLick}><HeroIcon name="FolderIcon" />Home</a></li>
+                    {data.children && data.children.map(function (c) {
+                        return (
+                            // @ts-ignore (ノಠ益ಠ)ノ彡┻━┻ 
+                            <FolderTreeChild key={c.id + "_parent"} child={{
+                                // @ts-ignore (ノಠ益ಠ)ノ彡┻━┻  TODO: objectify
+                                id: c.id, name: c.name, path: c.path, children: c.children
+                            }} />
+                        )
+                    })}
+                </Scrollbars>
+                </ul>
+            </div>
         )
     }
 }
