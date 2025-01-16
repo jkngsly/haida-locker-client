@@ -27,7 +27,7 @@ const FolderTree: React.FC = () => {
             <div>
                 <ul id="folder-tree">
                     <Scrollbars style={{ width: "98%", height: 300 }}>
-                        <li><a className={handleActiveClass()} onClick={handleHomeCLick}><HeroIcon name="FolderIcon" />Home</a></li>
+                        <li><a className={handleActiveClass()} onClick={handleHomeCLick}><HeroIcon name="Folder" />Home</a></li>
                         {data.children && data.children.map(function (c) {
                             return (
                                 // @ts-ignore (ノಠ益ಠ)ノ彡┻━┻ 

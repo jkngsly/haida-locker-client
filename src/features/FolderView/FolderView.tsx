@@ -17,9 +17,9 @@ const FolderView: React.FC = () => {
         return (
             <div id="folder-view">
                 <div className="w-full folder-toolbar text-right flex flex-row  pwd  px-4 justify-between">
-                    <div className="order-1">{folderPath}</div>
+                    <div className="order-1"><HeroIcon name="ArrowTurnDownRight" />{folderPath}</div>
                     <div className="order-2 flex flex-row">
-                        <HeroIcon name="ArrowLongUpIcon" />
+                        <HeroIcon name="ArrowLongUp" />
                     </div>
                 </div>
                     {data.length > 0 && (
@@ -34,7 +34,7 @@ const FolderView: React.FC = () => {
                     <div className="folder-empty">
                         {/* TODO: Upload trigger */}
                         <a title="Upload">
-                            <HeroIcon name="CloudArrowUpIcon" />
+                            <HeroIcon name="CloudArrowUp" />
                         </a>
                     </div>
                 )}

@@ -9,15 +9,17 @@ interface Props {
 const HeroIcon: FC<Props> = (props) => {
 
   const {...icons} = HIcons
-
+  let iconName = props.name + "Icon";
   {/* @ts-ignore (ノಠ益ಠ)ノ彡┻━┻ */}
-  const Icon = icons[props.name]
+  const Icon = icons[iconName]
 
-  return (
-    <>
-      <Icon aria-hidden="true" onClick={props.onClick} />
-    </>
-  )
+  if(Icon) { 
+    return (
+      <>
+        <Icon aria-hidden="true" onClick={props.onClick} />
+      </>
+    )
+  }
 }
 
 export default HeroIcon

@@ -36,7 +36,7 @@ const FolderTreeChild: React.FC<Props> = (props) => {
     return (
         <li key={child.id}>
             <a className={active ? "active" : ""} title={child.name} onClick={handleCLick}>
-            <HeroIcon name={ expanded ? "FolderOpenIcon" : "FolderIcon"} />{child.name}</a>
+            <HeroIcon name={ expanded ? "FolderOpen" : "Folder"} />{child.name}</a>
             {child.children && child.children.length > 0 && (
                 <ul>
                     {expanded && child.children.map((c) => {

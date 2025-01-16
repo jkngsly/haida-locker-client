@@ -21,8 +21,8 @@ const Drive: React.FC = () => {
             {/* TODO: Something with this */}
           </div>
           <div className="w-5/6 p-4 pt-0 flex flex-row justify-end">
-            <Button text="Upload File" heroIcon="DocumentPlusIcon" />
-            <Button text="Create Folder" heroIcon="FolderPlusIcon" />
+            <Button text="Upload File" heroIcon="CloudArrowUp" />
+            <Button text="Create Folder" heroIcon="FolderPlus" />
           </div>
           {/* && (
             <div>
