@@ -123,7 +123,7 @@ $pink: rgb(255 10 35 / 76%);
 
 
 #folder-tree { 
-    @apply w-full mt-0 float-left max-h-40 overflow-y-scroll;
+    @apply w-full mt-0 float-left h-auto pb-4 overflow-y-scroll;
 
         background: linear-gradient(rgba(24, 7, 7, 0.7) 0%, rgba(0,0,0,0.3) 75%, rgb(37, 37, 37) 100%);
         border-bottom: 1px solid rgba(0, 6, 31, 0.616);
@@ -131,6 +131,14 @@ $pink: rgb(255 10 35 / 76%);
         border-bottom: 1px solid rgb(112, 110, 111);
     
         border-right: none;
+
+    // React-scrollbars-custom-2
+    > div > div:last-child > div { 
+        @apply rounded-full;
+        background: rgba(251, 146, 60, 0.463) !important;
+        margin-top: 15px !important;
+    
+    }
 
     &::-webkit-scrollbar {
         display: none;

@@ -25,21 +25,19 @@ const FolderTree: React.FC = () => {
 
         return (
             <div>
-
-            <ul id="folder-tree">
-            <Scrollbars style={{ width: "98%", height: 300 }}>
-
-                    <li><a className={handleActiveClass()} onClick={handleHomeCLick}><HeroIcon name="FolderIcon" />Home</a></li>
-                    {data.children && data.children.map(function (c) {
-                        return (
-                            // @ts-ignore (ノಠ益ಠ)ノ彡┻━┻ 
-                            <FolderTreeChild key={c.id + "_parent"} child={{
-                                // @ts-ignore (ノಠ益ಠ)ノ彡┻━┻  TODO: objectify
-                                id: c.id, name: c.name, path: c.path, children: c.children
-                            }} />
-                        )
-                    })}
-                </Scrollbars>
+                <ul id="folder-tree">
+                    <Scrollbars style={{ width: "98%", height: 300 }}>
+                        <li><a className={handleActiveClass()} onClick={handleHomeCLick}><HeroIcon name="FolderIcon" />Home</a></li>
+                        {data.children && data.children.map(function (c) {
+                            return (
+                                // @ts-ignore (ノಠ益ಠ)ノ彡┻━┻ 
+                                <FolderTreeChild key={c.id + "_parent"} child={{
+                                    // @ts-ignore (ノಠ益ಠ)ノ彡┻━┻  TODO: objectify
+                                    id: c.id, name: c.name, path: c.path, children: c.children
+                                }} />
+                            )
+                        })}
+                    </Scrollbars>
                 </ul>
             </div>
         )
