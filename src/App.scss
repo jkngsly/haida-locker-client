@@ -16,7 +16,8 @@ $pink: rgb(255 10 35 / 76%);
 }
 
 #logo { 
-    @apply w-full flex justify-center pr-4 h-24 items-center text-4xl;
+    overflow: hidden;
+    @apply w-full flex pr-4 h-24 items-center text-4xl pl-6;
     font-family: "Oswald", serif;
     font-optical-sizing: auto;
     font-weight: 900;
@@ -27,9 +28,13 @@ $pink: rgb(255 10 35 / 76%);
     box-shadow: inset -20px 0px 20px 0px #000;
     
     img { 
-        width: 50px;
-        height: 50px;
-        @apply mr-2;
+        width: 180px;
+        height: auto;
+        margin-right: 0.5rem;
+        position: absolute;
+        right: 0;
+        top: 5px;
+        margin-right: -51px;
     }
 
     span { 
