@@ -124,9 +124,7 @@ $pink: rgb(255 10 35 / 76%);
     nav > div > a { 
         @apply my-3 flex hover:cursor-pointer
     }
-
 }
-
 
 #folder-tree { 
     @apply w-full mt-0 float-left h-auto pb-4 overflow-y-scroll;
@@ -185,14 +183,51 @@ $pink: rgb(255 10 35 / 76%);
     }
 }
 
-
 .pfp { 
     background:  url('assets/pfp-temporary.png') center no-repeat ;
     background-size: cover;
-  }
+}
+
+.folder-search { 
+    @apply w-1/6 p-4 pt-0 flex flex-row justify-start;
+    
+    position: relative;
+    
+    input { 
+        @apply rounded-full px-4 py-2 min-w-60;
+    
+        margin-right: -35px;
+
+        color: #fff;
+        background: #1d2229;
+        border: 1px solid #000000;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+    }
+
+    svg { 
+        @apply size-6 float-left;
+        color: #fff;
+        margin-top: 8px;
+    }
+}
+
+.folder-filters { 
+    @apply w-1/6 p-4 pt-0 flex flex-row justify-start items-center;
+
+    a { 
+        &:hover { 
+            color: $pink;
+            cursor: pointer;
+        }
+    }
+
+    svg { 
+        @apply size-6;
+    }
+}
 
 #folder-view { 
-    
     @apply p-5 max-h-max;
 
     background-color: rgb(255 255 255 / 38%);
@@ -203,6 +238,25 @@ $pink: rgb(255 10 35 / 76%);
 
     .file-grid { 
         @apply grid grid-cols-6 auto-rows-max overflow-y-scroll;
+    }
+
+    .folder-toolbar { 
+
+        text-shadow: 0px 1px 0px rgb(255 255 255 / 100%);
+
+        .folder-path { 
+            @apply text-sm;
+            letter-spacing: 2px;
+            
+            span { 
+                font-weight: 400;
+            }
+        }
+
+        svg { 
+            @apply size-4 float-left mr-4;
+            
+        }
     }
 
     .folder-empty { 
@@ -257,24 +311,18 @@ $pink: rgb(255 10 35 / 76%);
         }
     }
 
-    @keyframes showMenu {
-        from { 
-            opacity:0;
-            top: 0;
-        }
-
-        to{
-
-        }
-    }
-
     .file-thumbnail {
-        @apply w-full bg-slate-50 h-5/6 text-slate-700;
+        @apply w-full h-5/6 text-slate-700 relative;
 
-        &:not(.file-media) { @apply flex flex-col flex-wrap align-middle content-center justify-center;
+        background: linear-gradient(20deg, rgb(2 9 24) 0%, rgb(35 46 61) 70%, rgb(0, 0, 0) 100%);
+
+        &:not(.file-media) { 
+            @apply flex flex-col flex-wrap align-middle content-center justify-center;
             
-            svg {
-                @apply size-10
+            color: rgba(255,255,255,0.6);
+
+            svg:not(.expand svg) {
+                @apply size-14 
             }
         }
 

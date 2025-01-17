@@ -71,7 +71,7 @@ const FileThumbnail: React.FC<Props> = (props) => {
                     </div>
                 )}
                 <div className="file-header">
-                    <HeroIcon name="EllipsisHorizontalIcon" onClick={handleDropdownClick} />
+                    <HeroIcon name="EllipsisHorizontal" onClick={handleDropdownClick} />
                     <span>{data.name.substring(0, 20) + (data.name.length > 20 ? "..." : "")}</span>
                 </div>
                 <div className={getThumbnailClassName()} style={getImageBackground()}>

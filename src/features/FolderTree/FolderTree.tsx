@@ -1,7 +1,7 @@
 // components/FolderTree.tsx
 import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
-import { setId, selectId, setPath } from './folderTreeSlice'
+import { setId, selectId, setPath, setName } from './folderTreeSlice'
 import { useGetRootFoldersQuery } from './folderTreeApiSlice'
 import FolderTreeChild from "./FolderTreeChild"
 import HeroIcon from '../../components/HeroIcon'
@@ -15,6 +15,7 @@ const FolderTree: React.FC = () => {
     const handleHomeCLick = () => {
         dispatch(setId("root"))
         dispatch(setPath("Home"))
+        dispatch(setName("Home"))
     }
 
     const handleActiveClass = () => {

@@ -1,6 +1,6 @@
 // components/FolderTree.tsx
 import React, { useEffect, useState } from 'react'
-import { selectId, setId, setPath } from './folderTreeSlice'
+import { selectId, setId, setPath, setName } from './folderTreeSlice'
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import TreeChildInterface from './interfaces/TreeChildInterface'
 import HeroIcon from '../../components/HeroIcon'
@@ -27,6 +27,7 @@ const FolderTreeChild: React.FC<Props> = (props) => {
 
         dispatch(setId(child.id))
         dispatch(setPath(child.path))
+        dispatch(setName(child.name))
     }
     
     useEffect(() => {

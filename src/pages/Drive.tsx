@@ -1,6 +1,7 @@
 import * as React from 'react'
 import FolderView from "../features/FolderView/FolderView"
 import Button from '../components/Button';
+import HeroIcon from '../components/HeroIcon';
 
 const Drive: React.FC = () => {
 
@@ -14,13 +15,14 @@ const Drive: React.FC = () => {
         //onChange={}
         id="upload" />
       <div className="flex flex-row  h-1/6">
-        <div className="w-1/6">
-        </div>
-        <div className="w-5/6 flex flex-row">
-          <div className="w-1/6 p-4 pt-0 flex flex-row justify-start">
-            {/* TODO: Something with this */}
+          <div className="folder-search">
+            <input type="text" className="" placeholder="Search" />
+            <HeroIcon name="MagnifyingGlass" />
           </div>
-          <div className="w-5/6 p-4 pt-0 flex flex-row justify-end">
+          <div className="folder-filters">
+            <a title="Show Filters"><HeroIcon name="AdjustmentsHorizontal" /></a>
+          </div>
+          <div className="w-3/6 p-4 pt-0 flex flex-row justify-end">
             <Button text="Upload File" heroIcon="CloudArrowUp" />
             <Button text="Create Folder" heroIcon="FolderPlus" />
           </div>
@@ -30,7 +32,6 @@ const Drive: React.FC = () => {
               <Button text="Create Folder" onClick={} />
             </div>
           )*/}
-        </div>
       </div>
       <FolderView />
     </div>
