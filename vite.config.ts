@@ -4,6 +4,7 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // @ts-ignore (ノಠ益ಠ)ノ彡┻━┻ 
   plugins: [react()],
   server: {
     open: true,
@@ -14,16 +15,21 @@ export default defineConfig({
     setupFiles: "src/setupTests",
     mockReset: true,
   },
-  resolve: { 
-    alias: { 
-      "@": path.resolve(__dirname, "./src/"),
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, './src'),
+      '@app': path.resolve(__dirname, './src/app'),
+      '@assets': path.resolve(__dirname, './src/assets'),
+      '@components': path.resolve(__dirname, './src/components'),
+      '@features': path.resolve(__dirname, './src/features'),
+      '@pages': path.resolve(__dirname, './src/pages'),
     }
   },
-  css: { 
-    preprocessorOptions: { 
+  css: {
+    preprocessorOptions: {
       scss: {
       },
     },
-  }, 
-  
+  },
+
 })

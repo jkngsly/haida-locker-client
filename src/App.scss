@@ -259,9 +259,13 @@ $pink: rgb(255 10 35 / 76%);
         }
 
         svg { 
-            @apply size-4 float-left mr-4;
-            
+            @apply size-4;
         }
+
+        svg:first-child { 
+            @apply float-left mr-4;
+        }
+
     }
 
     .folder-empty { 

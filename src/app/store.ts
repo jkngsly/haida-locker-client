@@ -1,10 +1,10 @@
 import type { Action, ThunkAction } from "@reduxjs/toolkit"
 import { combineSlices, configureStore } from "@reduxjs/toolkit"
 import { setupListeners } from "@reduxjs/toolkit/query"
-import { folderTreeApiSlice } from "../features/FolderTree/folderTreeApiSlice"
-import { folderTreeSlice } from "../features/FolderTree/folderTreeSlice"
-import { folderViewApiSlice } from "../features/FolderView/FolderViewApiSlice"
-import { FileThumbnailApiSlice } from "../features/FileThumbnail/FileThumbnailApiSlice"
+import { folderTreeApiSlice } from "@features/FolderTree/folderTreeApiSlice"
+import { folderTreeSlice } from "@features/FolderTree/folderTreeSlice"
+import { folderViewApiSlice } from "@features/FolderView/FolderViewApiSlice"
+import { FileThumbnailApiSlice } from "@features/FileThumbnail/FileThumbnailApiSlice"
 
 const rootReducer = combineSlices(
   folderTreeApiSlice, 

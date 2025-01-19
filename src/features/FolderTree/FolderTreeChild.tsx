@@ -1,9 +1,9 @@
 // components/FolderTree.tsx
 import React, { useEffect, useState } from 'react'
 import { selectId, setId, setPath, setName } from './folderTreeSlice'
-import { useAppDispatch, useAppSelector } from "../../app/hooks"
+import { useAppDispatch, useAppSelector } from "@app/hooks"
 import TreeChildInterface from './interfaces/TreeChildInterface'
-import HeroIcon from '../../components/HeroIcon'
+import HeroIcon from '@components/HeroIcon'
 
 interface Props {
     child: TreeChildInterface
@@ -13,15 +13,15 @@ const FolderTreeChild: React.FC<Props> = (props) => {
     const dispatch = useAppDispatch()
     const folderId = useAppSelector(selectId)
 
-    const [active, setActive] = React.useState<boolean>(false) 
+    const [active, setActive] = React.useState<boolean>(false)
     const [expanded, setExpanded] = React.useState<boolean>(false)
     const child = props.child
 
     const handleCLick = () => {
-        
-        if(expanded && active) { 
+
+        if (expanded && active) {
             setExpanded(false)
-        } else if(child.children.length) { 
+        } else if (child.children.length) {
             setExpanded(true)
         }
 
@@ -29,7 +29,7 @@ const FolderTreeChild: React.FC<Props> = (props) => {
         dispatch(setPath(child.path))
         dispatch(setName(child.name))
     }
-    
+
     useEffect(() => {
         setActive(folderId == child.id)
     }, [folderId]) // TODO: subscribe to state instead
@@ -37,7 +37,7 @@ const FolderTreeChild: React.FC<Props> = (props) => {
     return (
         <li key={child.id}>
             <a className={active ? "active" : ""} title={child.name} onClick={handleCLick}>
-            <HeroIcon name={ expanded ? "FolderOpen" : "Folder"} />{child.name}</a>
+                <HeroIcon name={expanded ? "FolderOpen" : "Folder"} />{child.name}</a>
             {child.children && child.children.length > 0 && (
                 <ul>
                     {expanded && child.children.map((c) => {

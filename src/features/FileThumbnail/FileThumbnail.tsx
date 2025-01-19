@@ -1,9 +1,7 @@
 // components/FolderTree.tsx
 import React, { useEffect, useRef, useState } from 'react'
-import { selectId } from '../FolderTree/folderTreeSlice'
-import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { useGetFileQuery } from './FileThumbnailApiSlice'
-import HeroIcon from '../../components/HeroIcon'
+import HeroIcon from '@components/HeroIcon'
 import FileApiResponse from './FtApiResponse.interface'
 
 interface Props {

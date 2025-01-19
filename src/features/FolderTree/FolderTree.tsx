@@ -1,10 +1,10 @@
 // components/FolderTree.tsx
 import React, { useEffect, useState } from 'react'
-import { useAppDispatch, useAppSelector } from "../../app/hooks"
+import { useAppDispatch, useAppSelector } from "@app/hooks"
 import { setId, selectId, setPath, setName } from './folderTreeSlice'
 import { useGetRootFoldersQuery } from './folderTreeApiSlice'
 import FolderTreeChild from "./FolderTreeChild"
-import HeroIcon from '../../components/HeroIcon'
+import HeroIcon from '@components/HeroIcon'
 import { Scrollbars } from 'react-custom-scrollbars-2';
 
 const FolderTree: React.FC = () => {

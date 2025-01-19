@@ -1,7 +1,8 @@
 import * as React from 'react'
-import FolderView from "../features/FolderView/FolderView"
-import Button from '../components/Button';
-import HeroIcon from '../components/HeroIcon';
+import FolderView from "@features/FolderView/FolderView"
+import Button from '@components/Button';
+import HeroIcon from '@components/HeroIcon';
+import FileUpload from '@features/FileUpload/FileUpload';
 
 const Drive: React.FC = () => {
 
@@ -23,8 +24,7 @@ const Drive: React.FC = () => {
             <a title="Show Filters"><HeroIcon name="AdjustmentsHorizontal" /></a>
           </div>
           <div className="w-3/6 p-4 pt-0 flex flex-row justify-end">
-            <Button text="Upload File" heroIcon="CloudArrowUp" />
-            <Button text="Create Folder" heroIcon="FolderPlus" />
+            <FileUpload />
           </div>
           {/* && (
             <div>
