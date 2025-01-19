@@ -9,7 +9,7 @@ interface GetFilesRequest {
 // Define a service using a base URL and expected endpoints
 export const folderViewApiSlice = createApi({
     baseQuery: fetchBaseQuery({
-        baseUrl: 'http://localhost:4000',
+        baseUrl: import.meta.env.VITE_API_BASE_URL,
         prepareHeaders(headers) {
             //headers.set('x-api-key', DOGS_API_KEY)
             return headers

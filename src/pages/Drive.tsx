@@ -8,13 +8,6 @@ const Drive: React.FC = () => {
 
   return (
     <div className="page-wrapper">
-      <input
-        type="file"
-        //ref={fileInputRef}
-        multiple
-        style={{ display: 'none' }}
-        //onChange={}
-        id="upload" />
       <div className="flex flex-row  h-1/6">
           <div className="folder-search">
             <input type="text" className="" placeholder="Search" />
