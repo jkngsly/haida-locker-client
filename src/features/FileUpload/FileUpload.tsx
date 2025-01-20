@@ -4,6 +4,7 @@ import Button from '@components/Button';
 import UploadFileInterface from './FileUploadInterface'
 import { setUploadActive, setUploadFiles } from '@/features/FileUpload/FileUploadSlice';
 import { useAppDispatch } from '@/app/hooks';
+import { useUploadMutation } from '@/features/FileUpload/FileUploadApiSlice';
 
 interface Props {
 
@@ -12,16 +13,30 @@ interface Props {
 const fileUpload: React.FC<Props> = (props) => {
     const fileInputRef = React.useRef<HTMLInputElement>(null);
     const dispatch = useAppDispatch()
+    const [uploadFile, { isLoading, isSuccess, error }] = useUploadMutation()
 
     const handleUploadClick = (): void => {
         fileInputRef.current?.click();
     }
 
-    const handleUploadChange = (e: React.ChangeEvent<HTMLInputElement>): void => { 
+    const handleUploadChange = async (e: React.ChangeEvent<HTMLInputElement>): Promise<void> => {
         if (e.target.files) {
 
+            const formData = new FormData();
+            [...e.target.files].map((file) => {
+                formData.append('file', file);
+            });
+
+            try {
+                await uploadFile(formData).unwrap();
+            } catch (err) {
+                console.error('Upload failed: ', err);
+            }
+
+
             //setFolderTreeLocked(true);
-      
+
+            /*
             const files: UploadFileInterface[] = [];
             [...e.target.files].map((file: File) => { 
               // FolderView icons
@@ -35,13 +50,13 @@ const fileUpload: React.FC<Props> = (props) => {
 
             dispatch(setUploadFiles(files))
             dispatch(setUploadActive(true))
+            */
         }
     }
 
-
     return (
         <>
-        
+
             <input
                 type="file"
                 ref={fileInputRef}

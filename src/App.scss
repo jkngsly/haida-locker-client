@@ -243,6 +243,10 @@ $pink: rgb(255 10 35 / 76%);
 
     .file-grid { 
         @apply grid grid-cols-6 auto-rows-max overflow-y-scroll;
+        
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 
     .folder-toolbar { 
@@ -298,10 +302,15 @@ $pink: rgb(255 10 35 / 76%);
         }
     }
 
+    /*
     .file-upload-list { 
+        @apply flex flex-col my-6 pb-4 rounded-md; 
+
         animation-name: showUploadList;
         animation-duration: 0.15s;
         animation-timing-function: ease-in;
+
+        background: linear-gradient(20deg, rgb(2 9 24) 0%, rgb(35 46 61) 70%, rgb(0, 0, 0) 100%);
 
         .file-information { 
             @apply absolute bottom-0 w-full p-2 text-sm;
@@ -310,8 +319,12 @@ $pink: rgb(255 10 35 / 76%);
             color: #fff;
             font-weight: 400;
         }
-    }
 
+        button { 
+            @apply w-80 m-auto;
+        }
+    }
+*/
     .file { 
         @apply relative rounded-md mx-4 my-4 h-44 flex flex-col p-2 relative flex flex-col items-center align-middle;
         

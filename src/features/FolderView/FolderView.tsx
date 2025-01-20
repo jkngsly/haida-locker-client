@@ -7,6 +7,7 @@ import { selectUploadFiles } from '@/features/FileUpload/FileUploadSlice'
 import FileThumbnail from '@features/FileThumbnail/FileThumbnail'
 import FileUploadThumbnail from '@features/FileThumbnail/FileUploadThumbnail'
 import HeroIcon from '@components/HeroIcon'
+import Button from '@/components/Button'
 
 const FolderView: React.FC = () => {
     //const { data, isLoading, error } = useGetFilesQuery()
@@ -36,13 +37,16 @@ const FolderView: React.FC = () => {
 
                     </div>
                 </div>
-                {uploadFiles.length > 0 && 
-                    <div className="file-grid file-upload-list">
-                        {uploadFiles.map((file, index) => (
-                            <FileUploadThumbnail key={index} file={file} />
-                        ))}
+                {/*uploadFiles.length > 0 &&
+                    <div className="file-upload-list">
+                        <div className="file-grid">
+                            {uploadFiles.map((file, index) => (
+                                <FileUploadThumbnail key={index} file={file} />
+                            ))}
+                        </div>
+                        <Button text="Upload" heroIcon="CloudArrowUp" />
                     </div>
-                }
+                */}
                 {data.length > 0 && (
                     <div className="file-grid">
                         {data.map((file, index) => (

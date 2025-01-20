@@ -13,11 +13,18 @@ export const FileUploadApiSlice = createApi({
   reducerPath: "folderUploadApi",
   tagTypes: ["folderUploadApi"],
   endpoints: build => ({
-    upload: build.query<void, void>({
-      query: () => 'folders',
-      providesTags: ['folderUploadApi'], // This tag will cache the root folder list
+    upload: build.mutation({
+        query: (formData) => ({
+          url: '/file/upload', // Adjust this to your API endpoint
+          method: 'POST',
+          body: formData,
+          headers: {
+            // Make sure to set the Content-Type to multipart/form-data (handled automatically by FormData)
+           // 'Content-Type': 'multipart/form-data',
+          },
+        }),
     }),
-  }),
+  }),    
 })
 
-export const { useUploadQuery } = FileUploadApiSlice
+export const { useUploadMutation } = FileUploadApiSlice
