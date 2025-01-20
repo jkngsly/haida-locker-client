@@ -1,9 +1,11 @@
 // components/FolderTree.tsx
 import React, { useEffect, useState } from 'react'
-import { selectId, selectName, selectPath } from '@features/FolderTree/folderTreeSlice'
+import { selectId, selectName, selectPath } from '@/features/FolderTree/FolderTreeSlice'
 import { useAppDispatch, useAppSelector } from "@app/hooks"
 import { useGetFilesQuery } from './FolderViewApiSlice'
+import { selectUploadFiles } from '@/features/FileUpload/FileUploadSlice'
 import FileThumbnail from '@features/FileThumbnail/FileThumbnail'
+import FileUploadThumbnail from '@features/FileThumbnail/FileUploadThumbnail'
 import HeroIcon from '@components/HeroIcon'
 
 const FolderView: React.FC = () => {
@@ -11,6 +13,7 @@ const FolderView: React.FC = () => {
     const folderId = useAppSelector(selectId)
     const folderPath = useAppSelector(selectPath)
     const folderName = useAppSelector(selectName)
+    const uploadFiles = useAppSelector(selectUploadFiles)
 
     const { data, isLoading, error } = useGetFilesQuery({ folderId: folderId || "root" })
 
@@ -33,6 +36,13 @@ const FolderView: React.FC = () => {
 
                     </div>
                 </div>
+                {uploadFiles.length > 0 && 
+                    <div className="file-grid file-upload-list">
+                        {uploadFiles.map((file, index) => (
+                            <FileUploadThumbnail key={index} file={file} />
+                        ))}
+                    </div>
+                }
                 {data.length > 0 && (
                     <div className="file-grid">
                         {data.map((file, index) => (

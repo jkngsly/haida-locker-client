@@ -1,7 +1,7 @@
 // components/FolderTree.tsx
 import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from "@app/hooks"
-import { setId, selectId, setPath, setName } from './folderTreeSlice'
+import { setId, selectId, setPath, setName } from './FolderTreeSlice'
 import { useGetRootFoldersQuery } from './folderTreeApiSlice'
 import FolderTreeChild from "./FolderTreeChild"
 import HeroIcon from '@components/HeroIcon'

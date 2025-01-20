@@ -1,8 +1,8 @@
 // components/FolderTree.tsx
 import React from 'react'
 import Button from '@components/Button';
-import UploadFileInterface from './UploadFileInterface'
-import { setActive, setFiles } from '@/features/FileUpload/fileUploadSlice';
+import UploadFileInterface from './FileUploadInterface'
+import { setUploadActive, setUploadFiles } from '@/features/FileUpload/FileUploadSlice';
 import { useAppDispatch } from '@/app/hooks';
 
 interface Props {
@@ -33,9 +33,8 @@ const fileUpload: React.FC<Props> = (props) => {
               });
             });
 
-            
-            dispatch(setFiles(files))
-            dispatch(setActive(true))
+            dispatch(setUploadFiles(files))
+            dispatch(setUploadActive(true))
         }
     }
 

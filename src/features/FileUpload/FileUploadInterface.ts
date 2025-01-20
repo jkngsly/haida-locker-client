@@ -1,4 +1,4 @@
-export default interface UploadFileInterface { 
+export default interface FileUploadInterface { 
     name: string,
     size: number,
     type: string,

@@ -1,9 +1,9 @@
 import type { PayloadAction } from "@reduxjs/toolkit"
 import { createAppSlice } from "@app/createAppSlice"
-import UploadFileInterface from './UploadFileInterface'
+import FileUploadInterface from './FileUploadInterface'
 
 export interface FileUploadSliceState {
-  files: UploadFileInterface[],
+  files: FileUploadInterface[],
   active: boolean
 }
 
@@ -12,16 +12,16 @@ const initialState = {
   active: false
 }
 
-export const folderTreeSlice = createAppSlice({
-  name: "folderTree",
+export const FileUploadSlice = createAppSlice({
+  name: "fileUpload",
   initialState,
   reducers: create => ({
-    setFiles: create.reducer(
-      (state, action: PayloadAction<UploadFileInterface[]>) => {
+    setUploadFiles: create.reducer(
+      (state, action: PayloadAction<FileUploadInterface[]>) => {
         state.files = action.payload
       },
     ),
-    setActive: create.reducer(
+    setUploadActive: create.reducer(
       (state, action: PayloadAction<boolean>) => {
         state.active = action.payload
       },
@@ -29,14 +29,14 @@ export const folderTreeSlice = createAppSlice({
   }),
 
   selectors: {
-    selectFiles: folders => folders.files,
-    selectActive: folders => folders.active,
+    selectUploadFiles: fileUpload => fileUpload.files,
+    selectUploadActive: fileUpload => fileUpload.active,
   },
 })
 
-export const { setFiles, setActive } =
-  folderTreeSlice.actions
+export const { setUploadFiles, setUploadActive } =
+FileUploadSlice.actions
 
-export const { selectFiles, selectActive } = folderTreeSlice.selectors
+export const { selectUploadFiles, selectUploadActive } = FileUploadSlice.selectors
 
 

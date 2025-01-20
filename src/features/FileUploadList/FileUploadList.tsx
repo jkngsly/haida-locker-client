@@ -1,6 +1,6 @@
 // components/FolderTree.tsx
 import React, { useEffect, useState } from 'react'
-import { selectId } from '../FolderTree/folderTreeSlice'
+import { selectId } from '../FolderTree/FolderTreeSlice'
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 
 interface Props {

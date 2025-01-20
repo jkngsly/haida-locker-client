@@ -1,16 +1,20 @@
 import type { Action, ThunkAction } from "@reduxjs/toolkit"
 import { combineSlices, configureStore } from "@reduxjs/toolkit"
 import { setupListeners } from "@reduxjs/toolkit/query"
-import { folderTreeApiSlice } from "@features/FolderTree/folderTreeApiSlice"
-import { folderTreeSlice } from "@features/FolderTree/folderTreeSlice"
-import { folderViewApiSlice } from "@features/FolderView/FolderViewApiSlice"
+import { FolderTreeApiSlice } from "@features/FolderTree/folderTreeApiSlice"
+import { FolderTreeSlice } from "@/features/FolderTree/FolderTreeSlice"
+import { FolderViewApiSlice } from "@features/FolderView/FolderViewApiSlice"
 import { FileThumbnailApiSlice } from "@features/FileThumbnail/FileThumbnailApiSlice"
+import { FileUploadSlice } from "@/features/FileUpload/FileUploadSlice"
+import { FileUploadApiSlice } from "@features/FileUpload/FileUploadApiSlice"
 
 const rootReducer = combineSlices(
-  folderTreeApiSlice, 
-  folderTreeSlice,
-  folderViewApiSlice,
-  FileThumbnailApiSlice
+  FolderTreeSlice,
+  FolderTreeApiSlice, 
+  FolderViewApiSlice,
+  FileThumbnailApiSlice,
+  FileUploadSlice,
+  FileUploadApiSlice
 )
 export type RootState = ReturnType<typeof rootReducer>
 
@@ -19,9 +23,10 @@ export const makeStore = (preloadedState?: Partial<RootState>) => {
     reducer: rootReducer,
     middleware: getDefaultMiddleware => {
       return getDefaultMiddleware()
-        .concat(folderTreeApiSlice.middleware)
-        .concat(folderViewApiSlice.middleware)
+        .concat(FolderTreeApiSlice.middleware)
+        .concat(FolderViewApiSlice.middleware)
         .concat(FileThumbnailApiSlice.middleware)
+        .concat(FileUploadApiSlice.middleware)
     },
     preloadedState,
   })

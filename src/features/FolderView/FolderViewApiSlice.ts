@@ -7,7 +7,7 @@ interface GetFilesRequest {
 }
 
 // Define a service using a base URL and expected endpoints
-export const folderViewApiSlice = createApi({
+export const FolderViewApiSlice = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: import.meta.env.VITE_API_BASE_URL,
         prepareHeaders(headers) {
@@ -27,4 +27,4 @@ export const folderViewApiSlice = createApi({
     }),
 })
 
-export const { useGetFilesQuery } = folderViewApiSlice
+export const { useGetFilesQuery } = FolderViewApiSlice

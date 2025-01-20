@@ -13,7 +13,7 @@ const initialState: FoldersSliceState = {
   name: "Home"
 }
 
-export const folderTreeSlice = createAppSlice({
+export const FolderTreeSlice = createAppSlice({
   name: "folderTree",
   initialState,
   reducers: create => ({
@@ -42,8 +42,8 @@ export const folderTreeSlice = createAppSlice({
 })
 
 export const { setId, setPath, setName } =
-  folderTreeSlice.actions
+  FolderTreeSlice.actions
 
-export const { selectId, selectPath, selectName } = folderTreeSlice.selectors
+export const { selectId, selectPath, selectName } = FolderTreeSlice.selectors
 
 
