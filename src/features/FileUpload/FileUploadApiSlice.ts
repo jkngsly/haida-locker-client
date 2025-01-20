@@ -10,14 +10,14 @@ export const fileUploadApiSlice = createApi({
       return headers;
     },
   }),
-  reducerPath: "folderTreeApi",
-  tagTypes: ["folderTreeApi"],
+  reducerPath: "folderUploadApi",
+  tagTypes: ["folderUploadApi"],
   endpoints: build => ({
-    getRootFolders: build.query<void, void>({
+    upload: build.query<void, void>({
       query: () => 'folders',
-      providesTags: ['folderTreeApi'], // This tag will cache the root folder list
+      providesTags: ['folderUploadApi'], // This tag will cache the root folder list
     }),
   }),
 })
 
-export const { useGetRootFoldersQuery } = fileUploadApiSlice
+export const { useUploadQuery } = fileUploadApiSlice

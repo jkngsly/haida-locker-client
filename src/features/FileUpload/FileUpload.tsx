@@ -1,20 +1,17 @@
 // components/FolderTree.tsx
 import React from 'react'
 import Button from '@components/Button';
+import UploadFileInterface from './UploadFileInterface'
+import { setActive, setFiles } from '@/features/FileUpload/fileUploadSlice';
+import { useAppDispatch } from '@/app/hooks';
 
 interface Props {
 
 }
 
-interface UploadFile { 
-    name: string,
-    size: number,
-    type: string,
-    url: string
-}
-
 const fileUpload: React.FC<Props> = (props) => {
     const fileInputRef = React.useRef<HTMLInputElement>(null);
+    const dispatch = useAppDispatch()
 
     const handleUploadClick = (): void => {
         fileInputRef.current?.click();
@@ -25,7 +22,7 @@ const fileUpload: React.FC<Props> = (props) => {
 
             //setFolderTreeLocked(true);
       
-            const files: UploadFile[] = [];
+            const files: UploadFileInterface[] = [];
             [...e.target.files].map((file: File) => { 
               // FolderView icons
               files.push({
@@ -35,6 +32,10 @@ const fileUpload: React.FC<Props> = (props) => {
                 url: URL.createObjectURL(file)
               });
             });
+
+            
+            dispatch(setFiles(files))
+            dispatch(setActive(true))
         }
     }
 
