@@ -24,7 +24,7 @@ const fileUpload: React.FC<Props> = (props) => {
 
             const formData = new FormData();
             [...e.target.files].map((file) => {
-                formData.append('file', file);
+                formData.append('files[]', file);
             });
 
             try {
