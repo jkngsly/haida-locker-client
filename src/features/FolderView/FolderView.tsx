@@ -9,19 +9,11 @@ import FileUploadThumbnail from '@features/FileThumbnail/FileUploadThumbnail'
 import HeroIcon from '@components/HeroIcon'
 import Button from '@/components/Button'
 
-const FolderView: React.FC = () => {
-    //const { data, isLoading, error } = useGetFilesQuery()
-    /*
+const FolderView: React.FC = () => {    
     const folderId = useAppSelector(selectId)
     const folderPath = useAppSelector(selectPath)
     const folderName = useAppSelector(selectName)
     const uploadFiles = useAppSelector(selectUploadFiles)
-*/
-    
-    const folderId = ""
-    const folderPath = ""
-    const folderName = ""
-    const uploadFiles = ""
 
     const { data, isLoading, error } = useGetFilesQuery({ folderId: folderId || "root" })
 

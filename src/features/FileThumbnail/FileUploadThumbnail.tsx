@@ -1,6 +1,5 @@
 // components/FolderTree.tsx
 import React, { useEffect, useRef, useState } from 'react'
-import { useGetFileQuery } from './FileThumbnailApiSlice'
 import HeroIcon from '@components/HeroIcon'
 import FileUploadInterface from '@features/FileUpload/FileUploadInterface'
 import formatBytes from '@helpers/formatBytes';
@@ -39,7 +38,7 @@ const FileThumbnail: React.FC<Props> = (props) => {
                 </div>
                 {icon && <HeroIcon name="Document" />}
                 {video &&
-                    // @ts-ignore
+                    // @ts-ignore (ノಠ益ಠ)ノ彡┻━┻ 
                     <video id="background-video" autoPlay loop muted>
                         <source src={props.file.url} type="video/mp4" /> {/* TODO: correct mime format */}
                     </video>

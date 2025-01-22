@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useGetFileQuery } from '@features/api/fileApi'
 import HeroIcon from '@components/HeroIcon'
-import FileApiResponse from './FtApiResponse.interface'
+import FileApiResponse from '@features/interfaces/file.interface'
 
 interface Props {
     id: string
@@ -42,8 +42,7 @@ const FileThumbnail: React.FC<Props> = (props) => {
     }
 
     if (!isLoading && data) {
-        const file: FileApiResponse = { ...data }
-        console.log(file)
+        const file = data;
         const url = "http://localhost:4000/file/" + file.id + "/download"
         const video = file.mime_type.indexOf("video") != -1
         const image = file.mime_type.indexOf("image") != -1

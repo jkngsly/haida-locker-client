@@ -6,7 +6,7 @@ import Folder from '@features/interfaces/folder.interface'
 import HeroIcon from '@components/HeroIcon'
 
 interface Props {
-    child: Folder
+    folder: Folder
 }
 
 const FolderTreeChild: React.FC<Props> = (props) => {
@@ -15,39 +15,34 @@ const FolderTreeChild: React.FC<Props> = (props) => {
 
     const [active, setActive] = React.useState<boolean>(false)
     const [expanded, setExpanded] = React.useState<boolean>(false)
-    const child = props.child
+    const folder = props.folder
 
-    const handleCLick = () => {
+    const handleClick = () => {
 
         if (expanded && active) {
             setExpanded(false)
-        } else if (child.children.length) {
+        } else if (folder.children.length) {
             setExpanded(true)
         }
 
-        dispatch(setId(child.id))
-        dispatch(setPath(child.path))
-        dispatch(setName(child.name))
+        dispatch(setId(folder.id))
+        dispatch(setPath(folder.path))
+        dispatch(setName(folder.name))
     }
 
     useEffect(() => {
-        setActive(folderId == child.id)
+        setActive(folderId == folder.id)
     }, [folderId]) // TODO: subscribe to state instead
 
     return (
-        <li key={child.id}>
-            <a className={active ? "active" : ""} title={child.name} onClick={handleCLick}>
-                <HeroIcon name={expanded ? "FolderOpen" : "Folder"} />{child.name}</a>
-            {child.children && child.children.length > 0 && (
+        <li key={folder.id}>
+            <a className={active ? "active" : ""} title={folder.name} onClick={handleClick}>
+                <HeroIcon name={expanded ? "FolderOpen" : "Folder"} />{folder.name}</a>
+            {folder.children && folder.children.length > 0 && (
                 <ul>
-                    {expanded && child.children.map((c) => {
+                    {expanded && folder.children.map((child: Folder) => {
                         return (
-                            <FolderTreeChild key={c.id + "_parent"} child={{
-                                id: c.id,
-                                name: c.name,
-                                path: c.path,
-                                children: c.children
-                            }} />
+                            <FolderTreeChild key={child.id + "_parent"} folder={child} />
                         )
                     })}
                 </ul>
