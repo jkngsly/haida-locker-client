@@ -1,7 +1,7 @@
 // components/FolderTree.tsx
 import React, { useEffect, useRef, useState } from 'react'
 import HeroIcon from '@components/HeroIcon'
-import FileUploadInterface from '@features/FileUpload/FileUploadInterface'
+import FileUploadInterface from '@/features/drive/FileUpload/FileUploadInterface'
 import formatBytes from '@helpers/formatBytes';
 
 interface Props { 

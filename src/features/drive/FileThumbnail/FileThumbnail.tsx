@@ -2,7 +2,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useGetFileQuery } from '@features/api/fileApi'
 import HeroIcon from '@components/HeroIcon'
-import FileApiResponse from '@features/interfaces/file.interface'
 
 interface Props {
     id: string

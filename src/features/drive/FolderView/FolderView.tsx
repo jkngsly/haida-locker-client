@@ -1,11 +1,11 @@
 // components/FolderTree.tsx
 import React, { useEffect, useState } from 'react'
-import { selectId, selectName, selectPath } from '@/features/FolderTree/folderTreeSlice'
+import { selectId, selectName, selectPath } from '@features/drive/FolderTree/folderTreeSlice'
 import { useAppDispatch, useAppSelector } from "@app/hooks"
 import { useGetFilesQuery } from '@features/api/folderApi'
-import { selectUploadFiles } from '@/features/FileUpload/FileUploadSlice'
-import FileThumbnail from '@features/FileThumbnail/FileThumbnail'
-import FileUploadThumbnail from '@features/FileThumbnail/FileUploadThumbnail'
+import { selectUploadFiles } from '@features/drive/FileUpload/fileUploadSlice'
+import FileThumbnail from '@features/drive/FileThumbnail/FileThumbnail'
+import FileUploadThumbnail from '@/features/drive/FileThumbnail/FileUploadThumbnail'
 import HeroIcon from '@components/HeroIcon'
 import Button from '@/components/Button'
 

@@ -1,10 +1,8 @@
 // components/FolderTree.tsx
 import React from 'react'
 import Button from '@components/Button';
-import UploadFileInterface from './FileUploadInterface'
-import { setUploadActive, setUploadFiles } from '@/features/FileUpload/FileUploadSlice';
-import { useAppDispatch } from '@/app/hooks';
-import { useUploadMutation } from '@/features/FileUpload/FileUploadApiSlice';
+import { useAppDispatch } from '@app/hooks';
+import { useUploadMutation } from '@features/api/fileApi';
 
 interface Props {
 

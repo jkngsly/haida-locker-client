@@ -1,13 +1,12 @@
 import * as React from 'react'
-import FolderView from "@features/FolderView/FolderView"
-import Button from '@components/Button';
+import FolderView from "@features/drive/FolderView/FolderView"
 import HeroIcon from '@components/HeroIcon';
-import FileUpload from '@features/FileUpload/FileUpload';
+import FileUpload from '@features/drive/FileUpload/FileUpload';
 
 const Drive: React.FC = () => {
 
   return (
-    <div className="page-wrapper">
+    <>
       <div className="flex flex-row  h-1/6">
           <div className="folder-search">
             <input type="text" className="" placeholder="Search" />
@@ -27,7 +26,7 @@ const Drive: React.FC = () => {
           )*/}
       </div>
       <FolderView />
-    </div>
+    </>
   )
 }
 

@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 import "./App.scss"
 import Nav from "./Nav"
-import Drive from "./pages/Drive"
+import DrivePage from "./pages/DrivePage"
 
 const App = () => {
   return (
@@ -10,8 +10,8 @@ const App = () => {
         <Nav />
         <div id="page">
           <Routes>
-            <Route path="/" element={<Drive />} />
-            <Route path="/drive" element={<Drive />} />
+            <Route path="/" element={<DrivePage />} />
+            <Route path="/drive" element={<DrivePage />} />
           </Routes>
         </div>
       </BrowserRouter>

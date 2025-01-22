@@ -12,7 +12,7 @@ const initialState = {
   active: false
 }
 
-export const FileUploadSlice = createAppSlice({
+export const fileUploadSlice = createAppSlice({
   name: "fileUpload",
   initialState,
   reducers: create => ({
@@ -35,8 +35,8 @@ export const FileUploadSlice = createAppSlice({
 })
 
 export const { setUploadFiles, setUploadActive } =
-FileUploadSlice.actions
+fileUploadSlice.actions
 
-export const { selectUploadFiles, selectUploadActive } = FileUploadSlice.selectors
+export const { selectUploadFiles, selectUploadActive } = fileUploadSlice.selectors
 
 

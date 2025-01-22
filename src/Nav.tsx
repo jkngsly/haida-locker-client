@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { NavLink } from 'react-router-dom'
-import FolderTree from "./features/FolderTree/FolderTree"
+import FolderTree from "./features/drive/FolderTree/FolderTree"
 import Logo from "./assets/haida.png"
 
 function Nav() {
