@@ -2,7 +2,7 @@
 import React from 'react'
 import Button from '@components/Button';
 import { useAppDispatch } from '@app/hooks';
-import { useUploadMutation } from '@features/api/fileApi';
+import { useUploadFileMutation } from '@features/api/fileApi';
 
 interface Props {
 
@@ -11,7 +11,7 @@ interface Props {
 const fileUpload: React.FC<Props> = (props) => {
     const fileInputRef = React.useRef<HTMLInputElement>(null);
     const dispatch = useAppDispatch()
-    const [uploadFile, { isLoading, isSuccess, error }] = useUploadMutation()
+    const [uploadFile, { isLoading, isSuccess, error }] = useUploadFileMutation()
 
     const handleUploadClick = (): void => {
         fileInputRef.current?.click();
@@ -54,7 +54,6 @@ const fileUpload: React.FC<Props> = (props) => {
 
     return (
         <>
-
             <input
                 type="file"
                 ref={fileInputRef}

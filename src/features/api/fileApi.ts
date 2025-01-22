@@ -14,7 +14,7 @@ export const fileApi = apiSlice.injectEndpoints({
             transformResponse: (response: { data: File }, meta, arg) => response.data,
         }),
 
-        upload: build.mutation({
+        uploadFile: build.mutation({
             query: (formData) => ({
                 url: '/file/upload', // Adjust this to your API endpoint
                 method: 'POST',
@@ -24,8 +24,19 @@ export const fileApi = apiSlice.injectEndpoints({
                     // 'Content-Type': 'multipart/form-data',
                 },
             }),
+            invalidatesTags: ['Files'],
         }),
+
+        deleteFile: build.mutation({
+          query: (id) => ({
+            url: `/file/${id}`,
+            method: 'DELETE',
+          }),
+          invalidatesTags: ['Files'],
+        }),
+
+
     })
 })
 
-export const { useGetFileQuery, useUploadMutation } = fileApi
+export const { useGetFileQuery, useUploadFileMutation, useDeleteFileMutation } = fileApi

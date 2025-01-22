@@ -1,6 +1,6 @@
 // components/FolderTree.tsx
 import React, { useEffect, useRef, useState } from 'react'
-import { useGetFileQuery } from '@features/api/fileApi'
+import { useGetFileQuery, useDeleteFileMutation } from '@features/api/fileApi'
 import HeroIcon from '@components/HeroIcon'
 
 interface Props {
@@ -33,6 +33,8 @@ const FileThumbnail: React.FC<Props> = (props) => {
     const ref = useRef(null);
 
     const { data, isLoading, error } = useGetFileQuery(props.id)
+    const [deleteFile, {  }] = useDeleteFileMutation()
+    
     const [showMenu, setShowMenu] = React.useState<boolean>(false)
     const dropdownRef = useClickOutside(() => setShowMenu(false));
 
@@ -42,14 +44,19 @@ const FileThumbnail: React.FC<Props> = (props) => {
 
     if (!isLoading && data) {
         const file = data;
-        const url = "http://localhost:4000/file/" + file.id + "/download"
+        
+        const handleDeleteClick = () => {
+            deleteFile(file.id)
+        }
+
+        const url = import.meta.env.VITE_API_BASE_URL + "/file/" + file.id + "/download"
         const video = file.mime_type.indexOf("video") != -1
         const image = file.mime_type.indexOf("image") != -1
         const icon = !video && !image
 
         const getImageBackground = () => {
             return image ? {
-                backgroundImage: "url(http://localhost:4000/file/" + file.id + "/download)"
+                backgroundImage: `url(${url})`
             } : {}
         }
 
@@ -64,7 +71,7 @@ const FileThumbnail: React.FC<Props> = (props) => {
                     <div className="file-menu-dropdown" ref={dropdownRef}>
                         <a><HeroIcon name="CloudArrowDown" />Download</a>
                         <a><HeroIcon name="ArrowUpOnSquare" />Share</a>
-                        <a className="pink"><HeroIcon name="Trash" />Delete</a>
+                        <a className="pink" onClick={handleDeleteClick}><HeroIcon name="Trash" />Delete</a>
                     </div>
                 )}
                 <div className="file-header">
