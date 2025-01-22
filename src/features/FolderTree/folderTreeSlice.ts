@@ -1,19 +1,20 @@
+
 import type { PayloadAction } from "@reduxjs/toolkit"
 import { createAppSlice } from "@app/createAppSlice"
 
-export interface FoldersSliceState {
+export interface FolderSliceState {
   id: string
   path: string
   name: string
 }
 
-const initialState: FoldersSliceState = {
+const initialState: FolderSliceState = {
   id: "root",
   path: "Home",
   name: "Home"
 }
 
-export const FolderTreeSlice = createAppSlice({
+export const folderTreeSlice = createAppSlice({
   name: "folderTree",
   initialState,
   reducers: create => ({
@@ -42,8 +43,6 @@ export const FolderTreeSlice = createAppSlice({
 })
 
 export const { setId, setPath, setName } =
-  FolderTreeSlice.actions
+folderTreeSlice.actions
 
-export const { selectId, selectPath, selectName } = FolderTreeSlice.selectors
-
-
+export const { selectId, selectPath, selectName } = folderTreeSlice.selectors

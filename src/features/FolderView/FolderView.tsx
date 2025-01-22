@@ -1,8 +1,8 @@
 // components/FolderTree.tsx
 import React, { useEffect, useState } from 'react'
-import { selectId, selectName, selectPath } from '@/features/FolderTree/FolderTreeSlice'
+import { selectId, selectName, selectPath } from '@/features/FolderTree/folderTreeSlice'
 import { useAppDispatch, useAppSelector } from "@app/hooks"
-import { useGetFilesQuery } from './FolderViewApiSlice'
+import { useGetFilesQuery } from '@features/api/folderApi'
 import { selectUploadFiles } from '@/features/FileUpload/FileUploadSlice'
 import FileThumbnail from '@features/FileThumbnail/FileThumbnail'
 import FileUploadThumbnail from '@features/FileThumbnail/FileUploadThumbnail'
@@ -11,10 +11,17 @@ import Button from '@/components/Button'
 
 const FolderView: React.FC = () => {
     //const { data, isLoading, error } = useGetFilesQuery()
+    /*
     const folderId = useAppSelector(selectId)
     const folderPath = useAppSelector(selectPath)
     const folderName = useAppSelector(selectName)
     const uploadFiles = useAppSelector(selectUploadFiles)
+*/
+    
+    const folderId = ""
+    const folderPath = ""
+    const folderName = ""
+    const uploadFiles = ""
 
     const { data, isLoading, error } = useGetFilesQuery({ folderId: folderId || "root" })
 

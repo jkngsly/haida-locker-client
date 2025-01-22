@@ -1,5 +1,5 @@
 // API response shape for /folders 
-export default interface FolderApiResponse { 
+export default interface File { 
     id: string
     created_at: string
     updated_at: string

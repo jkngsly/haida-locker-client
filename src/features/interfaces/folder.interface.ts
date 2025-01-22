@@ -1,3 +1,5 @@
+/*
+
 // API response shape for /folders 
 export default interface FolderApiResponse { 
     children: []
@@ -12,3 +14,15 @@ export default interface FolderApiResponse {
     path: string
     updated_at: string
 }
+
+*/
+
+export default interface Folder {
+    id: string,
+    parent_id: string,
+    name: string,
+    path: string,
+    is_root: boolean,
+    children: Folder[]
+  }
+  

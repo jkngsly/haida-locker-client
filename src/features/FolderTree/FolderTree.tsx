@@ -1,15 +1,16 @@
 // components/FolderTree.tsx
 import React, { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from "@app/hooks"
-import { setId, selectId, setPath, setName } from './FolderTreeSlice'
-import { useGetRootFoldersQuery } from './folderTreeApiSlice'
-import FolderTreeChild from "./FolderTreeChild"
-import HeroIcon from '@components/HeroIcon'
 import { Scrollbars } from 'react-custom-scrollbars-2';
+import { setId, selectId, setPath, setName } from './folderTreeSlice'
+import FolderTreeChild from "./FolderTreeChild"
+import { useGetRootFoldersQuery } from '@features/api/folderApi'
+import HeroIcon from '@components/HeroIcon'
 
 const FolderTree: React.FC = () => {
-    const dispatch = useAppDispatch()
     const folderId = useAppSelector(selectId)
+    const dispatch = useAppDispatch()
+    // @ts-ignore (ノಠ益ಠ)ノ彡┻━┻ 
     const { data, isLoading, error } = useGetRootFoldersQuery()
 
     const handleHomeCLick = () => {
@@ -23,7 +24,7 @@ const FolderTree: React.FC = () => {
     }
 
     if (!isLoading && data) {
-
+        console.log(data, "DATA")
         return (
             <div>
                 <ul id="folder-tree">
