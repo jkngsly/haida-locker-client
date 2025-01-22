@@ -10,8 +10,7 @@ import HeroIcon from '@components/HeroIcon'
 const FolderTree: React.FC = () => {
     const folderId = useAppSelector(selectId)
     const dispatch = useAppDispatch()
-    // @ts-ignore (ノಠ益ಠ)ノ彡┻━┻ 
-    const { data, isLoading, error } = useGetRootFoldersQuery()
+    const { data, isLoading, error } = useGetRootFoldersQuery({})
 
     const handleHomeCLick = () => {
         dispatch(setId("root"))
