@@ -4,12 +4,14 @@ import FileUploadInterface from './FileUploadInterface'
 
 export interface FileUploadSliceState {
   files: FileUploadInterface[],
-  active: boolean
+  active: boolean,
+  button: null|JSX.Element
 }
 
 const initialState = {
   files: [],
-  active: false
+  active: false,
+  button: null
 }
 
 export const fileUploadSlice = createAppSlice({

@@ -17,6 +17,10 @@ const FolderView: React.FC = () => {
 
     const { data, isLoading, error } = useGetFilesQuery({ folderId: folderId || "root" })
 
+    const handleUploadClick = () => { 
+      
+    }
+
     if (!isLoading && data) {
         return (
             <div id="folder-view">
@@ -56,7 +60,7 @@ const FolderView: React.FC = () => {
                 {!data.length && (
                     <div className="folder-empty">
                         {/* TODO: Upload trigger */}
-                        <a title="Upload">
+                        <a title="Upload" onClick={handleUploadClick}>
                             <HeroIcon name="CloudArrowUp" />
                         </a>
                     </div>

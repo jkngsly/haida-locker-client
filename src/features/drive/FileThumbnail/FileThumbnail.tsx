@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useGetFileQuery, useDeleteFileMutation } from '@features/api/fileApi'
 import HeroIcon from '@components/HeroIcon'
+import Modal from '@components/Modal'
 
 interface Props {
     id: string
@@ -69,9 +70,9 @@ const FileThumbnail: React.FC<Props> = (props) => {
             <div className="file">
                 {showMenu && (
                     <div className="file-menu-dropdown" ref={dropdownRef}>
-                        <a><HeroIcon name="CloudArrowDown" />Download</a>
-                        <a><HeroIcon name="ArrowUpOnSquare" />Share</a>
-                        <a className="pink" onClick={handleDeleteClick}><HeroIcon name="Trash" />Delete</a>
+                        <a title="Download" target="tab" href={url}><HeroIcon name="CloudArrowDown" />Download</a>
+                        <a title="Share options"><HeroIcon name="ArrowUpOnSquare" />Share</a>
+                        <a title="Delete" className="pink" onClick={handleDeleteClick}><HeroIcon name="Trash" />Delete</a>
                     </div>
                 )}
                 <div className="file-header">

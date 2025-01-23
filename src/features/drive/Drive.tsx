@@ -2,12 +2,14 @@ import * as React from 'react'
 import FolderView from "@features/drive/FolderView/FolderView"
 import HeroIcon from '@components/HeroIcon';
 import FileUpload from '@features/drive/FileUpload/FileUpload';
+import Modal from '@/components/Modal';
 
 const Drive: React.FC = () => {
 
   return (
     <>
       <div className="flex flex-row  h-1/6">
+          <Modal />
           <div className="folder-search">
             <input type="text" className="" placeholder="Search" />
             <HeroIcon name="MagnifyingGlass" />
