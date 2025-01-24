@@ -6,6 +6,7 @@ import {
 import type { RootState } from '@app/store'
 import { transformResponse, apiSlice } from '@features/api/apiSlice'
 import File from '@features/interfaces/file.interface'
+import { searchForWorkspaceRoot } from 'vite'
 
 export const fileApi = apiSlice.injectEndpoints({
     endpoints: build => ({
@@ -31,8 +32,18 @@ export const fileApi = apiSlice.injectEndpoints({
           invalidatesTags: ['Files'],
         }),
 
-
+        search: build.query({
+            query: (search) => ({
+                url: '/file/search',
+                method: 'POST',
+                body: { 
+                    name: search.text
+                },
+            }),
+            transformResponse: (response: { data: File[] }, meta, arg) => response.data,
+            providesTags: ['Files']
+        })
     })
 })
 
-export const { useGetFileQuery, useUploadFileMutation, useDeleteFileMutation } = fileApi
+export const { useGetFileQuery, useUploadFileMutation, useDeleteFileMutation, useSearchQuery } = fileApi

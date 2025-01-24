@@ -3,19 +3,32 @@ import React, { useEffect, useState } from 'react'
 import { selectId, selectName, selectPath } from '@features/drive/FolderTree/folderTreeSlice'
 import { useAppDispatch, useAppSelector } from "@app/hooks"
 import { useGetFilesQuery } from '@features/api/folderApi'
+import { useSearchQuery } from '@features/api/fileApi'
 import { selectUploadFiles } from '@features/drive/FileUpload/fileUploadSlice'
 import FileThumbnail from '@features/drive/FileThumbnail/FileThumbnail'
 import FileUploadThumbnail from '@/features/drive/FileThumbnail/FileUploadThumbnail'
 import HeroIcon from '@components/HeroIcon'
 import Button from '@/components/Button'
 
-const FolderView: React.FC = () => {    
+interface Props { 
+    search?: '' | null
+}
+
+const FolderView: React.FC<Props> = (props) => {    
     const folderId = useAppSelector(selectId)
     const folderPath = useAppSelector(selectPath)
     const folderName = useAppSelector(selectName)
     const uploadFiles = useAppSelector(selectUploadFiles)
 
-    const { data, isLoading, error } = useGetFilesQuery({ folderId: folderId || "root" })
+    console.log(props.search)
+    
+    // @ts-ignore
+    let { data, isLoading, error } = (props.search && props.search.length > 0 ? 
+            // @ts-ignore
+             useSearchQuery({ text: props.search }) 
+             :
+             useGetFilesQuery({ folderId: folderId || "root" }))
+
 
     const handleUploadClick = () => { 
       

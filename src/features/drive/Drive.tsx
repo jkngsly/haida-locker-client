@@ -1,16 +1,35 @@
 import * as React from 'react'
 import FolderView from "@features/drive/FolderView/FolderView"
-import HeroIcon from '@components/HeroIcon';
-import FileUpload from '@features/drive/FileUpload/FileUpload';
-import Modal from '@/components/Modal';
+import HeroIcon from '@components/HeroIcon'
+import FileUpload from '@features/drive/FileUpload/FileUpload'
+import Modal from '@/components/Modal'
+import { useEffect, useState } from 'react'
 
 const Drive: React.FC = () => {
+  const [searchTerm, setSearchTerm] = useState(null);
+  const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
+
+  let searchValue = null;
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setDebouncedSearchTerm(searchTerm);
+    }, 500); // Adjust the timeout delay as needed
+
+    return () => clearTimeout(timeoutId); // Cleanup on unmount or search term change
+  }, [searchTerm]);
+
+  useEffect(() => {
+    if (debouncedSearchTerm) {
+      searchValue = debouncedSearchTerm;
+    }
+  }, [debouncedSearchTerm]);
 
   return (
     <>
       <div className="flex flex-row  h-1/6">
           <div className="folder-search">
-            <input type="text" className="" placeholder="Search" />
+            <input type="text" className="" placeholder="Search" onChange={(e) => setSearchTerm(e.target.value)} />
             <HeroIcon name="MagnifyingGlass" />
           </div>
           <div className="folder-filters">
@@ -26,7 +45,7 @@ const Drive: React.FC = () => {
             </div>
           )*/}
       </div>
-      <FolderView />
+      <FolderView search={searchTerm} />
     </>
   )
 }
