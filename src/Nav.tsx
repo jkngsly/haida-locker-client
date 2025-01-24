@@ -2,6 +2,7 @@ import * as React from 'react'
 import { NavLink } from 'react-router-dom'
 import FolderTree from "./features/drive/FolderTree/FolderTree"
 import Logo from "./assets/haida.png"
+import "./Nav.scss"
 
 function Nav() {
     const [count, setCount] = React.useState(0)
@@ -19,7 +20,7 @@ function Nav() {
             text: "Dashboard",
         },
         {
-            to: "test",
+            to: "settings",
             svgDraw: "M6 13.5V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m12-3V3.75m0 9.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 3.75V16.5m-6-9V3.75m0 3.75a1.5 1.5 0 0 1 0 3m0-3a1.5 1.5 0 0 0 0 3m0 9.75V10.5",
             text: "Settings"
         },
@@ -29,7 +30,7 @@ function Nav() {
         <div id="navigation">
             <div>
                 <div id="logo">
-                    <img src={Logo} />Haida<span>Drive</span>
+                    <img src={Logo} />Haida<span>ドライブ</span>
                 </div>
                 <div id="user" className="pl-5 pt-5 pb-5 flex">
                     <span className="flex flex-row justify-center align-middle">

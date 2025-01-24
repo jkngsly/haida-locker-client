@@ -1,0 +1,66 @@
+#navigation {
+    /* Layout */
+    @apply w-2/12 min-h-screen flex flex-col relative
+
+    /* Default font color */
+    text-white overflow-y-hidden;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    box-shadow: inset -20px 0px 20px 0px #000;
+
+    background-size: 5px;
+    background: linear-gradient(20deg, rgb(2 9 24) 0%, rgb(35 46 61) 70%, rgb(0, 0, 0) 100%);
+
+    > * {
+        @apply relative z-10;
+    }
+
+    &::before {
+        @apply h-full w-full opacity-70 absolute z-0;
+
+        content: "";
+        background: rgba(0, 0, 0, 0.6) url(assets/stripe.png);
+        background-size: 4px;
+    }
+
+    > div {
+        @apply relative overflow-y-hidden max-h-screen z-20;
+    }
+
+    #user {
+        @apply w-full flex;
+        background: linear-gradient(rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+        border-bottom: 1px solid rgba(0, 6, 31, 0.616);
+        border-top: 3px solid #ff9100;
+        border-right: none;
+    }
+
+    nav {
+        border-top: 1px solid rgb(117, 117, 117);
+    }
+
+    nav a {
+        @apply pl-6;
+    }
+
+    nav > div > a {
+        /* Hover font color for links */
+        @apply hover:text-sky-200;
+
+        transition: 0.15s;
+
+        /* Active font color for links */
+        &.active {
+            color: rgb(255, 96, 112);
+            text-shadow: 0px 3px 7px rgba(255, 0, 0, 0.87);
+
+        }
+    }
+
+    nav > div >a {
+        @apply my-3 flex hover:cursor-pointer;
+    }
+}

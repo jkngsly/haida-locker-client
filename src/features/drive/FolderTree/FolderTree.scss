@@ -1,0 +1,55 @@
+#folder-tree { 
+    @apply w-full mt-0 float-left h-auto pb-4 overflow-y-scroll border-r-0;
+
+    background: linear-gradient(rgba(24, 7, 7, 0.7) 0%, rgba(0,0,0,0.3) 75%, rgb(37, 37, 37) 100%);
+    border-top: 1px solid rgb(112, 110, 111);
+    border-bottom: 1px solid rgb(112, 110, 111);
+    box-shadow: inset -20px 0px 20px 0px #000;
+
+    // React-scrollbars-custom-2
+    > div > div:last-child > div { 
+        @apply rounded-full;
+        background: rgba(251, 146, 60, 0.463) !important;
+        margin-top: 15px !important;
+    
+    }
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    > li:first-child { 
+        @apply mt-3;
+    }
+
+    > li:last-child { 
+        @apply mb-3;
+    }
+
+    li { 
+        @apply pl-3 mt-4 flex flex-col w-full;
+        
+        svg { 
+            @apply size-4 mr-4 float-left;
+        }
+
+        a { 
+            @apply cursor-pointer hover:text-orange-400 select-none;
+            transition: 0.15s;
+
+            &:hover { 
+                @apply text-sky-200;
+            }
+
+            &.active {
+                @apply text-orange-400;
+                
+                text-shadow: 0px 3px 7px rgba(255, 206, 114, 0.712);
+            }
+        }
+
+        > ul { 
+            @apply w-full;
+        }
+    }
+}

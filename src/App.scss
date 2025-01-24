@@ -7,40 +7,40 @@
 $pink: rgb(255 10 35 / 76%);
 ::selection { background: $pink; color: #fff; }
 
+$stripeBg: url(assets/stripe.png);
+
 #root { 
-    display: flex;
-    font-family: "Rubik", serif;
-    font-optical-sizing: auto;
-    font-weight: 300;
+    @apply flex font-light;
+    font-family: "Rubik", "Arial" serif;
+    font-optical-sizing: auto;  
     font-style: normal;
 }
 
 #logo { 
-    overflow: hidden;
-    @apply w-full flex pr-4 h-24 items-center text-4xl pl-6;
+    @apply w-full flex pr-4 h-24 items-center text-4xl pl-6 overflow-hidden font-black relative;
+
     font-family: "Oswald", serif;
     font-optical-sizing: auto;
-    font-weight: 900;
     font-style: normal;
+
     background: rgba(0, 0, 0, 1) url(assets/stripe.png);
-    background-size: 5px; 
+    background-size: 6px; 
+
     position: relative;
     box-shadow: inset -20px 0px 20px 0px #000;
     
     img { 
+        @apply absolute right-0 h-auto;
+
         width: 180px;
-        height: auto;
-        margin-right: 0.5rem;
-        position: absolute;
-        right: 0;
         top: 5px;
         margin-right: -51px;
     }
 
     span { 
-        @apply text-orange-400;
+        @apply text-orange-400 text-3xl font-black;
         text-shadow: 0px 3px 7px rgba(207, 104, 7, 1);
-
+        letter-spacing: -10px;
     }
 }
 
@@ -59,77 +59,6 @@ $pink: rgb(255 10 35 / 76%);
     }
 }
 
-#navigation { 
-    /* Layout */
-    @apply w-2/12 min-h-screen flex flex-col relative 
-    
-    /* Default font color */
-    text-white overflow-y-hidden;
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
-
-    box-shadow: inset -20px 0px 20px 0px #000;
-
-    background-size: 5px;
-   // background-color: rgb(31 41 55);
-   background: linear-gradient(20deg, rgb(2 9 24) 0%, rgb(35 46 61) 70%, rgb(0, 0, 0) 100%);
-    > * { 
-        position: relative;
-        z-index:1;
-    }
-    &::before {
-        content: ""; 
-        width: 100%;
-        height: 100%;
-        background: rgba(0,0,0,0.6) url(assets/stripe.png);
-        background-size: 4px;
-        opacity: 0.7;
-        position:absolute;
-        z-index: 0;
-    }
-
-    > div { 
-        @apply relative overflow-y-hidden max-h-screen;
-        position: relative;
-        z-index:2;
-    }
-
-    #user {
-        @apply w-full flex;
-        background: linear-gradient(rgba(0,0,0,0.5) 0%, rgba(0,0,0,0) 100%);
-        border-bottom: 1px solid rgba(0, 6, 31, 0.616);
-        border-top: 3px solid #ff9100;
-        border-right: none;
-    }
-
-    nav { 
-        border-top: 1px solid rgb(117, 117, 117);
-    }
-
-    nav a { 
-        @apply pl-6;
-    }
-
-    nav > div > a { 
-        /* Hover font color for links */
-        @apply hover:text-sky-200;
-
-        transition: 0.15s;
-
-        /* Active font color for links */
-        &.active {
-           color: rgb(255, 96, 112);
-           text-shadow: 0px 3px 7px rgba(255, 0, 0, 0.87);
-
-        }
-    }
-
-    nav > div > a { 
-        @apply my-3 flex hover:cursor-pointer
-    }
-}
 
 #folder-tree { 
     @apply w-full mt-0 float-left h-auto pb-4 overflow-y-scroll;
@@ -482,3 +411,4 @@ $pink: rgb(255 10 35 / 76%);
     display: flex;
     justify-content: center;
 }
+
