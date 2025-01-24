@@ -9,7 +9,6 @@ const Drive: React.FC = () => {
   return (
     <>
       <div className="flex flex-row  h-1/6">
-          <Modal />
           <div className="folder-search">
             <input type="text" className="" placeholder="Search" />
             <HeroIcon name="MagnifyingGlass" />

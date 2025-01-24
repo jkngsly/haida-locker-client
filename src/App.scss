@@ -454,19 +454,15 @@ $pink: rgb(255 10 35 / 76%);
 }
 
 .modal { 
-    @apply fixed top-0 rounded-b-md z-10 flex flex-col px-20 py-10;
+    @apply fixed rounded-md z-10 flex flex-col px-20 py-10;
     
     background: rgba(255,255,255,0.8);
     border: 1px solid #fff;
     z-index: 5;
-    left: 50%;
-    transform: translateX(-50%);
-    
-
 }
 
-.modal-backdrop { 
-    background: rgba(0,0,0,0.5) url(assets/stripe.png) repeat;
+.modal-backdrop {
+    background: rgba(0,0,0,0.3);
     background-size: 6px;
     position: fixed;
     width: 100%;
@@ -474,6 +470,9 @@ $pink: rgb(255 10 35 / 76%);
     z-index: 2;
     top: 0;
     left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal-options { 

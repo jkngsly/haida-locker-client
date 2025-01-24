@@ -12,12 +12,13 @@ const Modal: React.FC<Props> = (props) => {
     
     return (
         <>
-            <div className="modal-backdrop"></div>
-            <div className="modal">
-                Are you sure you want to delete this file?
-                <div className="modal-options">
-                    <Button text="Confirm" />
-                    <Button text="Cancel" />
+            <div className="modal-backdrop">
+                <div className="modal">
+                    { props.text && props.text}
+                    <div className="modal-options">
+                        <Button text="Confirm" />
+                        <Button text="Cancel" />
+                    </div>
                 </div>
             </div>
         </>

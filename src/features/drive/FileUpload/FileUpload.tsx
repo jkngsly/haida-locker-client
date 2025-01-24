@@ -26,7 +26,9 @@ const fileUpload: React.FC<Props> = (props) => {
             });
 
             try {
-                await uploadFile(formData).unwrap();
+                await uploadFile(formData).unwrap().then(() => { 
+                    fileInputRef.current.value = ''
+                })
             } catch (err) {
                 console.error('Upload failed: ', err);
             }
