@@ -3,6 +3,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useGetFileQuery, useDeleteFileMutation } from '@features/api/fileApi'
 import HeroIcon from '@components/HeroIcon'
 import Modal from '@components/Modal'
+import { useAppDispatch } from '@/app/hooks'
+import { ding } from '@/features/notifications/notificationsSlice'
 
 interface Props {
     id: string
@@ -32,6 +34,7 @@ function useClickOutside(handler: Function) {
 
 const FileThumbnail: React.FC<Props> = (props) => {
     const ref = useRef(null);
+    const dispatch = useAppDispatch()
 
     const { data, isLoading, error } = useGetFileQuery(props.id)
     const [deleteFile, {  }] = useDeleteFileMutation()
@@ -47,6 +50,13 @@ const FileThumbnail: React.FC<Props> = (props) => {
         const file = data;
         
         const handleDeleteClick = () => {
+            
+            dispatch(ding({
+                text: file.name + " Deleted",
+                icon: "CheckCircle",
+                actionText: "Undo",
+                seen: true
+            }))
             deleteFile(file.id)
         }
 

@@ -14,9 +14,9 @@ const Notifications: React.FC<Props> = (props) => {
 
     return (
         <div id="notifications">
-            {dings && dings.map(function (ding) {
+            {dings && dings.map(function (ding, index) {
                 return (
-                    <NotificationDing ding={ding} />
+                    <NotificationDing key={index} ding={ding} />
                 )
             })}
         </div>
