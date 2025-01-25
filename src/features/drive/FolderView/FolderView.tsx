@@ -36,7 +36,7 @@ const FolderView: React.FC<Props> = (props) => {
 
     if (!isLoading && data) {
         return (
-            <div id="folder-view">
+            <div id="folder-view" className="box">
                 <div className="w-full folder-toolbar text-right flex flex-row  pwd  px-4 justify-between">
                     <div className="order-1 folder-path">
                         <HeroIcon name="ArrowTurnDownRight" />

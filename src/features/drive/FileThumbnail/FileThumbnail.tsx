@@ -50,11 +50,14 @@ const FileThumbnail: React.FC<Props> = (props) => {
         const file = data;
         
         const handleDeleteClick = () => {
+
+            const whatever = () => {};
             
             dispatch(ding({
-                text: file.name + " Deleted",
-                icon: "CheckCircle",
+                text: file.name + " deleted",
+                icon: "Trash",
                 actionText: "Undo",
+                action: { name: "restoreFile", fileId: file.id },
                 seen: true
             }))
             deleteFile(file.id)

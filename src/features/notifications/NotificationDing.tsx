@@ -19,12 +19,17 @@ const NotificationDing: React.FC<Props> = (props) => {
       return () => clearTimeout(timeout); // Cleanup on unmount
     }, []);
 
+    const handleActionClick = () => { 
+        // TODO: Callback actions
+        console.log(ding.action)
+    }
+
     return (
         <div className={addClass ? 'ding ding-be-gone' : 'ding'}>
             {ding.icon && <HeroIcon name={ding.icon} />}
             {ding.text &&
                 <div>{ding.text}
-                    {ding.actionText && ding.actionCallback && <a className="ding-action" onClick={ding.actionCallback}>{ding.actionText}</a>}
+                    {ding.actionText && ding.action && <a className="ding-action" onClick={handleActionClick}>{ding.actionText}</a>}
                 </div>
             }
         </div>

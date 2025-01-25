@@ -2,6 +2,6 @@ export default interface Ding {
     icon?: string
     text?: string
     actionText?: string
-    actionCallback?: () => void
+    action?: Object 
     seen?: boolean
 }

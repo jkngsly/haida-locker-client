@@ -30,7 +30,7 @@ const fileUpload: React.FC<Props> = (props) => {
                 await uploadFile(formData).unwrap().then(() => { 
                     fileInputRef.current.value = ''
                     dispatch(ding({
-                        text: "Uploaded Successfully",
+                        text: "Uploaded",
                         icon: "CheckCircle",
                         seen: false
                     }))

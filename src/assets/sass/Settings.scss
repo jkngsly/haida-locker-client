@@ -1,5 +1,21 @@
 @import 'variables.scss';
 
 #settings { 
-    @apply w-100 h-auto;
+    @apply relative;
+    
+    &::before {
+        @apply h-full w-full opacity-70 absolute z-0;
+
+        content: "";
+        background: rgba(0, 0, 0, 0.6) $patternBg;
+        background-size: 4px;
+    }
+
+    color: #fff;
+
+    &.box { 
+        background: linear-gradient(20deg, rgb(2 9 24) 0%, rgb(35 46 61) 70%, rgb(0, 0, 0) 100%) !important;
+    }
+    
 }
+
