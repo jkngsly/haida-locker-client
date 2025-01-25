@@ -1,9 +1,10 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
-@import 'variables.scss';
+@import './variables.scss';
 
 #root { 
     @apply flex font-light;
@@ -47,7 +48,7 @@
     .page-wrapper { 
         @apply bg-zinc-200 min-h-screen p-5 max-h-screen overflow-y-hidden;
         
-        background-image: url('$images/mountains.png');
+        background-image: url($images + '/mountains.png');
         background-repeat: no-repeat;
         background-position: center top;
         background-size: cover;
@@ -56,7 +57,7 @@
 }
 
 .pfp { 
-    background:  url('$images/pfp-temporary.png') center no-repeat ;
+    background:  url($images + '/pfp-temporary.png') center no-repeat ;
     background-size: cover;
 }
 
