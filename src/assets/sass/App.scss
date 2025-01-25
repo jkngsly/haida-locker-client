@@ -101,10 +101,16 @@
 }
 
 .box { 
-    @apply p-5 max-h-max rounded-md;
+    @apply p-5 max-h-max rounded-md relative;
     background-image: $patternBg;
     background-size: 5px;
     max-height: 90vh;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+    > * { 
+        @apply z-10;
+        position: relative;
+    }
 }
 
 #folder-view { 
