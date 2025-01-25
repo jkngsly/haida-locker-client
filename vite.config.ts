@@ -23,7 +23,9 @@ export default defineConfig({
       '@components': path.resolve(__dirname, './src/components'),
       '@features': path.resolve(__dirname, './src/features'),
       '@helpers': path.resolve(__dirname, './src/helpers'),
+      '@images': path.resolve(__dirname, './src/assets/images'),
       '@pages': path.resolve(__dirname, './src/pages'),
+      '@sass': path.resolve(__dirname, './src/assets/sass'),
     }
   },
   css: {

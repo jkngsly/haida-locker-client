@@ -6,7 +6,7 @@ import HeroIcon from '@components/HeroIcon'
 import { useGetRootFoldersQuery } from '@features/api/folderApi'
 import { setId, selectId, setPath, setName } from './folderTreeSlice'
 import FolderTreeChild from "./FolderTreeChild"
-import './FolderTree.scss'
+import '@sass/FolderTree.scss'
 
 const FolderTree: React.FC = () => {
     const folderId = useAppSelector(selectId)

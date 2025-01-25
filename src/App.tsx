@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import "./App.scss"
+import "@sass/App.scss"
 import Nav from "./Nav"
 import DrivePage from "@/pages/DrivePage"
 import SettingsPage from "@/pages/SettingsPage"

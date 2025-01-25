@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { NavLink } from 'react-router-dom'
-import FolderTree from "./features/drive/FolderTree/FolderTree"
-import Logo from "./assets/haida.png"
-import "./Nav.scss"
+import FolderTree from "@features/drive/FolderTree/FolderTree"
+import Logo from '@images/haida.png'
+import '@sass/Nav.scss'
 
 function Nav() {
     const [count, setCount] = React.useState(0)

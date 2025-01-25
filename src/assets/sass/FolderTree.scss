@@ -1,3 +1,5 @@
+@import 'variables.scss';
+
 #folder-tree { 
     @apply w-full mt-0 float-left h-auto pb-4 overflow-y-scroll border-r-0;
 
@@ -11,7 +13,6 @@
         @apply rounded-full;
         background: rgba(251, 146, 60, 0.463) !important;
         margin-top: 15px !important;
-    
     }
 
     &::-webkit-scrollbar {

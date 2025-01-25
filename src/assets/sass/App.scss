@@ -3,11 +3,7 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
-
-$pink: rgb(255 10 35 / 76%);
-::selection { background: $pink; color: #fff; }
-
-$stripeBg: url(assets/stripe.png);
+@import 'variables.scss';
 
 #root { 
     @apply flex font-light;
@@ -23,11 +19,11 @@ $stripeBg: url(assets/stripe.png);
     font-optical-sizing: auto;
     font-style: normal;
 
-    background: rgba(0, 0, 0, 1) url(assets/stripe.png);
+    background: $black $patternBg;
     background-size: 6px; 
 
     position: relative;
-    box-shadow: inset -20px 0px 20px 0px #000;
+    box-shadow: inset -20px 0px 20px 0px $black;
     
     img { 
         @apply absolute right-0 h-auto;
@@ -51,7 +47,7 @@ $stripeBg: url(assets/stripe.png);
     .page-wrapper { 
         @apply bg-zinc-200 min-h-screen p-5 max-h-screen overflow-y-hidden;
         
-        background-image: url(assets/mountains.png);
+        background-image: url('$images/mountains.png');
         background-repeat: no-repeat;
         background-position: center top;
         background-size: cover;
@@ -59,66 +55,8 @@ $stripeBg: url(assets/stripe.png);
     }
 }
 
-
-#folder-tree { 
-    @apply w-full mt-0 float-left h-auto pb-4 overflow-y-scroll;
-
-    background: linear-gradient(rgba(24, 7, 7, 0.7) 0%, rgba(0,0,0,0.3) 75%, rgb(37, 37, 37) 100%);
-    border-top: 1px solid rgb(112, 110, 111);
-    border-bottom: 1px solid rgb(112, 110, 111);
-    border-right: none;
-    box-shadow: inset -20px 0px 20px 0px #000;
-
-    // React-scrollbars-custom-2
-    > div > div:last-child > div { 
-        @apply rounded-full;
-        background: rgba(251, 146, 60, 0.463) !important;
-        margin-top: 15px !important;
-    
-    }
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
-
-    > li:first-child { 
-        @apply mt-3;
-    }
-
-    > li:last-child { 
-        @apply mb-3;
-    }
-
-    li { 
-        @apply pl-3 mt-4 flex flex-col w-full;
-        
-        svg { 
-            @apply size-4 mr-4 float-left;
-        }
-
-        a { 
-            @apply cursor-pointer hover:text-orange-400 select-none;
-            transition: 0.15s;
-
-            &:hover { 
-                @apply text-sky-200;
-            }
-
-            &.active {
-                @apply text-orange-400;
-                
-                text-shadow: 0px 3px 7px rgba(255, 206, 114, 0.712);
-            }
-        }
-
-        > ul { 
-            @apply w-full;
-        }
-    }
-}
-
 .pfp { 
-    background:  url('assets/pfp-temporary.png') center no-repeat ;
+    background:  url('$images/pfp-temporary.png') center no-repeat ;
     background-size: cover;
 }
 
@@ -165,7 +103,7 @@ $stripeBg: url(assets/stripe.png);
     @apply p-5 max-h-max;
 
     background-color: rgb(255 255 255 / 38%);
-    background-image: url('assets/stripe.png');
+    background-image: $patternBg;
     background-size: 5px;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     max-height: 90vh;

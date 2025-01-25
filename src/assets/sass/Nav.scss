@@ -1,3 +1,5 @@
+@import 'variables.scss';
+
 #navigation {
     /* Layout */
     @apply w-2/12 min-h-screen flex flex-col relative
@@ -22,7 +24,7 @@
         @apply h-full w-full opacity-70 absolute z-0;
 
         content: "";
-        background: rgba(0, 0, 0, 0.6) url(assets/stripe.png);
+        background: rgba(0, 0, 0, 0.6) $patternBg;
         background-size: 4px;
     }
 

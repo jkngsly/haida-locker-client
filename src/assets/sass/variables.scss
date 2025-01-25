@@ -1,0 +1,6 @@
+
+$pink: rgb(255 10 35 / 76%);
+$black: #000;
+::selection { background: $pink; color: #fff; }
+$images: "assets/images";
+$patternBg: url('$images/stripe.png');
