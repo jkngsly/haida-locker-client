@@ -1,0 +1,82 @@
+@import './variables.scss';
+
+#notifications { 
+    @apply fixed right-0 bottom-0 pr-5 pb-5;
+
+    @keyframes show { 
+        0% { 
+            transform: translateY(30px);
+            opacity: 0;
+        }
+
+        100% { 
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    
+    @keyframes hide {
+        100% { 
+            display: none; 
+        } 
+        99% { 
+            transform: translateY(-30px);
+            opacity: 0;
+        }
+
+        0% { 
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .ding { 
+        &::before { 
+            @apply w-full h-full absolute rounded-md;
+            content: "";
+            
+            background: linear-gradient(20deg, rgb(255, 108, 10) 0%, rgb(255, 2, 99) 100%);
+            z-index: 0;
+            opacity: 0.6;
+            
+            box-shadow: inset -2px 1px 0px 0px rgb(255 80 153);
+        }
+
+        @apply flex items-center py-4 pr-5 mb-5 min-w-72 rounded-md relative font-normal; 
+
+
+        animation-name: show;
+        animation-duration: 1.5s;
+        background: $patternBg;
+        background-size: 6px;
+        color: #fff;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.6), 0 2px 4px -2px rgb(0 0 0 / 0.6);
+        text-shadow: 0px 1px 0px rgb(82, 30, 0);
+        border: 1px solid rgb(255, 129, 45);
+
+        &.ding-be-gone { 
+            animation-name: hide;
+            animation-duration: 1.5s;
+            animation-fill-mode: forwards;
+        }
+
+        > * { 
+            z-index: 1;
+        }
+
+        svg { 
+            @apply size-10 ml-5 mr-3;
+        }
+
+        .ding-action { 
+            @apply cursor-pointer ml-5;
+
+            color: #fff;
+
+            &:hover { 
+                @apply text-sky-100;
+            }
+        }
+    }
+}

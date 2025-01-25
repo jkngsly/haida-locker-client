@@ -1,8 +1,9 @@
 // components/FolderTree.tsx
 import React from 'react'
-import Button from '@components/Button';
-import { useAppDispatch } from '@app/hooks';
-import { useUploadFileMutation } from '@features/api/fileApi';
+import Button from '@components/Button'
+import { useAppDispatch } from '@app/hooks'
+import { useUploadFileMutation } from '@features/api/fileApi'
+import { ding } from '@features/notifications/notificationsSlice'
 
 interface Props {
 
@@ -28,6 +29,11 @@ const fileUpload: React.FC<Props> = (props) => {
             try {
                 await uploadFile(formData).unwrap().then(() => { 
                     fileInputRef.current.value = ''
+                    dispatch(ding({
+                        text: "Uploaded Successfully",
+                        icon: "CheckCircle",
+                        seen: false
+                    }))
                 })
             } catch (err) {
                 console.error('Upload failed: ', err);

@@ -4,7 +4,9 @@ const Settings: React.FC = () => {
     return(
         <>
             <div id="settings">
-                jijiji
+                Admin Settings
+
+            
             </div>
         </>
     )
