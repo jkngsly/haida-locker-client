@@ -21,7 +21,7 @@ export const apiSlice = createApi({
       return headers;
     },
   }),
-  tagTypes: ['Folders', 'Files'], // Define tags for cache management
+  tagTypes: ['Folders', 'Files', 'Users'], // Define tags for cache management
   endpoints: () => ({}), // Empty by default, extended in slices
 });
 
