@@ -26,15 +26,9 @@ export const authApi = apiSlice.injectEndpoints({
                 }
             },
             transformResponse: (response: { data: any }, meta, arg) => response.data,
-            /*async onQueryStarted(_args, { dispatch, queryFulfilled }) {
-                try {
-                    const res = await queryFulfilled;
-                    authTokenChange(res.data)
-                } catch (error) {} 
-            },*/
         }),
 
     }),
 })
 
-export const { useGetMeQuery, useLoginMutation } = authApi
+export const { useLoginMutation } = authApi
