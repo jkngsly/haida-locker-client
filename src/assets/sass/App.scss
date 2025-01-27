@@ -43,10 +43,10 @@
 
 #page { 
     /* Layout */
-    @apply w-10/12;
+    @apply flex w-full; 
 
     .page-wrapper { 
-        @apply bg-zinc-200 min-h-screen p-5 max-h-screen overflow-y-hidden;
+        @apply bg-zinc-200 min-h-screen p-5 max-h-screen overflow-y-hidden w-10/12;
         
         background-image: url($images + '/mountains.png');
         background-repeat: no-repeat;

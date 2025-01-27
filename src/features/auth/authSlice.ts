@@ -5,29 +5,30 @@ import { authApi } from "@/features/api/authApi";
 import { PayloadAction } from "@reduxjs/toolkit";
 
 const initialState = {
-  token: localStorage.getItem("token"),
-  refreshToken: localStorage.getItem("refreshToken"),
-  usedToken: localStorage.getItem("token"),
+    token: localStorage.getItem("token"),
+    refreshToken: localStorage.getItem("refreshToken"),
+    usedToken: localStorage.getItem("token"),
 };
 
 export const authSlice = createAppSlice({
-  name: "auth",
-  initialState,
-  reducers: create => ({
-    setToken: create.reducer(
-        (state, action: PayloadAction<any>) => {
-          localStorage.setItem("token", action.payload.access_token);
-        },
-      ),
-  }),
+    name: "auth",
+    initialState,
+    reducers: create => ({
+        setToken: create.reducer(
+            (state, action: PayloadAction<string>) => {
+                localStorage.setItem("token", action.payload)
+                state.token = localStorage.getItem("token")
+            },
+        ),
+    }),
     extraReducers: (builder) => {
-    builder.addMatcher(
-        authApi.endpoints.login.matchFulfilled,
-        (state, { payload }) => {
-            state.token = payload.access_token
-            localStorage.setItem("token", payload.access_token)
-        },
-    )
+        builder.addMatcher(
+            authApi.endpoints.login.matchFulfilled,
+            (state, { payload }) => {
+                state.token = payload.access_token
+                localStorage.setItem("token", payload.access_token)
+            },
+        )
     },
     /*authTokenChange: (state, action) => {
         console.log("change")
@@ -56,7 +57,7 @@ export const authSlice = createAppSlice({
 
 });
 
-export const { } =
-authSlice.actions
+export const { setToken } =
+    authSlice.actions
 
 export const { } = authSlice.selectors

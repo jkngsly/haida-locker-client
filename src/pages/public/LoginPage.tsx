@@ -20,7 +20,7 @@ const LoginPage: React.FC = () => {
     try {
         //await login(getValues()).unwrap().then(() => { 
         await login({ email: "jkngsly@gmail.com", password: "AJd8w9Z32#$!"}).unwrap().then(() => { 
-          navigate('/')
+          navigate('/portal')
         })
     } catch (err) {
         console.error('Upload failed: ', err);

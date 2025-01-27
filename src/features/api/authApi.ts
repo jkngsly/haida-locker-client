@@ -27,7 +27,6 @@ export const authApi = apiSlice.injectEndpoints({
             },
             transformResponse: (response: { data: any }, meta, arg) => response.data,
         }),
-
     }),
 })
 

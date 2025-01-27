@@ -4,7 +4,7 @@ import Nav from './Nav'
 import DrivePage from '@pages/DrivePage'
 import SettingsPage from '@pages/SettingsPage'
 import Notifications from '@features/notifications/Notifications'
-import RequireUser from '@components/requireUser'
+import Auth from '@/features/auth/Auth'
 import UnauthorizedPage from '@pages/UnauthorizedPage'
 import Layout from '@components/Layout'
 
@@ -23,18 +23,18 @@ const App = () => {
           <Routes>
 
             {/* Logged In */}
-            <Route element={<RequireUser allowedRoles={['user']} />}>
+            <Route element={<Auth allowedRoles={['user']} />}>
                <Route element={<Layout />}>
-                <Route path="/" element={<DrivePage />} />
-                <Route path="drive" element={<DrivePage />} />
-                <Route path="settings" element={<SettingsPage />} />
+                <Route path="portal" element={<DrivePage />} />
+                <Route path="portal/drive" element={<DrivePage />} />
+                <Route path="portal/settings" element={<SettingsPage />} />
               </Route>
             </Route>
 
             {/* Logged Out */}
             <Route element={<Public />}>
               <Route path='unauthorized' element={<UnauthorizedPage />} />
-              <Route path='home' element={<HomePage />} />
+              <Route path='/' element={<HomePage />} />
               <Route path='login' element={<LoginPage />} />
               <Route path='register' element={<RegisterPage />} />
               <Route path='forgot-password' element={<ForgotPasswordPage />} />

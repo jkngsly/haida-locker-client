@@ -3,7 +3,7 @@ import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { authApi } from '@api/authApi';
 //import FullScreenLoader from './FullScreenLoader';
 
-const RequireUser = ({ allowedRoles }: { allowedRoles: string[] }) => {
+const Auth = ({ allowedRoles }: { allowedRoles: string[] }) => {
   const [cookies] = useCookies(['logged_in']);
   const location = useLocation();
 
@@ -42,4 +42,4 @@ const RequireUser = ({ allowedRoles }: { allowedRoles: string[] }) => {
   } */
 };
 
-export default RequireUser;
+export default Auth;
