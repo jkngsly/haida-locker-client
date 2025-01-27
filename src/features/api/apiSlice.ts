@@ -14,22 +14,19 @@ export const transformResponse = (response: any) => {
   };
 };
 
-
-const baseQuery = fetchBaseQuery({
+const baseQueryOpt = { 
   baseUrl: import.meta.env.VITE_API_BASE_URL,
+  credentials: 'same-origin',
+}
+
+// @ts-ignore (ノಠ益ಠ)ノ彡┻━┻ 
+const baseQuery = fetchBaseQuery({
+  ...baseQueryOpt,
   prepareHeaders: (headers, { getState }) => {
-    let token = (getState() as any).auth?.token 
-
-    console.log("VERIFY TOKEN")
-
-    if (!token) {
-        token = (getState() as any).auth?.refreshToken 
-    }
-    
+    const token = (getState() as any).auth?.token
     headers.set('Authorization', `Bearer ${token}`)
     return headers
-  },
-  credentials: 'same-origin',
+  }
 })
 
 const baseQueryWithReauth: BaseQueryFn<
@@ -46,19 +43,25 @@ const baseQueryWithReauth: BaseQueryFn<
     const release = await mutex.acquire()
     try {
 
-      if(localStorage.getItem("refreshToken")) { 
-        
-      }
+      console.log("SetItemRefresh")
+      localStorage.setItem("refresh", "turd")
 
       // Fetch new token 
-      const refreshResult = await baseQuery(
+      // @ts-ignore (ノಠ益ಠ)ノ彡┻━┻ 
+      const refreshResult = await fetchBaseQuery({
+        ...baseQueryOpt,
+        prepareHeaders: (headers, { getState }) => {
+          const token = (getState() as any).auth?.refreshToken
+          headers.set('Authorization', `Bearer ${token}`)
+          return headers
+        }
+      })(
         'auth/refresh',
         api,
-        extraOptions
-      )
+        extraOptions)
 
       if (refreshResult.data) {
-
+        
         // Retry the initial query
         result = await baseQuery(args, api, extraOptions)
       } else {
