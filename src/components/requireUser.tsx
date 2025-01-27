@@ -7,30 +7,39 @@ const RequireUser = ({ allowedRoles }: { allowedRoles: string[] }) => {
   const [cookies] = useCookies(['logged_in']);
   const location = useLocation();
 
-  const { isLoading, isFetching } = authApi.endpoints.getMe.useQuery(null, {
+  const { isLoading, isFetching } = authApi.endpoints.verify.useQuery(null, {
     skip: false,
     refetchOnMountOrArgChange: true,
   });
 
   const loading = isLoading || isFetching;
 
-  const user = authApi.endpoints.getMe.useQueryState(null, {
+  const user = authApi.endpoints.verify.useQueryState(null, {
     selectFromResult: ({ data }) => data!,
   });
 
-  console.log({ loading });
   if (loading) {
     //return <FullScreenLoader />;
   }
-
-  return (cookies.logged_in || user) &&
+  
+  if(!loading) { 
+    if(user) { 
+     return (<Outlet />)
+    } else { 
+      return(<Navigate to='/login' state={{ from: location }} replace />)
+    }
+  }
+  /*
+  if(!loading) { 
+    return (user) &&
     allowedRoles.includes(user?.role as string) ? (
-    <Outlet />
+      <Outlet />
   ) : cookies.logged_in && user ? (
     <Navigate to='/unauthorized' state={{ from: location }} replace />
   ) : (
     <Navigate to='/login' state={{ from: location }} replace />
   );
+  } */
 };
 
 export default RequireUser;

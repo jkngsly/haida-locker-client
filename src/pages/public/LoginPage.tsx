@@ -3,8 +3,10 @@ import { useLoginMutation } from '@features/api/authApi';
 import { Button } from 'primereact/button';
 import * as React from 'react'
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage: React.FC = () => {
+  const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
   const { register, getValues  } = useForm();
@@ -18,8 +20,7 @@ const LoginPage: React.FC = () => {
     try {
         //await login(getValues()).unwrap().then(() => { 
         await login({ email: "jkngsly@gmail.com", password: "AJd8w9Z32#$!"}).unwrap().then(() => { 
-          // TODO: error response
-           console.log("done")
+          navigate('/')
         })
     } catch (err) {
         console.error('Upload failed: ', err);

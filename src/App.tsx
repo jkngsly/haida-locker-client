@@ -25,7 +25,7 @@ const App = () => {
             {/* Logged In */}
             <Route element={<RequireUser allowedRoles={['user']} />}>
                <Route element={<Layout />}>
-                <Route path="" element={<DrivePage />} />
+                <Route path="/" element={<DrivePage />} />
                 <Route path="drive" element={<DrivePage />} />
                 <Route path="settings" element={<SettingsPage />} />
               </Route>
