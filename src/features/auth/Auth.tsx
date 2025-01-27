@@ -18,6 +18,8 @@ const Auth = ({ allowedRoles }: { allowedRoles: string[] }) => {
     selectFromResult: ({ data }) => data!,
   });
 
+  console.log(user)
+
   if (loading) {
     //return <FullScreenLoader />;
   }

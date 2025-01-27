@@ -1,23 +1,11 @@
 import { apiSlice } from '@features/api/apiSlice'
 import IUser from '@/features/types/user.interface'
 import { setUser } from '@/features/userSlice';
-import { useAppDispatch } from '@/app/hooks';
+import ITokenResponse from '@/features/types/token.interface';
 
 export const authApi = apiSlice.injectEndpoints({
     endpoints: builder => ({
-        verify: builder.query({
-            query: () => 'auth/verify',
-            transformResponse: (response: { data: IUser }, meta, arg) => response.data,
-            providesTags: ['Auth'],      
-            async onQueryStarted(_args, { dispatch, queryFulfilled }) {
-                try {
-                const { data } = await queryFulfilled;
-                    dispatch(setUser(data));
-                } catch (error) {}
-            },
-        }),
-
-        login: builder.mutation<{ access_token: string, status: string }, any>({
+        login: builder.mutation<ITokenResponse, any>({
             query(data) {
                 return {
                     url: 'auth/login',
@@ -25,8 +13,29 @@ export const authApi = apiSlice.injectEndpoints({
                     body: data,
                 }
             },
-            transformResponse: (response: { data: any }, meta, arg) => response.data,
+            transformResponse: (response: { data: ITokenResponse }, meta, arg) => response.data,
         }),
+
+        refresh: builder.mutation({
+            query: (refreshToken) => ({
+                url: '/auth/refresh',
+                method: 'POST',
+                body: { refreshToken },
+            }),
+        }),
+
+        verify: builder.query({
+            query: () => 'auth/verify',
+            transformResponse: (response: { data: IUser }, meta, arg) => response.data,
+            providesTags: ['Auth'],
+            async onQueryStarted(_args, { dispatch, queryFulfilled }) {
+                try {
+                    const { data } = await queryFulfilled;
+                    dispatch(setUser(data));
+                } catch (error) { }
+            },
+        }),
+
     }),
 })
 

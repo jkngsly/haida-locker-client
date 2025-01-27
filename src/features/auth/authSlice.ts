@@ -3,21 +3,40 @@
 import { createAppSlice } from "@/app/createAppSlice";
 import { authApi } from "@/features/api/authApi";
 import { PayloadAction } from "@reduxjs/toolkit";
+import ITokenResponse from '@/features/types/token.interface';
+import { useAppDispatch } from "@/app/hooks";
 
 const initialState = {
     token: localStorage.getItem("token"),
     refreshToken: localStorage.getItem("refreshToken"),
-    usedToken: localStorage.getItem("token"),
+    sub: localStorage.getItem("sub")
 };
+
+const setLocalStorage = (res: ITokenResponse) => { 
+    localStorage.setItem("token", res.accessToken)
+    localStorage.setItem("refreshToken", res.refreshToken)
+    localStorage.setItem("sub", res.sub)
+}
 
 export const authSlice = createAppSlice({
     name: "auth",
     initialState,
     reducers: create => ({
         setToken: create.reducer(
-            (state, action: PayloadAction<string>) => {
-                localStorage.setItem("token", action.payload)
+            (state, action: PayloadAction<ITokenResponse>) => {
+                console.log("SET TOKEN", action.payload.accessToken)
+                
+                setLocalStorage(action.payload)
+
                 state.token = localStorage.getItem("token")
+                state.refreshToken = localStorage.getItem("refreshToken")
+                state.sub = localStorage.getItem("sub")
+            },
+        ),
+
+        refresh: create.reducer(
+            (state) => {
+                state.token = null
             },
         ),
     }),
@@ -25,8 +44,11 @@ export const authSlice = createAppSlice({
         builder.addMatcher(
             authApi.endpoints.login.matchFulfilled,
             (state, { payload }) => {
-                state.token = payload.access_token
-                localStorage.setItem("token", payload.access_token)
+                setLocalStorage(payload)
+
+                state.token = localStorage.getItem("token")
+                state.refreshToken = localStorage.getItem("refreshToken")
+                state.sub = localStorage.getItem("sub")
             },
         )
     },
