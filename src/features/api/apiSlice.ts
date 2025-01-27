@@ -56,7 +56,7 @@ const baseQueryWithReauth: BaseQueryFn<
           return headers
         }
       })(
-        'auth/refresh',
+        'auth/refresh/',
         api,
         extraOptions)
 
