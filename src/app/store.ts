@@ -7,8 +7,10 @@ import { fileUploadSlice } from "@/features/drive/FileUpload/fileUploadSlice"
 import apiSlice from "@/features/api/apiSlice"
 import { folderTreeSlice } from "@/features/drive/FolderTree/folderTreeSlice"
 import { notificationsSlice } from "@/features/notifications/notificationsSlice"
+import { authSlice } from "@/features/auth/authSlice"
 
 const rootReducer = combineSlices(
+  authSlice,
   folderTreeSlice,
   fileUploadSlice,
   notificationsSlice,

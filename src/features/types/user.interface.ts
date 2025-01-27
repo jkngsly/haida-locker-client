@@ -1,5 +1,5 @@
 // API response shape for /folders 
-export default interface File { 
+export default interface IUser { 
     id: string
     email: string
     first_name: string

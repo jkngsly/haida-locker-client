@@ -5,8 +5,8 @@ import {
 } from '@reduxjs/toolkit'
 import type { RootState } from '@app/store'
 import {transformResponse, apiSlice } from '@features/api/apiSlice'
-import Folder from '@features/interfaces/folder.interface'
-import File from '@features/interfaces/file.interface'
+import Folder from '@/features/types/folder.interface'
+import File from '@/features/types/file.interface'
 
 const foldersAdapter = createEntityAdapter<Folder>()
 const initialState = foldersAdapter.getInitialState()

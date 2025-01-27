@@ -5,7 +5,7 @@ import {
 } from '@reduxjs/toolkit'
 import type { RootState } from '@app/store'
 import { transformResponse, apiSlice } from '@features/api/apiSlice'
-import File from '@features/interfaces/file.interface'
+import File from '@/features/types/file.interface'
 import { searchForWorkspaceRoot } from 'vite'
 
 export const fileApi = apiSlice.injectEndpoints({

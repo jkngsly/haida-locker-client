@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { selectId, setId, setPath, setName } from './folderTreeSlice'
 import { useAppDispatch, useAppSelector } from "@app/hooks"
-import Folder from '@features/interfaces/folder.interface'
+import Folder from '@/features/types/folder.interface'
 import HeroIcon from '@components/HeroIcon'
 
 interface Props {

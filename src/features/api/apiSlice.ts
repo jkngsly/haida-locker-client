@@ -20,6 +20,7 @@ export const apiSlice = createApi({
       }
       return headers;
     },
+    credentials: 'same-origin'
   }),
   tagTypes: ['Folders', 'Files', 'Users', 'Auth'], // Define tags for cache management
   endpoints: () => ({}), // Empty by default, extended in slices

@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 const Public = () => {
     return (
         <>
-            <div id="page">
+            <div id="page" style={{ width: "100%" }}>
                 <Outlet />
             </div>
         </>
