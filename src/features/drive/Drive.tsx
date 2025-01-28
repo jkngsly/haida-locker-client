@@ -27,7 +27,7 @@ const Drive: React.FC = () => {
 
   return (
     <>
-      <div className="flex flex-row  h-1/6">
+      <div className="flex flex-row">
           <div className="folder-search">
             <input type="text" className="" placeholder="Search" onChange={(e) => setSearchTerm(e.target.value)} />
             <HeroIcon name="MagnifyingGlass" />

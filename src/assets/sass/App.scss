@@ -5,6 +5,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
 @import './variables.scss';
+@import './Elements.scss';
 
 #root { 
     @apply flex font-light;
@@ -67,15 +68,6 @@
     position: relative;
     
     input { 
-        @apply rounded-full px-4 py-2 min-w-60;
-    
-        margin-right: -35px;
-
-        color: #fff;
-        background: #1d2229;
-        border: 1px solid #000000;
-        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-
     }
 
     svg { 
@@ -100,21 +92,9 @@
     }
 }
 
-.box { 
-    @apply p-5 max-h-max rounded-md relative;
-    background-image: $patternBg;
-    background-size: 5px;
-    max-height: 90vh;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-
-    > * { 
-        @apply z-10;
-        position: relative;
-    }
-}
 
 #folder-view { 
-    @apply p-5 max-h-max;
+    @apply max-h-max;
     max-height: 90vh;
 
     .file-grid { 
@@ -310,24 +290,6 @@
 
 }
 
-.btn {
-    @apply flex flex-row py-2 px-4 mr-4 w-auto min-h-8 rounded-md justify-center align-middle;
-
-    border: 1px solid rgb(31 41 55);
-    color: #fff;
-    background-color: rgb(31 41 55);
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    transition: 0.15s;
-
-    &:hover {
-        background-color: $pink;
-        border-color: $pink;
-    }
-
-    svg {
-        @apply size-6 mr-2;
-    }
-}
 
 .modal { 
     @apply fixed rounded-md z-10 flex flex-col px-20 py-10;

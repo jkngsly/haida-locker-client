@@ -1,0 +1,66 @@
+@import './variables.scss';
+
+$box-shadow: 0 6px 5px 0px rgb(0 0 0 / 7%);
+
+// Colors 
+$grey: #c7c7c7;
+$blue: #258dff;
+$black: #424242;
+
+// Borders
+$input-border: 1px solid $grey;
+
+// Animations
+$transitionTime: .15s;
+
+/*
+*   Form Elements
+*/
+
+input, button { 
+    @apply rounded-full px-4 py-2;
+    
+    outline: none !important; 
+    background: none;
+    border: $input-border;
+    box-shadow: $box-shadow;
+    transition: $transitionTime;
+    color: $black;
+
+    &:hover, &:focus {
+        border-color: $blue;
+        color: $blue;
+    }
+}
+
+input[type="text"] { 
+    margin-right: -35px;
+    color: $black;
+}
+
+button, button.btn { 
+    @apply  justify-center align-middle flex flex-row;
+
+    svg {
+        @apply size-6 mr-2;
+
+        transition: $transitionTime;
+        color: $blue;
+    }
+
+    &:hover { 
+        svg { 
+            color: $blue;
+        }
+    }
+}
+
+
+/*
+*   Layout Elements
+*/
+.box { 
+    @apply rounded-md relative;
+    background: none;
+    max-height: 90vh;
+}
