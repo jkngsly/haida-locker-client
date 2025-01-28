@@ -116,16 +116,15 @@
             span { 
                 font-weight: 400;
             }
+
+            svg:first-child { 
+                @apply float-left mr-4;
+            }
         }
 
         svg { 
             @apply size-4;
         }
-
-        svg:first-child { 
-            @apply float-left mr-4;
-        }
-
     }
 
     .folder-empty { 

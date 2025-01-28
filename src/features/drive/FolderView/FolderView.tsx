@@ -10,45 +10,36 @@ import FileUploadThumbnail from '@/features/drive/FileThumbnail/FileUploadThumbn
 import HeroIcon from '@components/HeroIcon'
 import Button from '@/components/Button'
 
-interface Props { 
+interface Props {
     search?: '' | null
 }
 
-const FolderView: React.FC<Props> = (props) => {    
+const FolderView: React.FC<Props> = (props) => {
     const folderId = useAppSelector(selectId)
     const folderPath = useAppSelector(selectPath)
     const folderName = useAppSelector(selectName)
     const uploadFiles = useAppSelector(selectUploadFiles)
 
     // @ts-ignore
-    let { data, isLoading, error } = (props.search && props.search.length > 0 ? 
-            // @ts-ignore
-             useSearchQuery({ text: props.search }) 
-             :
-             useGetFilesQuery({ folderId: folderId || "root" }))
+    let { data, isLoading, error } = (props.search && props.search.length > 0 ?
+        // @ts-ignore
+        useSearchQuery({ text: props.search })
+        :
+        useGetFilesQuery({ folderId: folderId || "root" }))
 
 
-    const handleUploadClick = () => { 
-      
+    const handleUploadClick = () => {
+
     }
 
     if (!isLoading && data) {
         return (
             <div id="folder-view" className="box">
-                <div className="w-full folder-toolbar text-right flex flex-row  pwd  px-4 justify-between">
-                    <div className="order-1 folder-path">
+                <div className="w-full folder-toolbar  flex flex-row  px-4 ">
+                    <div className="folder-path">
                         <HeroIcon name="ArrowTurnDownRight" />
                         {folderPath.replace(folderName, "")}
                         <span>{folderName}</span>
-                    </div>
-                    <div className="order-2 flex flex-row">
-
-                        <HeroIcon name="ArrowLongUp" />
-                        <a>
-                            <HeroIcon name="Cog6Tooth" />
-                            Settings
-                        </a>
-
                     </div>
                 </div>
                 {/*uploadFiles.length > 0 &&

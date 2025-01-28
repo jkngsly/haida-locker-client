@@ -18,7 +18,7 @@ $transitionTime: .15s;
 */
 
 input, button { 
-    @apply rounded-full px-4 py-2;
+    @apply rounded-full px-4 py-2 mx-2;
     
     outline: none !important; 
     background: none;
@@ -34,7 +34,6 @@ input, button {
 }
 
 input[type="text"] { 
-    margin-right: -35px;
     color: $black;
 }
 

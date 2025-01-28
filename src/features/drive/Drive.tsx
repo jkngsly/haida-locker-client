@@ -4,10 +4,13 @@ import HeroIcon from '@components/HeroIcon'
 import FileUpload from '@features/drive/FileUpload/FileUpload'
 import Modal from '@/components/Modal'
 import { useEffect, useState } from 'react'
+import { selectName } from '@/features/drive/FolderTree/folderTreeSlice'
+import { useAppSelector } from '@/app/hooks'
 
 const Drive: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState(null);
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
+  const folderName = useAppSelector(selectName)
 
   let searchValue = null;
 
@@ -27,17 +30,10 @@ const Drive: React.FC = () => {
 
   return (
     <>
-      <div className="flex flex-row">
-          <div className="folder-search">
-            <input type="text" className="" placeholder="Search" onChange={(e) => setSearchTerm(e.target.value)} />
-            <HeroIcon name="MagnifyingGlass" />
-          </div>
-          <div className="folder-filters">
-            <a title="Show Filters"><HeroIcon name="AdjustmentsHorizontal" /></a>
-          </div>
-          <div className="w-3/6 p-4 pt-0 flex flex-row justify-end">
+      <div className="flex flex-row mb-6">
             <FileUpload />
-          </div>
+            <input type="text" className="" placeholder={"Search Folder: " + folderName} onChange={(e) => setSearchTerm(e.target.value)} />
+            <a title="Show Filters" className="block"><HeroIcon name="AdjustmentsHorizontal" /></a>
           {/* && (
             <div>
               <input type="text" value={} onChange={} className="text-black" />
