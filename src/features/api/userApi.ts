@@ -5,7 +5,7 @@
     endpoints: builder => ({
       getUsers: builder.query({
         query: () => 'users',
-        transformResponse: (response: { data: IUser }, meta, arg) => response.data,
+        transformResponse: (response: { data: IUser[] }, meta, arg) => response.data,
         providesTags: ['Users'], 
       }),
     }),
