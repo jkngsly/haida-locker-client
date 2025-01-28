@@ -24,9 +24,9 @@ export const authSlice = createAppSlice({
     reducers: create => ({
         setToken: create.reducer(
             (state, action: PayloadAction<ITokenResponse>) => {
-                console.log("SET TOKEN", action.payload.accessToken)
-                
-                setLocalStorage(action.payload)
+                localStorage.setItem("token", action.payload.accessToken)
+                localStorage.setItem("refreshToken", action.payload.refreshToken)
+                localStorage.setItem("sub", action.payload.sub)
 
                 state.token = localStorage.getItem("token")
                 state.refreshToken = localStorage.getItem("refreshToken")
@@ -40,18 +40,6 @@ export const authSlice = createAppSlice({
             },
         ),
     }),
-    extraReducers: (builder) => {
-        builder.addMatcher(
-            authApi.endpoints.login.matchFulfilled,
-            (state, { payload }) => {
-                setLocalStorage(payload)
-
-                state.token = localStorage.getItem("token")
-                state.refreshToken = localStorage.getItem("refreshToken")
-                state.sub = localStorage.getItem("sub")
-            },
-        )
-    },
     /*authTokenChange: (state, action) => {
         console.log("change")
       localStorage.setItem("token", action.payload.accessToken);

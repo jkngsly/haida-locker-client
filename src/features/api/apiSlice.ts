@@ -1,6 +1,8 @@
-import { authSlice } from '@/features/auth/authSlice';
+import { store } from '@/app/store';
+import { setToken } from '@/features/auth/authSlice';
 import { BaseQueryFn, createApi, FetchArgs, fetchBaseQuery, FetchBaseQueryArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query/react'
 import { Mutex } from 'async-mutex'
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const mutex = new Mutex()
@@ -24,6 +26,7 @@ const baseQuery = fetchBaseQuery({
   ...baseQueryOpt,
   prepareHeaders: (headers, { getState }) => {
     const token = (getState() as any).auth?.token
+    console.log(token, "TOKEN")
     headers.set('Authorization', `Bearer ${token}`)
     return headers
   }
@@ -43,9 +46,6 @@ const baseQueryWithReauth: BaseQueryFn<
     const release = await mutex.acquire()
     try {
 
-      console.log("SetItemRefresh")
-      localStorage.setItem("refresh", "turd")
-
       // Fetch new token 
       // @ts-ignore (ノಠ益ಠ)ノ彡┻━┻ 
       const refreshResult = await fetchBaseQuery({
@@ -61,9 +61,10 @@ const baseQueryWithReauth: BaseQueryFn<
         extraOptions)
 
       if (refreshResult.data) {
-        
+        api.dispatch(setToken(refreshResult.data.data))
         // Retry the initial query
         result = await baseQuery(args, api, extraOptions)
+        console.log("result", result)
       } else {
         //const navigate = useNavigate()
         //navigate("/login")

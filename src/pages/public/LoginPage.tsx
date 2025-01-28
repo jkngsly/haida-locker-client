@@ -1,3 +1,4 @@
+import { setToken } from '@/features/auth/authSlice';
 import { useAppDispatch } from '@app/hooks';
 import { useLoginMutation } from '@features/api/authApi';
 import { Button } from 'primereact/button';
@@ -19,7 +20,8 @@ const LoginPage: React.FC = () => {
   const handleLoginClick = async () => {
     try {
         //await login(getValues()).unwrap().then(() => { 
-        await login({ email: "jkngsly@gmail.com", password: "AJd8w9Z32#$!"}).unwrap().then(() => { 
+        await login({ email: "jkngsly@gmail.com", password: "AJd8w9Z32#$!"}).unwrap().then((data) => { 
+          dispatch(setToken(data))
           navigate('/portal')
         })
     } catch (err) {

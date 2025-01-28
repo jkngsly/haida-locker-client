@@ -10,11 +10,11 @@ import { notificationsSlice } from "@/features/notifications/notificationsSlice"
 import { authSlice } from "@/features/auth/authSlice"
 
 const rootReducer = combineSlices(
+  apiSlice,
   authSlice,
   folderTreeSlice,
   fileUploadSlice,
   notificationsSlice,
-  apiSlice
 )
 
 export const store = configureStore({
@@ -22,6 +22,7 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(apiSlice.middleware), 
 });
+
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
