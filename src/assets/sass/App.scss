@@ -16,16 +16,17 @@
 
 #logo { 
     @apply w-full flex pr-4 h-24 items-center text-4xl pl-6 overflow-hidden font-black relative;
-
+display: none;
     font-family: "Oswald", serif;
     font-optical-sizing: auto;
     font-style: normal;
 
-    background: $black $patternBg;
+    color: #707070;
+
+    background: #fff;
     background-size: 6px; 
 
     position: relative;
-    box-shadow: inset -20px 0px 20px 0px $black;
     
     img { 
         @apply absolute right-0 h-auto;
@@ -54,6 +55,7 @@
         background-position: center top;
         background-size: cover;
         box-shadow: inset -1px -200px 10000px -87px rgb(31 41 55);
+        border-top: 3px solid $blue;
     }
 }
 
