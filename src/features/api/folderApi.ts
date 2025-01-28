@@ -5,17 +5,17 @@ import {
 } from '@reduxjs/toolkit'
 import type { RootState } from '@app/store'
 import {transformResponse, apiSlice } from '@features/api/apiSlice'
-import Folder from '@/features/types/folder.interface'
-import File from '@/features/types/file.interface'
+import IFolder from '@/features/types/folder.interface'
+import IFile from '@/features/types/file.interface'
 
-const foldersAdapter = createEntityAdapter<Folder>()
+const foldersAdapter = createEntityAdapter<IFolder>()
 const initialState = foldersAdapter.getInitialState()
 
 export const folderApi  = apiSlice.injectEndpoints({
   endpoints: builder => ({
     getRootFolders: builder.query({
       query: () => 'folders',
-      transformResponse: (response: { data: Folder }, meta, arg) => response.data,
+      transformResponse: (response: { data: IFolder }, meta, arg) => response.data,
      /* transformErrorResponse: (
         response: { status: string | number },
         meta,
@@ -27,7 +27,7 @@ export const folderApi  = apiSlice.injectEndpoints({
 
     getFiles: builder.query({
         query: ({ folderId }) => 'folders/' + folderId + '/files',
-        transformResponse: (response: { data: File[] }, meta, arg) => response.data,
+        transformResponse: (response: { data: IFile[] }, meta, arg) => response.data,
         providesTags: ['Files'], 
     }),
   }),

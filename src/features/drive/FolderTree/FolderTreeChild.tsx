@@ -2,11 +2,11 @@
 import React, { useEffect, useState } from 'react'
 import { selectId, setId, setPath, setName } from './folderTreeSlice'
 import { useAppDispatch, useAppSelector } from "@app/hooks"
-import Folder from '@/features/types/folder.interface'
+import IFolder from '@/features/types/folder.interface'
 import HeroIcon from '@components/HeroIcon'
 
 interface Props {
-    folder: Folder
+    folder: IFolder
 }
 
 const FolderTreeChild: React.FC<Props> = (props) => {
@@ -40,7 +40,7 @@ const FolderTreeChild: React.FC<Props> = (props) => {
                 <HeroIcon name={expanded ? "FolderOpen" : "Folder"} />{folder.name}</a>
             {folder.children && folder.children.length > 0 && (
                 <ul>
-                    {expanded && folder.children.map((child: Folder) => {
+                    {expanded && folder.children.map((child: IFolder) => {
                         return (
                             <FolderTreeChild key={child.id + "_parent"} folder={child} />
                         )

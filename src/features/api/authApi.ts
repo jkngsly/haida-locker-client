@@ -1,6 +1,6 @@
 import { apiSlice } from '@features/api/apiSlice'
-import IUser from '@/features/types/user.interface'
 import { setUser } from '@/features/userSlice';
+import IUser from '@/features/types/user.interface'
 import ITokenResponse from '@/features/types/token.interface';
 
 export const authApi = apiSlice.injectEndpoints({

@@ -17,12 +17,12 @@ export default interface FolderApiResponse {
 
 */
 
-export default interface Folder {
+export default interface IFolder {
     id: string,
     parent_id: string,
     name: string,
     path: string,
     is_root: boolean,
-    children: Folder[]
+    children: IFolder[]
   }
   

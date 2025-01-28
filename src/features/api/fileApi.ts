@@ -5,14 +5,14 @@ import {
 } from '@reduxjs/toolkit'
 import type { RootState } from '@app/store'
 import { transformResponse, apiSlice } from '@features/api/apiSlice'
-import File from '@/features/types/file.interface'
+import IFile from '@/features/types/file.interface'
 import { searchForWorkspaceRoot } from 'vite'
 
 export const fileApi = apiSlice.injectEndpoints({
     endpoints: build => ({
-        getFile: build.query<File, string>({
+        getFile: build.query<IFile, string>({
             query: (id) => 'file/' + id,
-            transformResponse: (response: { data: File }, meta, arg) => response.data,
+            transformResponse: (response: { data: IFile }, meta, arg) => response.data,
         }),
 
         uploadFile: build.mutation({
@@ -40,7 +40,7 @@ export const fileApi = apiSlice.injectEndpoints({
                     name: search.text
                 },
             }),
-            transformResponse: (response: { data: File[] }, meta, arg) => response.data,
+            transformResponse: (response: { data: IFile[] }, meta, arg) => response.data,
             providesTags: ['Files']
         })
     })

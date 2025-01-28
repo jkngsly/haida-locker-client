@@ -1,4 +1,4 @@
-export default interface Ding {
+export default interface IDing {
     icon?: string
     text?: string
     actionText?: string

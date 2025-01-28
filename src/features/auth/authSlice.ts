@@ -1,10 +1,8 @@
 // store/slices/authSlice.ts
 
 import { createAppSlice } from "@/app/createAppSlice";
-import { authApi } from "@/features/api/authApi";
 import { PayloadAction } from "@reduxjs/toolkit";
 import ITokenResponse from '@/features/types/token.interface';
-import { useAppDispatch } from "@/app/hooks";
 
 const initialState = {
     token: localStorage.getItem("token"),

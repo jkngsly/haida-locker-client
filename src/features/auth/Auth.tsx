@@ -1,6 +1,6 @@
+import { authApi } from '@api/authApi';
 import { useCookies } from 'react-cookie';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-import { authApi } from '@api/authApi';
 //import FullScreenLoader from './FullScreenLoader';
 
 const Auth = ({ allowedRoles }: { allowedRoles: string[] }) => {

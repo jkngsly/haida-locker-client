@@ -38,25 +38,6 @@ const fileUpload: React.FC<Props> = (props) => {
             } catch (err) {
                 console.error('Upload failed: ', err);
             }
-
-
-            //setFolderTreeLocked(true);
-
-            /*
-            const files: UploadFileInterface[] = [];
-            [...e.target.files].map((file: File) => { 
-              // FolderView icons
-              files.push({
-                name: file.name,
-                size: file.size,
-                type: file.type,
-                url: URL.createObjectURL(file)
-              });
-            });
-
-            dispatch(setUploadFiles(files))
-            dispatch(setUploadActive(true))
-            */
         }
     }
 
