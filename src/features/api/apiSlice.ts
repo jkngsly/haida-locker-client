@@ -1,6 +1,6 @@
 import { store } from '@/app/store';
 import { setToken } from '@/features/auth/authSlice';
-import { BaseQueryFn, createApi, FetchArgs, fetchBaseQuery, FetchBaseQueryArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query/react'
+import { BaseQueryApi, BaseQueryFn, createApi, FetchArgs, fetchBaseQuery, FetchBaseQueryArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query/react'
 import { Mutex } from 'async-mutex'
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -21,14 +21,18 @@ const baseQueryOpt = {
   credentials: 'same-origin',
 }
 
+const getHeaders = (headers: Headers, state: any, refreshToken: boolean) => { 
+    const token = state.auth?.[refreshToken ? 'refreshToken' : 'token']
+    headers.set('Authorization', `Bearer ${token}`)
+    return headers
+}
+
 // @ts-ignore (ノಠ益ಠ)ノ彡┻━┻ 
 const baseQuery = fetchBaseQuery({
   ...baseQueryOpt,
+  
   prepareHeaders: (headers, { getState }) => {
-    const token = (getState() as any).auth?.token
-    console.log(token, "TOKEN")
-    headers.set('Authorization', `Bearer ${token}`)
-    return headers
+    return getHeaders(headers, getState() as any, false)
   }
 })
 
@@ -50,38 +54,33 @@ const baseQueryWithReauth: BaseQueryFn<
       // @ts-ignore (ノಠ益ಠ)ノ彡┻━┻ 
       const refreshResult = await fetchBaseQuery({
         ...baseQueryOpt,
+
+        // Use headers with refresh token instead of access token
         prepareHeaders: (headers, { getState }) => {
-          const token = (getState() as any).auth?.refreshToken
-          headers.set('Authorization', `Bearer ${token}`)
-          return headers
-        }
+          return getHeaders(headers, getState() as any, true)
+        },
+        // TODO: transform data response ex: data.data => data?
       })(
         'auth/refresh/',
         api,
         extraOptions)
 
       if (refreshResult.data) {
+        // Set the new token
+        // @ts-ignore (ノಠ益ಠ)ノ彡┻━┻ 
         api.dispatch(setToken(refreshResult.data.data))
         // Retry the initial query
         result = await baseQuery(args, api, extraOptions)
-        console.log("result", result)
-      } else {
-        //const navigate = useNavigate()
-        //navigate("/login")
       }
     } finally {
       // release must be called once the mutex should be released again.
       release()
     }
-  } else {
-    // wait until the mutex is available without locking it
-    await mutex.waitForUnlock()
-    result = await baseQuery(args, api, extraOptions)
   }
-
-  return result
+  
+  await mutex.waitForUnlock()
+  return result;
 }
-
 
 export const apiSlice = createApi({
   reducerPath: 'api', // Shared reducer path for all slices

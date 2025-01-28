@@ -20,8 +20,6 @@ const FolderView: React.FC<Props> = (props) => {
     const folderName = useAppSelector(selectName)
     const uploadFiles = useAppSelector(selectUploadFiles)
 
-    console.log(props.search)
-    
     // @ts-ignore
     let { data, isLoading, error } = (props.search && props.search.length > 0 ? 
             // @ts-ignore
