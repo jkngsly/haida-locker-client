@@ -1,0 +1,184 @@
+@import './variables.scss';
+@import './Elements.scss';
+
+
+#folder { 
+    @apply max-h-max;
+    max-height: 90vh;
+
+    .folder__grid { 
+        @apply grid grid-cols-6 auto-rows-max overflow-y-scroll;
+        
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    .folder__path { 
+        @apply text-sm;
+        letter-spacing: 2px;
+        
+        span { 
+            font-weight: 400;
+        }
+
+        svg { 
+            @apply size-4;
+        }
+
+
+        svg:first-child { 
+            @apply float-left mr-4;
+        }
+    }
+
+    .folder__grid--empty { 
+        @apply h-80 w-full flex justify-center items-center; 
+
+        a {
+            svg { 
+                @apply size-80 opacity-10;
+
+                transition: .25s;
+            }
+
+            &:hover { 
+                color: $pink;
+                svg { 
+                    @apply cursor-pointer opacity-100;
+
+                }
+            }
+        }
+    }
+
+    .file { 
+        @apply relative rounded-md mx-4 my-4 h-44 flex flex-col items-center align-middle overflow-hidden;
+
+        &:hover {
+        }
+    }
+
+    .file__header { 
+        @apply w-full absolute overflow-hidden text-left h-1/6 align-middle text-xs font-semibold text-slate-800 text-white;
+
+        display: none; 
+        z-index: 10;
+        
+        // Elipsis
+        > svg { 
+            cursor: pointer; 
+        }
+
+        span {
+            @apply overflow-hidden inline-block max-h-4;
+        }
+
+        svg {
+            @apply float-right size-5 absolute right-0;
+            stroke: #fff;
+        }
+    }
+
+    .file:hover { 
+        .file-thumbnail { 
+            transform:scale(1.1) 
+        }
+
+        .file-header { 
+            display: block;
+        }
+    }
+
+    .file__name { 
+        positioN: absolute;
+        bottom: 0;
+        height:0; width: 0;
+        span { 
+            position: absolute;
+            height: 20px;
+            width: 100px;
+            display: block;
+        }
+    }
+
+    .file__thumbnail {
+        @apply w-full h-full text-slate-700 relative;
+
+        transition: transform 2s;
+
+        box-shadow: $box-shadow;
+        transition: 2s;
+
+        &:not(.file-media) { 
+            @apply flex flex-col flex-wrap align-middle content-center justify-center;
+            
+            color: rgba(255,255,255,0.6);
+
+            svg:not(.expand svg) {
+                @apply size-14 
+            }
+        }
+
+        &.file__media { 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative; 
+            overflow: hidden; 
+
+            video { 
+                height: 100%;
+                width: 100%;
+                top: 0;
+                -o-object-fit: cover;
+                object-fit: cover;
+            }
+        }
+    }
+
+    @keyframes dropdown { 
+        0% { 
+            opacity: 0;
+        }
+
+        100% { 
+            opacity: 1;
+        }
+    }
+    
+    .file__dropdown { 
+        @apply absolute flex flex-col rounded-md py-2 px-4 text-sm w-auto;
+
+        z-index: 2;
+        background: rgba(31,41,55,0.9);
+        color: #fff;
+        height: auto;
+        top: 25px;
+        right:0;
+        
+        animation-name: dropdown;
+        animation-duration: 0.15s;
+        animation-timing-function: ease-in;
+
+        a { 
+            @apply mt-2 mb-2 flex items-center;
+
+            &:hover { 
+                @apply text-orange-400 cursor-pointer;
+                text-shadow: 0px 3px 7px orange;
+
+                &.pink { 
+                    color: rgb(255, 96, 112);
+                    text-shadow: 0px 3px 7px rgba(255, 0, 0, 0.87);         
+                }
+            }
+
+            svg { 
+                @apply size-5 mr-2;
+            }
+        }
+    }
+
+}
+

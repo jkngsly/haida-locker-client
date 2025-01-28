@@ -6,7 +6,15 @@ $bgOpacity: 0.8;
     table { 
 
         td, th { 
-            @apply px-2 py-5;
+            @apply px-2;
+        }
+
+        td { 
+            @apply py-3;
+        }
+
+        th { 
+            @apply py-1;
         }
 
         thead tr { 
@@ -17,21 +25,12 @@ $bgOpacity: 0.8;
                 @apply font-medium;
                 color: #393939;
                 text-shadow: 0px 1px 0px #fff;
-                background: rgba(255,255,255,0.5);
-
-                &:first-child { 
-                    @apply rounded-tl-lg;
-                }
-                
-                &:last-child { 
-                    @apply rounded-tr-lg;
-                }
+                background: #f1f1f1;
             }
 
         }
 
         tbody tr { 
-            background: rgba(255,255,255,0.5);
             border-bottom: 1px solid #ccc;
         }
     

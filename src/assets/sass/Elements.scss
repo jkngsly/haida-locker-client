@@ -22,7 +22,7 @@ input, button {
     transition: $transitionTime;
     color: $black;
 
-    &:hover, &:focus {
+    &:hover {
         border-color: $blue;
         color: $blue;
     }
@@ -30,6 +30,11 @@ input, button {
 
 input[type="text"] { 
     color: $black;
+    
+    &:focus {
+        border-color: $blue;
+        color: $blue;
+    }
 }
 
 button, button.btn { 

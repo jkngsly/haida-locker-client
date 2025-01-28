@@ -1,5 +1,5 @@
 import * as React from 'react'
-import FolderView from "@features/drive/FolderView/FolderView"
+import Folder from "@/features/drive/Folder/Folder"
 import HeroIcon from '@components/HeroIcon'
 import FileUpload from '@features/drive/FileUpload/FileUpload'
 import Modal from '@/components/Modal'
@@ -41,7 +41,7 @@ const Drive: React.FC = () => {
             </div>
           )*/}
       </div>
-      <FolderView search={searchTerm} />
+      <Folder search={searchTerm} />
     </>
   )
 }

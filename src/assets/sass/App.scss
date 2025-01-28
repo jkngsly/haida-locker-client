@@ -49,12 +49,15 @@ display: none;
 
     .page-wrapper { 
         @apply bg-zinc-200 min-h-screen p-5 max-h-screen overflow-y-hidden w-10/12;
-        
+      
+        /*
         background-image: url($images + '/mountains.png');
         background-repeat: no-repeat;
         background-position: center top;
         background-size: cover;
         box-shadow: inset -1px -200px 10000px -87px rgb(31 41 55);
+        */
+        
         border-top: 3px solid $blue;
     }
 }
@@ -94,204 +97,6 @@ display: none;
     }
 }
 
-
-#folder-view { 
-    @apply max-h-max;
-    max-height: 90vh;
-
-    .file-grid { 
-        @apply grid grid-cols-6 auto-rows-max overflow-y-scroll;
-        
-        &::-webkit-scrollbar {
-            display: none;
-        }
-    }
-
-    .folder-toolbar { 
-
-        text-shadow: 0px 1px 0px rgb(255 255 255 / 100%);
-
-        .folder-path { 
-            @apply text-sm;
-            letter-spacing: 2px;
-            
-            span { 
-                font-weight: 400;
-            }
-
-            svg:first-child { 
-                @apply float-left mr-4;
-            }
-        }
-
-        svg { 
-            @apply size-4;
-        }
-    }
-
-    .folder-empty { 
-        @apply h-80 w-full flex justify-center items-center; 
-
-        a {
-            svg { 
-                @apply size-80 opacity-10;
-
-                transition: .25s;
-            }
-
-            &:hover { 
-                color: $pink;
-                svg { 
-                    @apply cursor-pointer opacity-100;
-
-                }
-            }
-        }
-    }
-
-    @keyframes showUploadList {
-        from { 
-            opacity: 0;
-        }
-
-        to { 
-            opacity: 1;
-        }
-    }
-
-    /*
-    .file-upload-list { 
-        @apply flex flex-col my-6 pb-4 rounded-md; 
-
-        animation-name: showUploadList;
-        animation-duration: 0.15s;
-        animation-timing-function: ease-in;
-
-        background: linear-gradient(20deg, rgb(2 9 24) 0%, rgb(35 46 61) 70%, rgb(0, 0, 0) 100%);
-
-        .file-information { 
-            @apply absolute bottom-0 w-full p-2 text-sm;
-
-            background: rgba(0,0,0,0.7);
-            color: #fff;
-            font-weight: 400;
-        }
-
-        button { 
-            @apply w-80 m-auto;
-        }
-    }
-*/
-    .file { 
-        @apply relative rounded-md mx-4 my-4 h-44 flex flex-col p-2 relative flex flex-col items-center align-middle;
-        
-        
-        background-color: rgb(31 41 55);
-        border: 1px solid rgb(31 41 55);
-    
-        &:hover {
-            background-color: rgb(255 10 35 / 76%);
-            border-color: rgb(255 10 35 / 76%);
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-        }
-    }
-
-    .file-header { 
-        @apply w-full overflow-hidden text-left h-1/6 align-middle text-xs font-semibold text-slate-800 relative text-white;
-
-        // Elipsis
-        > svg { 
-            cursor: pointer; 
-        }
-
-        span {
-            @apply overflow-hidden inline-block max-h-4;
-        }
-
-        svg {
-            @apply float-right size-5 absolute right-0;
-            stroke: #fff;
-        }
-    }
-
-    .file-thumbnail {
-        @apply w-full h-5/6 text-slate-700 relative;
-
-        background: linear-gradient(20deg, rgb(2 9 24) 0%, rgb(35 46 61) 70%, rgb(0, 0, 0) 100%);
-
-        &:not(.file-media) { 
-            @apply flex flex-col flex-wrap align-middle content-center justify-center;
-            
-            color: rgba(255,255,255,0.6);
-
-            svg:not(.expand svg) {
-                @apply size-14 
-            }
-        }
-
-        &.file-media { 
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            position: relative; 
-            overflow: hidden; 
-
-            video { 
-                height: 100%;
-                width: 100%;
-                top: 0;
-                -o-object-fit: cover;
-                object-fit: cover;
-            }
-        }
-    }
-
-    @keyframes dropdown { 
-        0% { 
-            opacity: 0;
-        }
-
-        100% { 
-            opacity: 1;
-        }
-    }
-    
-    .file-menu-dropdown { 
-        @apply absolute flex flex-col rounded-md py-2 px-4 text-sm w-auto;
-
-        z-index: 2;
-        background: rgba(31,41,55,0.9);
-        color: #fff;
-        height: auto;
-        top: 25px;
-        right:0;
-        
-        animation-name: dropdown;
-        animation-duration: 0.15s;
-        animation-timing-function: ease-in;
-
-        a { 
-            @apply mt-2 mb-2 flex items-center;
-
-            &:hover { 
-                @apply text-orange-400 cursor-pointer;
-                text-shadow: 0px 3px 7px orange;
-
-                &.pink { 
-                    color: rgb(255, 96, 112);
-                    text-shadow: 0px 3px 7px rgba(255, 0, 0, 0.87);         
-                }
-            }
-
-            svg { 
-                @apply size-5 mr-2;
-            }
-        }
-    }
-
-}
-
-
 .modal { 
     @apply fixed rounded-md z-10 flex flex-col px-20 py-10;
     
@@ -321,4 +126,17 @@ display: none;
     display: flex;
     justify-content: center;
 }
+
+// whatever
+.page__header { 
+    @apply w-full text-2xl font-bold mb-4;
+
+    color: #444;
+}
+
+// Form 
+.form__controls { 
+    input { height: 1rem }
+}
+
 

@@ -82,21 +82,23 @@ const FileThumbnail: React.FC<Props> = (props) => {
         return (
             <div className="file">
                 {showMenu && (
-                    <div className="file-menu-dropdown" ref={dropdownRef}>
+                    <div className="file__dropdown" ref={dropdownRef}>
                         <a title="Download" target="tab" href={url}><HeroIcon name="CloudArrowDown" />Download</a>
                         <a title="Share options"><HeroIcon name="ArrowUpOnSquare" />Share</a>
                         <a title="Delete" className="pink" onClick={handleDeleteClick}><HeroIcon name="Trash" />Delete</a>
                     </div>
                 )}
-                <div className="file-header">
+                <div className="file__header">
                     <HeroIcon name="EllipsisHorizontal" onClick={handleDropdownClick} />
-                    <span>{data.name.substring(0, 20) + (data.name.length > 20 ? "..." : "")}</span>
                 </div>
+                {/*
+                <div className="file-name"><span>{data.name.substring(0, 20) + (data.name.length > 20 ? "..." : "")}</span></div>
+                */}
                 <div className={getThumbnailClassName()} style={getImageBackground()}>
                     {icon && <HeroIcon name="Document" />}
                     {video &&
                         // @ts-ignore
-                        <video id="background-video" autoPlay loop muted>
+                        <video autoPlay loop muted>
                             <source src={url} type="video/mp4" /> {/* TODO: correct mime format */}
                         </video>
                     }
