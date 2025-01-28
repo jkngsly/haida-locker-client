@@ -1,9 +1,6 @@
-import { store } from '@/app/store';
 import { setToken } from '@/features/auth/authSlice';
-import { BaseQueryApi, BaseQueryFn, createApi, FetchArgs, fetchBaseQuery, FetchBaseQueryArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query/react'
+import { BaseQueryFn, createApi, FetchArgs, fetchBaseQuery, FetchBaseQueryArgs, FetchBaseQueryError } from '@reduxjs/toolkit/query/react'
 import { Mutex } from 'async-mutex'
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 const mutex = new Mutex()
 
@@ -77,7 +74,7 @@ const baseQueryWithReauth: BaseQueryFn<
       release()
     }
   }
-  
+
   await mutex.waitForUnlock()
   return result;
 }
