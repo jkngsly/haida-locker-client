@@ -7,42 +7,64 @@ import { setToken } from "@features/auth/authSlice"
 import { useAppDispatch } from '@/app/hooks'
 import HeroIcon from '@/components/HeroIcon'
 
-function Nav() {
-    const [count, setCount] = React.useState(0)
-    const navigate = useNavigate();
+const SidebarItem = ({ item }) => {
+    const [isOpen, setIsOpen] = React.useState(false);
+    
+    const toggleCollapse = () => {
+      setIsOpen(!isOpen);
+    };
+  
+    return (
+        <li>
+            <NavLink to={item.to} onClick={toggleCollapse}>
+                <HeroIcon name={item.icon} />
+                {item.name}
+            </NavLink>
 
+            {item.to == "portal/drive" && isOpen && (
+                <FolderTree />
+            )}
+
+            {item.children && isOpen && (
+            <ul>
+                {item.children.map((child) => (
+                <SidebarItem key={child.name} item={child} />
+                ))}
+            </ul>
+            )}
+        </li>
+    );
+  };
+
+function Nav() {
+    const [asdacsdsa, setCount] = React.useState(0)
+    const navigate = useNavigate();
     const dispatch = useAppDispatch()
 
-    const links = [
+    const items = [
         {
             to: "portal/drive",
             icon: "Server",
-            text: "My Drive",
-            folders: true
+            name: "My Drive"
         },
         {
             to: "portal/settings",
             icon: "AdjustmentsVertical",
-            text: "Settings",
+            name: "Settings",
             children: [
                 {
                     to: "portal/settings/edit-profile",
                     icon: "UserCircle",
-                    text: "Edit Profile"
+                    name: "Edit Profile"
                 },
                 {
                     to: "portal/settings/manage-users",
                     icon: "UserGroup",
-                    text: "Manage Users"
+                    name: "Manage Users"
                 },
             ]
         },
     ];
-
-    const handleLogoutClick = () => {
-        dispatch(setToken(null))
-        navigate("/login")
-    }
 
     return (
         <div id="navigation">
@@ -51,20 +73,9 @@ function Nav() {
                 Haida<span>ドライブ</span>
             </div>
             <nav className="flex flex-col w-full">
-                {links.map((link, index) => {
+                {items.map((item) => {
                     return (
-                        <div className={link.to} key={index}>
-                        <NavLink to={link.to}>
-                            <HeroIcon name={link.icon} />
-                            {link.text}
-                        </NavLink>
-
-                        {link.to == "portal/drive" && (
-                            <FolderTree />
-                        )}
-
-                    </div>
-
+                        <SidebarItem key={item.name} item={item} />
                     )
                 })}
             </nav>
