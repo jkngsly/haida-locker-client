@@ -28,11 +28,23 @@ function Nav() {
         {
             to: "portal/settings",
             icon: "AdjustmentsVertical",
-            text: "Settings"
+            text: "Settings",
+            children: [
+                {
+                    to: "portal/settings/edit-profile",
+                    icon: "UserCircle",
+                    text: "Edit Profile"
+                },
+                {
+                    to: "portal/settings/manage-users",
+                    icon: "UserGroup",
+                    text: "Manage Users"
+                },
+            ]
         },
     ];
 
-    const handleLogoutClick = () => { 
+    const handleLogoutClick = () => {
         dispatch(setToken(null))
         navigate("/login")
     }
@@ -60,10 +72,11 @@ function Nav() {
                                     <HeroIcon name={link.icon} />
                                     {link.text}
                                 </NavLink>
-                                
+
                                 {link.to == "portal/drive" && (
                                     <FolderTree />
                                 )}
+
                             </div>
                         )
                     })}
