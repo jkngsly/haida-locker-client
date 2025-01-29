@@ -1,19 +1,9 @@
 @import 'variables.scss';
 
 #logo { 
-    @apply w-full flex h-24  text-3xl  font-semibold justify-center items-center mt-20;
+    @apply w-full text-3xl font-semibold my-20;
 
     color: #e7e7e7;
-    position: relative;
-    
-    img { 
-        @apply absolute right-0 h-auto;
-
-        width: 180px;
-        top: 5px;
-        margin-right: -51px;
-    }
-
     span { 
         @apply font-light;
         letter-spacing: -10px;
@@ -23,10 +13,14 @@
 
 
 #navigation {
-    background: #10171d;;
+    background: #10171d;
+
+    li {
+        list-style-type: none;
+    }
 
     /* Layout */
-    @apply w-1/5 px-24 min-h-screen flex flex-col
+    @apply w-1/5 pl-24 min-h-screen flex flex-col
 
     /* Default font color */
     text-white overflow-y-hidden;
@@ -35,12 +29,8 @@
         display: none;
     }
 
-    nav  svg { 
+    nav svg { 
         @apply size-6 mr-5;
-    }
-
-    > div {
-        @apply relative overflow-y-hidden max-h-screen z-20;
     }
 
     #user {
@@ -52,28 +42,29 @@
     }
 
     nav {
-        text-align:center;
-    }
+        @apply flex;
 
-    nav a {
-        
-    }
-
-    nav  a {
-        /* Hover font color for links */
-        @apply hover:text-sky-200 flex mb-6 ml-3;
-
-        transition: 0.15s;
-
-        /* Active font color for links */
-        &.active {
-            color: rgb(93, 217, 255);
-            //text-shadow: 0px 3px 7px rgba(255, 0, 0, 0.87);
-
+        li { 
+            @apply ml-3;
         }
-    }
 
-    nav  {
-        @apply my-3 flex hover:cursor-pointer;
+        a {
+            /* Hover font color for links */
+            @apply hover:text-sky-200 flex mb-6 cursor-pointer;
+    
+            a, > li ul { 
+                @apply ml-3;
+            }
+    
+            transition: 0.15s;
+    
+            /* Active font color for links */
+            &.active {
+                color: rgb(93, 217, 255);
+                //text-shadow: 0px 3px 7px rgba(255, 0, 0, 0.87);
+    
+            }
+        }
+
     }
 }

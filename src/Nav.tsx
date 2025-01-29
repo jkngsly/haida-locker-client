@@ -9,32 +9,43 @@ import HeroIcon from '@/components/HeroIcon'
 
 const SidebarItem = ({ item }) => {
     const [isOpen, setIsOpen] = React.useState(false);
-    
+
     const toggleCollapse = () => {
-      setIsOpen(!isOpen);
+        setIsOpen(!isOpen);
     };
-  
-    return (
-        <li>
+
+    const link = () => (
+        item.children?.length > 0 || item.to == "portal/drive" ? (
+            <a onClick={toggleCollapse}>
+                <HeroIcon name={item.icon} />
+                {item.name}
+            </a>
+        ) : (
             <NavLink to={item.to} onClick={toggleCollapse}>
                 <HeroIcon name={item.icon} />
                 {item.name}
             </NavLink>
+        )
+    );
 
-            {item.to == "portal/drive" && isOpen && (
+    return (
+        <li>
+            {link()}
+
+            {item.to == "portal/drive" && (
                 <FolderTree />
             )}
 
             {item.children && isOpen && (
-            <ul>
-                {item.children.map((child) => (
-                <SidebarItem key={child.name} item={child} />
-                ))}
-            </ul>
+                <ul>
+                    {item.children.map((child) => (
+                        <SidebarItem key={child.name} item={child} />
+                    ))}
+                </ul>
             )}
         </li>
     );
-  };
+};
 
 function Nav() {
     const [asdacsdsa, setCount] = React.useState(0)
@@ -45,10 +56,9 @@ function Nav() {
         {
             to: "portal/drive",
             icon: "Server",
-            name: "My Drive"
+            name: "My Drive",
         },
         {
-            to: "portal/settings",
             icon: "AdjustmentsVertical",
             name: "Settings",
             children: [
@@ -88,7 +98,7 @@ function Nav() {
                         <span className="text-sm">Online</span>
                     </div>
                 </span>
-            </div> */}  
+            </div> */}
         </div>
     )
 }
