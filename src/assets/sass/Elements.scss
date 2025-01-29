@@ -23,8 +23,8 @@ input, button {
     color: $white;
 
     &:hover {
-        border-color: $blue;
-        color: $blue;
+        border-color: $orange;
+        color: $orange;
     }
 }
 
@@ -32,8 +32,8 @@ input[type="text"] {
     color: $black;
     
     &:focus {
-        border-color: $blue;
-        color: $blue;
+        border-color: $orange;
+        color: $orange;
     }
 }
 
@@ -44,12 +44,12 @@ button, button.btn {
         @apply size-6 mr-2;
 
         transition: $transitionTime;
-        color: $blue;
+        color: $orange;
     }
 
     &:hover { 
         svg { 
-            color: $blue;
+            color: $orange;
         }
     }
 }

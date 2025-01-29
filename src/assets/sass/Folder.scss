@@ -7,7 +7,7 @@
     max-height: 90vh;
 
     .folder__grid { 
-        @apply grid grid-cols-6 auto-rows-max overflow-y-scroll;
+        @apply grid grid-cols-4 auto-rows-max overflow-y-scroll;
         
         &::-webkit-scrollbar {
             display: none;
@@ -182,3 +182,8 @@
 
 }
 
+
+#folder__search { 
+    @apply h-full w-1/3;
+    background: #10171d;
+}

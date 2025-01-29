@@ -36,29 +36,29 @@ const Folder: React.FC<Props> = (props) => {
     if (!isLoading && data) {
         return (
             <div id="folder" className="box">
-                <div className="w-full flex flex-row  px-4 ">
-                    <div className="folder__path">
-                        <HeroIcon name="ArrowTurnDownRight" />
-                        {folderPath.replace(folderName, "")}
-                        <span>{folderName}</span>
+                    <div className="w-fullflex flex-row  px-4 ">
+                        <div className="folder__path">
+                            <HeroIcon name="ArrowTurnDownRight" />
+                            {folderPath.replace(folderName, "")}
+                            <span>{folderName}</span>
+                        </div>
                     </div>
+                    {data.length > 0 && (
+                        <div className="folder__grid">
+                            {data.map((file, index) => (
+                                <FileThumbnail key={index} id={file.id} />
+                            ))}
+                        </div>
+                    )}
+                    {!data.length && (
+                        <div className="folder__grid--empty">
+                            {/* TODO: Upload trigger */}
+                            <a title="Upload" onClick={handleUploadClick}>
+                                <HeroIcon name="CloudArrowUp" />
+                            </a>
+                        </div>
+                    )}
                 </div>
-                {data.length > 0 && (
-                    <div className="folder__grid">
-                        {data.map((file, index) => (
-                            <FileThumbnail key={index} id={file.id} />
-                        ))}
-                    </div>
-                )}
-                {!data.length && (
-                    <div className="folder__grid--empty">
-                        {/* TODO: Upload trigger */}
-                        <a title="Upload" onClick={handleUploadClick}>
-                            <HeroIcon name="CloudArrowUp" />
-                        </a>
-                    </div>
-                )}
-            </div>
         )
     }
 }

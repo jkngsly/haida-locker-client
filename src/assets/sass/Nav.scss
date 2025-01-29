@@ -17,12 +17,13 @@
     span { 
         @apply font-light;
         letter-spacing: -10px;
+        color: $orange;
     }
 }
 
 
 #navigation {
-    background: #0d1a24;;
+    background: #10171d;;
 
     /* Layout */
     @apply w-1/5 px-24 min-h-screen flex flex-col

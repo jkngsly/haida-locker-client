@@ -30,18 +30,23 @@ const Drive: React.FC = () => {
 
   return (
     <>
-      <div className="flex flex-row mb-6">
-            <FileUpload />
-            <input type="text" className="" placeholder={"Search Folder: " + folderName} onChange={(e) => setSearchTerm(e.target.value)} />
-            <a title="Show Filters" className="block"><HeroIcon name="AdjustmentsHorizontal" /></a>
+      <div className="w-2/3">
+        <div className="flex flex-row mb-6">
+          <FileUpload />
+          <input type="text" className="" placeholder={"Search Folder: " + folderName} onChange={(e) => setSearchTerm(e.target.value)} />
+          <a title="Show Filters" className="block"><HeroIcon name="AdjustmentsHorizontal" /></a>
           {/* && (
-            <div>
-              <input type="text" value={} onChange={} className="text-black" />
-              <Button text="Create Folder" onClick={} />
-            </div>
-          )*/}
+              <div>
+                <input type="text" value={} onChange={} className="text-black" />
+                <Button text="Create Folder" onClick={} />
+              </div>
+            )*/}
+        </div>
+        <Folder search={searchTerm} />
       </div>
-      <Folder search={searchTerm} />
+      <div id="folder__search">
+
+      </div>
     </>
   )
 }
