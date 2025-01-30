@@ -1,7 +1,10 @@
 @import 'variables.scss';
+@import 'Elements.scss';
 
 #folder-tree { 
     @apply w-full mt-0 float-left h-auto pb-4 overflow-y-scroll border-r-0;
+
+    box-shadow: $box-shadow;
 
 
     // React-scrollbars-custom-2

@@ -32,8 +32,9 @@ const Drive: React.FC = () => {
     <>
       <div className="w-2/3">
         <div className="flex flex-row mb-6">
+
           <FileUpload />
-          <input type="text" className="" placeholder={"Search Folder: " + folderName} onChange={(e) => setSearchTerm(e.target.value)} />
+          {/*<input type="text" className="" placeholder={"Search Folder: " + folderName} onChange={(e) => setSearchTerm(e.target.value)} />*}
           <a title="Show Filters" className="block"><HeroIcon name="AdjustmentsHorizontal" /></a>
           {/* && (
               <div>
