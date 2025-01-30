@@ -51,7 +51,7 @@ const fileUpload: React.FC<Props> = (props) => {
                 onChange={handleUploadChange}
                 id="upload" />
             <Button text="Upload File" onClick={handleUploadClick} heroIcon="CloudArrowUp" />
-            <Button text="Create Folder" heroIcon="FolderPlus" />
+            {/*<Button text="Create Folder" heroIcon="FolderPlus" />*/}
         </>
     )
 };

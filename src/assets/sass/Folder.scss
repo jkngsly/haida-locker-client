@@ -1,6 +1,14 @@
 @import './variables.scss';
 @import './Elements.scss';
 
+.drive__header { 
+    @apply w-full flex justify-between mt-20;
+
+    svg { 
+        @apply size-60;
+    }
+}
+
 #folder { 
     @apply max-h-max;
     max-height: 90vh;
@@ -182,7 +190,12 @@
 }
 
 
-#folder__search { 
-    @apply h-full w-1/3;
+#folder-search { 
+    @apply h-full w-1/3 flex flex-col pt-20 px-20;
     background: #10171d;
+
+    .folder-search__input { 
+        
+    }
+
 }

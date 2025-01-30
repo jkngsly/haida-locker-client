@@ -30,11 +30,14 @@ const Drive: React.FC = () => {
 
   return (
     <>
-      <div className="w-2/3">
-        <div className="flex flex-row mb-6">
-
+      <div className="w-2/3 px-20">
+        <div className="drive__header">
+          <div className="text-3xl">Files</div>
+          <HeroIcon name="FolderSolid" />
           <FileUpload />
-          {/*<input type="text" className="" placeholder={"Search Folder: " + folderName} onChange={(e) => setSearchTerm(e.target.value)} />*}
+        </div>
+        <div className="flex flex-row mb-6">
+          {/**}
           <a title="Show Filters" className="block"><HeroIcon name="AdjustmentsHorizontal" /></a>
           {/* && (
               <div>
@@ -45,8 +48,8 @@ const Drive: React.FC = () => {
         </div>
         <Folder search={searchTerm} />
       </div>
-      <div id="folder__search">
-
+      <div id="folder-search">
+        <input type="text" className="folder-search__input" placeholder={"Search Folder: " + folderName} onChange={(e) => setSearchTerm(e.target.value)} />
       </div>
     </>
   )
