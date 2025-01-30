@@ -4,6 +4,7 @@ import { selectId, setId, setPath, setName } from './folderTreeSlice'
 import { useAppDispatch, useAppSelector } from "@app/hooks"
 import IFolder from '@/features/types/folder.interface'
 import HeroIcon from '@components/HeroIcon'
+import { useNavigate } from 'react-router-dom'
 
 interface Props {
     folder: IFolder
@@ -12,6 +13,7 @@ interface Props {
 const FolderTreeChild: React.FC<Props> = (props) => {
     const dispatch = useAppDispatch()
     const folderId = useAppSelector(selectId)
+    const navigate = useNavigate()
 
     const [active, setActive] = React.useState<boolean>(false)
     const [expanded, setExpanded] = React.useState<boolean>(false)
@@ -28,6 +30,8 @@ const FolderTreeChild: React.FC<Props> = (props) => {
         dispatch(setId(folder.id))
         dispatch(setPath(folder.path))
         dispatch(setName(folder.name))
+
+        navigate("portal/folder?folder=" + folder.id)
     }
 
     useEffect(() => {

@@ -8,7 +8,7 @@ import { selectName } from '@/features/drive/FolderTree/folderTreeSlice'
 import { useAppSelector } from '@/app/hooks'
 import Button from '@components/Button'
 
-const Drive: React.FC = () => {
+const Folder: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState(null);
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
   const folderName = useAppSelector(selectName)
@@ -59,4 +59,4 @@ const Drive: React.FC = () => {
   )
 }
 
-export default Drive;
+export default Folder;

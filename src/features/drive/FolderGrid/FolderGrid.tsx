@@ -15,7 +15,7 @@ interface Props {
     search?: '' | null
 }
 
-const Folder: React.FC<Props> = (props) => {
+const FolderGrid: React.FC<Props> = (props) => {
     const folderId = useAppSelector(selectId)
     const folderPath = useAppSelector(selectPath)
     const folderName = useAppSelector(selectName)
@@ -63,4 +63,4 @@ const Folder: React.FC<Props> = (props) => {
     }
 }
 
-export default Folder
+export default FolderGrid

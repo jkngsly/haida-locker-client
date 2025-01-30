@@ -7,13 +7,17 @@ import { useGetRootFoldersQuery } from '@features/api/folderApi'
 import { setId, selectId, setPath, setName } from './folderTreeSlice'
 import FolderTreeChild from "./FolderTreeChild"
 import '@sass/FolderTree.scss'
+import { useNavigate } from 'react-router-dom';
 
 const FolderTree: React.FC = () => {
     const folderId = useAppSelector(selectId)
     const dispatch = useAppDispatch()
+    const navigate = useNavigate()
     const { data, isLoading, error } = useGetRootFoldersQuery({})
 
     const handleHomeCLick = () => {
+        navigate("portal/folder")
+
         dispatch(setId("root"))
         dispatch(setPath("Home"))
         dispatch(setName("Home"))
