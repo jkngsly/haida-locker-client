@@ -16,12 +16,6 @@ export const folderApi  = apiSlice.injectEndpoints({
     getRootFolders: builder.query({
       query: () => 'folders',
       transformResponse: (response: { data: IFolder }, meta, arg) => response.data,
-     /* transformErrorResponse: (
-        response: { status: string | number },
-        meta,
-        arg,
-      ) => response.status,*/
-
       providesTags: ['Folders'], 
     }),
 

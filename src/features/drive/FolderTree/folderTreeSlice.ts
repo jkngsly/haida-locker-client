@@ -1,48 +1,40 @@
 
 import type { PayloadAction } from "@reduxjs/toolkit"
 import { createAppSlice } from "@app/createAppSlice"
+import IFolder from "@features/types/folder.interface"
 
 export interface FolderSliceState {
-  id: string
-  path: string
-  name: string
+  folder: IFolder
 }
 
 const initialState: FolderSliceState = {
-  id: "root",
-  path: "Home",
-  name: "Home"
+  folder: {
+    id: 'root',
+    name: 'Home',
+    path: 'Home',
+    parent_id: null,
+    is_root: true,
+    children: []
+  }
 }
 
 export const folderTreeSlice = createAppSlice({
   name: "folderTree",
   initialState,
   reducers: create => ({
-    setId: create.reducer(
-      (state, action: PayloadAction<string>) => {
-        state.id = action.payload
-      },
-    ),
-    setPath: create.reducer(
-      (state, action: PayloadAction<string>) => {
-        state.path = action.payload
-      },
-    ),
-    setName: create.reducer(
-      (state, action: PayloadAction<string>) => {
-        state.name = action.payload
+    setFolder: create.reducer(
+      (state, action: PayloadAction<IFolder>) => {
+        state.folder = action.payload
       },
     ),
   }),
 
   selectors: {
-    selectId: folders => folders.id,
-    selectPath: folders => folders.path,
-    selectName: folders => folders.name
+    selectFolder: tree => tree.folder,
   },
 })
 
-export const { setId, setPath, setName } =
+export const { setFolder } =
 folderTreeSlice.actions
 
-export const { selectId, selectPath, selectName } = folderTreeSlice.selectors
+export const { selectFolder } = folderTreeSlice.selectors

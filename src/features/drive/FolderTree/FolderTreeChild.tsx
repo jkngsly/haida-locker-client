@@ -1,6 +1,6 @@
 // components/FolderTree.tsx
 import React, { useEffect, useState } from 'react'
-import { selectId, setId, setPath, setName } from './folderTreeSlice'
+import { selectFolder, setFolder } from './folderTreeSlice'
 import { useAppDispatch, useAppSelector } from "@app/hooks"
 import IFolder from '@/features/types/folder.interface'
 import HeroIcon from '@components/HeroIcon'
@@ -12,7 +12,7 @@ interface Props {
 
 const FolderTreeChild: React.FC<Props> = (props) => {
     const dispatch = useAppDispatch()
-    const folderId = useAppSelector(selectId)
+    const selectedFolder = useAppSelector(selectFolder)
     const navigate = useNavigate()
 
     const [active, setActive] = React.useState<boolean>(false)
@@ -27,16 +27,14 @@ const FolderTreeChild: React.FC<Props> = (props) => {
             setExpanded(true)
         }
 
-        dispatch(setId(folder.id))
-        dispatch(setPath(folder.path))
-        dispatch(setName(folder.name))
+        dispatch(setFolder(folder))
 
         navigate("portal/folder?folder=" + folder.id)
     }
 
     useEffect(() => {
-        setActive(folderId == folder.id)
-    }, [folderId]) // TODO: subscribe to state instead
+        setActive(selectedFolder.id == folder.id)
+    }, [selectedFolder]) // TODO: subscribe to state instead
 
     return (
         <li key={folder.id}>

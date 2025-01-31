@@ -1,6 +1,6 @@
 // components/FolderTree.tsx
 import React, { useEffect, useState } from 'react'
-import { selectId, selectName, selectPath } from '@features/drive/FolderTree/folderTreeSlice'
+import { selectFolder } from '@features/drive/FolderTree/folderTreeSlice'
 import { useAppDispatch, useAppSelector } from "@app/hooks"
 import { useGetFilesQuery } from '@features/api/folderApi'
 import { useSearchQuery } from '@features/api/fileApi'
@@ -16,17 +16,15 @@ interface Props {
 }
 
 const FolderGrid: React.FC<Props> = (props) => {
-    const folderId = useAppSelector(selectId)
-    const folderPath = useAppSelector(selectPath)
-    const folderName = useAppSelector(selectName)
+    const selectedFolder = useAppSelector(selectFolder)
     const uploadFiles = useAppSelector(selectUploadFiles)
 
     // @ts-ignore
     let { data, isLoading, error } = (props.search && props.search.length > 0 ?
         // @ts-ignore
-        useSearchQuery({ text: props.search })
+        useSearchQuery({ search: props.search, folderId: selectedFolder.id})
         :
-        useGetFilesQuery({ folderId: folderId || "root" }))
+        useGetFilesQuery({ folderId: selectedFolder.id }))
 
 
     const handleUploadClick = () => {
@@ -39,8 +37,7 @@ const FolderGrid: React.FC<Props> = (props) => {
                 <div className="w-fullflex flex-row  px-4 ">
                     <div className="folder__path">
                         <HeroIcon name="ArrowTurnDownRight" />
-                        {folderPath.replace(folderName, "")}
-                        <span>{folderName}</span>
+                        {selectedFolder.path}
                     </div>
                 </div>
                 {data.length > 0 && (

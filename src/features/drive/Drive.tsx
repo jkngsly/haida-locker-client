@@ -1,17 +1,19 @@
 import * as React from 'react'
-import FolderGrid from "@/features/drive/FolderGrid/FolderGrid"
+import FolderGrid from "@features/drive/FolderGrid/FolderGrid"
 import HeroIcon from '@components/HeroIcon'
 import FileUpload from '@features/drive/FileUpload/FileUpload'
 import Modal from '@/components/Modal'
 import { useEffect, useState } from 'react'
-import { selectName } from '@/features/drive/FolderTree/folderTreeSlice'
-import { useAppSelector } from '@/app/hooks'
+import { selectFolder, setFolder } from '@features/drive/FolderTree/folderTreeSlice'
+import { useAppDispatch, useAppSelector } from '@app/hooks'
 import Button from '@components/Button'
+import { useGetRootFoldersQuery } from '@features/api/folderApi'
 
 const Drive: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState(null);
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
-  const folderName = useAppSelector(selectName)
+  const selectedFolder = useAppSelector(selectFolder)
+  const dispatch = useAppDispatch()
 
   let searchValue = null;
 
@@ -29,34 +31,34 @@ const Drive: React.FC = () => {
     }
   }, [debouncedSearchTerm]);
 
-  return (
-    <>
-      <div className="w-2/3 px-20">
-        <div className="drive__header">
-          
-        <div className="text-3xl mr-6">Files</div>
-          <div className="flex">          
-            <FileUpload />
-            <Button text="Create Folder" heroIcon="FolderPlus" />
-            <input type="text" placeholder={"Search Folder: " + folderName} onChange={(e) => setSearchTerm(e.target.value)} />
+    return (
+      <>
+        <div className="w-2/3 px-20">
+          <div className="drive__header">
+            
+          <div className="text-3xl mr-6">Files</div>
+            <div className="flex">          
+              <FileUpload />
+              <Button text="Create Folder" heroIcon="FolderPlus" />
+              <input type="text" placeholder={"Search Folder"} onChange={(e) => setSearchTerm(e.target.value)} />
+            </div>
           </div>
+          <div className="flex flex-row mb-6">
+            {/**}
+            <a title="Show Filters" className="block"><HeroIcon name="AdjustmentsHorizontal" /></a>
+            {/* && (
+                <div>
+                  <input type="text" value={} onChange={} className="text-black" />
+                  
+                </div>
+              )*/}
+          </div>
+          <FolderGrid search={searchTerm} />
         </div>
-        <div className="flex flex-row mb-6">
-          {/**}
-          <a title="Show Filters" className="block"><HeroIcon name="AdjustmentsHorizontal" /></a>
-          {/* && (
-              <div>
-                <input type="text" value={} onChange={} className="text-black" />
-                
-              </div>
-            )*/}
+        <div id="folder-search">
         </div>
-        <FolderGrid search={searchTerm} />
-      </div>
-      <div id="folder-search">
-      </div>
-    </>
-  )
-}
+      </>
+    )
+  }
 
 export default Drive;

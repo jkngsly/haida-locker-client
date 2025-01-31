@@ -4,14 +4,14 @@ import HeroIcon from '@components/HeroIcon'
 import FileUpload from '@features/drive/FileUpload/FileUpload'
 import Modal from '@/components/Modal'
 import { useEffect, useState } from 'react'
-import { selectName } from '@/features/drive/FolderTree/folderTreeSlice'
+import { selectFolder } from '@/features/drive/FolderTree/folderTreeSlice'
 import { useAppSelector } from '@/app/hooks'
 import Button from '@components/Button'
 
 const Folder: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState(null);
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
-  const folderName = useAppSelector(selectName)
+  const selectedFolder = useAppSelector(selectFolder)
 
   let searchValue = null;
 
@@ -38,7 +38,7 @@ const Folder: React.FC = () => {
           <div className="flex">          
             <FileUpload />
             <Button text="Create Folder" heroIcon="FolderPlus" />
-            <input type="text" placeholder={"Search Folder: " + folderName} onChange={(e) => setSearchTerm(e.target.value)} />
+            <input type="text" placeholder={"Search Folder: " + selectedFolder.name} onChange={(e) => setSearchTerm(e.target.value)} />
           </div>
         </div>
         <div className="flex flex-row mb-6">
