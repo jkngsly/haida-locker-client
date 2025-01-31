@@ -1,5 +1,5 @@
 // components/FolderTree.tsx
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Scrollbars } from 'react-custom-scrollbars-2';
 import { useAppDispatch, useAppSelector } from "@app/hooks"
 import HeroIcon from '@components/HeroIcon'
@@ -16,6 +16,7 @@ const FolderTree: React.FC = () => {
     const { data, isLoading, error } = useGetRootFoldersQuery({})
 
     if (!isLoading && data) {
+
         const handleHomeClick = () => {
             navigate("portal/folder")
 
