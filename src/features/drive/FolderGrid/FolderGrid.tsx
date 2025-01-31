@@ -37,7 +37,7 @@ const FolderGrid: React.FC<Props> = (props) => {
                 <div className="w-fullflex flex-row  px-4 ">
                     <div className="folder__path">
                         <HeroIcon name="ArrowTurnDownRight" />
-                        {selectedFolder.path}
+                        {selectedFolder.id}
                     </div>
                 </div>
                 {data.length > 0 && (

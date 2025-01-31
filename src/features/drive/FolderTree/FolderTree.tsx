@@ -7,19 +7,18 @@ import { useGetRootFoldersQuery } from '@features/api/folderApi'
 import { setFolder, selectFolder } from './folderTreeSlice'
 import FolderTreeChild from "./FolderTreeChild"
 import '@sass/FolderTree.scss'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 const FolderTree: React.FC = () => {
     const selectedFolder = useAppSelector(selectFolder)
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const { data, isLoading, error } = useGetRootFoldersQuery({})
+    const [searchParams] = useSearchParams();
 
     if (!isLoading && data) {
-
         const handleHomeClick = () => {
             navigate("portal/folder")
-
             dispatch(setFolder(data))
         }
 

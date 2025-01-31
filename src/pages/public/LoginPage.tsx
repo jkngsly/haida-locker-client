@@ -20,7 +20,7 @@ const LoginPage: React.FC = () => {
   const handleLoginClick = async () => {
     try {
         //await login(getValues()).unwrap().then(() => { 
-        await login({ email: "admin@gmail.com", password: "AJd8w9Z32#$!"}).unwrap().then((data) => { 
+        await login({ email: "jkngsly@gmail.com", password: "AJd8w9Z32#$!"}).unwrap().then((data) => { 
           dispatch(setToken(data))
           navigate('/portal')
         })

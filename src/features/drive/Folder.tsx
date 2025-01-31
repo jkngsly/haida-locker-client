@@ -29,34 +29,37 @@ const Folder: React.FC = () => {
     }
   }, [debouncedSearchTerm]);
 
-  return (
-    <>
-      <div className="w-2/3 px-20">
-        <div className="drive__header">
-          
-        <div className="text-3xl mr-6">Files</div>
-          <div className="flex">          
-            <FileUpload />
-            <Button text="Create Folder" heroIcon="FolderPlus" />
-            <input type="text" placeholder={"Search Folder: " + selectedFolder.name} onChange={(e) => setSearchTerm(e.target.value)} />
+  if(selectedFolder != null) { 
+
+    return (
+      <>
+        <div className="w-2/3 px-20">
+          <div className="drive__header">
+            
+          <div className="text-3xl mr-6">Files</div>
+            <div className="flex">          
+              <FileUpload />
+              <Button text="Create Folder" heroIcon="FolderPlus" />
+              <input type="text" placeholder={"Search Folder: " + selectedFolder.name} onChange={(e) => setSearchTerm(e.target.value)} />
+            </div>
           </div>
+          <div className="flex flex-row mb-6">
+            {/**}
+            <a title="Show Filters" className="block"><HeroIcon name="AdjustmentsHorizontal" /></a>
+            {/* && (
+                <div>
+                  <input type="text" value={} onChange={} className="text-black" />
+                  
+                </div>
+              )*/}
+          </div>
+          <FolderGrid search={searchTerm} />
         </div>
-        <div className="flex flex-row mb-6">
-          {/**}
-          <a title="Show Filters" className="block"><HeroIcon name="AdjustmentsHorizontal" /></a>
-          {/* && (
-              <div>
-                <input type="text" value={} onChange={} className="text-black" />
-                
-              </div>
-            )*/}
+        <div id="folder-search">
         </div>
-        <FolderGrid search={searchTerm} />
-      </div>
-      <div id="folder-search">
-      </div>
-    </>
-  )
+      </>
+    )
+  }
 }
 
 export default Folder;

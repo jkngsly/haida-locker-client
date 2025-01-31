@@ -1,19 +1,17 @@
 import * as React from 'react'
-import FolderGrid from "@features/drive/FolderGrid/FolderGrid"
+import FolderGrid from "@/features/drive/FolderGrid/FolderGrid"
 import HeroIcon from '@components/HeroIcon'
 import FileUpload from '@features/drive/FileUpload/FileUpload'
 import Modal from '@/components/Modal'
 import { useEffect, useState } from 'react'
-import { selectFolder, setFolder } from '@features/drive/FolderTree/folderTreeSlice'
-import { useAppDispatch, useAppSelector } from '@app/hooks'
+import { selectFolder } from '@/features/drive/FolderTree/folderTreeSlice'
+import { useAppSelector } from '@/app/hooks'
 import Button from '@components/Button'
-import { useGetRootFoldersQuery } from '@features/api/folderApi'
 
 const Drive: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState(null);
   const [debouncedSearchTerm, setDebouncedSearchTerm] = useState('');
   const selectedFolder = useAppSelector(selectFolder)
-  const dispatch = useAppDispatch()
 
   let searchValue = null;
 
@@ -31,6 +29,8 @@ const Drive: React.FC = () => {
     }
   }, [debouncedSearchTerm]);
 
+  console.log(selectedFolder)
+  if(selectedFolder != null) { 
     return (
       <>
         <div className="w-2/3 px-20">
@@ -40,7 +40,7 @@ const Drive: React.FC = () => {
             <div className="flex">          
               <FileUpload />
               <Button text="Create Folder" heroIcon="FolderPlus" />
-              <input type="text" placeholder={"Search Folder"} onChange={(e) => setSearchTerm(e.target.value)} />
+              <input type="text" placeholder={"Search Folder: " + selectedFolder.name} onChange={(e) => setSearchTerm(e.target.value)} />
             </div>
           </div>
           <div className="flex flex-row mb-6">
@@ -53,12 +53,14 @@ const Drive: React.FC = () => {
                 </div>
               )*/}
           </div>
-          <FolderGrid search={searchTerm} />
+          {selectedFolder.id.length > 2 && <FolderGrid search={searchTerm} /> }
+           
         </div>
         <div id="folder-search">
         </div>
       </>
     )
   }
+}
 
 export default Drive;

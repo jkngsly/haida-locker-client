@@ -33,11 +33,12 @@ export const fileApi = apiSlice.injectEndpoints({
         }),
 
         search: build.query({
-            query: (search) => ({
+            query: (args) => ({
                 url: '/file/search',
                 method: 'POST',
                 body: { 
-                    name: search.text
+                    name: args.search,
+                    folderId: args.folderId
                 },
             }),
             transformResponse: (response: { data: IFile[] }, meta, arg) => response.data,
