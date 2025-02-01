@@ -53,8 +53,7 @@ const Drive: React.FC = () => {
                 </div>
               )*/}
           </div>
-          {selectedFolder.id.length > 2 && <FolderGrid search={searchTerm} /> }
-           
+          {selectedFolder.id.length > 0 && <FolderGrid search={searchTerm} /> }
         </div>
         <div id="folder-search">
         </div>

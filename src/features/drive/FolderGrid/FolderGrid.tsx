@@ -31,6 +31,7 @@ const FolderGrid: React.FC<Props> = (props) => {
 
     }
 
+    console.log(data)
     if (!isLoading && data) {
         return (
             <div id="folder" className="box">
